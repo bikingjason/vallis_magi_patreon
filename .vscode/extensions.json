@@ -1,0 +1,25 @@
+// Type @recommended in the extensions viewlet to filter on the
+// recommended extensions.
+//
+// Optioanlly, (and with care) you can install the extension's by
+// clicking the cloud button next to 'Workspace Recommendations'
+// to install the missing extensions.
+{
+    "recommendations": [
+        "ms-python.python",
+        "ms-python.vscode-pylance",
+        "ms-python.debugpy",
+        "github.copilot",
+        "github.copilot-chat",
+        "tamasfe.even-better-toml",
+        "aaron-bond.better-comments",
+        "shd101wyy.markdown-preview-enhanced",
+        "openai.chatgpt",
+        // "ms-vscode.makefile-tools",              C++
+        "eamodio.gitlens", // Needs git installed
+        // "ms-vscode.remote-explorer",             Remote Development
+        "charliermarsh.ruff",
+        // "ms-vscode.cpptools-extension-pack",     C++
+        // "ms-vscode.live-server"                  Host a Test Server
+    ]
+}

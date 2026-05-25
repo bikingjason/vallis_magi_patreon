@@ -1,0 +1,10 @@
+[project]
+name = "bj-study"
+version = "0.1.0"
+description = "Vallis Magi Patreon"
+readme = "README.md"
+requires-python = ">=3.14"
+dependencies = []
+
+[tool.uv.workspace]
+members = ["rogue_lite"]

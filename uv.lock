@@ -1,0 +1,19 @@
+version = 1
+revision = 3
+requires-python = ">=3.14"
+
+[manifest]
+members = [
+    "bj-study",
+    "rogue-lite",
+]
+
+[[package]]
+name = "bj-study"
+version = "0.1.0"
+source = { virtual = "." }
+
+[[package]]
+name = "rogue-lite"
+version = "0.1.0"
+source = { virtual = "rogue_lite" }

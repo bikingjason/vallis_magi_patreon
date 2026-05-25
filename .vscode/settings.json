@@ -1,0 +1,43 @@
+{
+	// Yes these should be in user settings, but now I can see what
+	// they are and easily copy them to user settings if I want to.
+	"editor.formatOnSave": true,
+	"[python]": {
+		"editor.defaultFormatter": "charliermarsh.ruff",
+		"editor.formatOnSave": true,
+		"editor.formatOnPaste": true,
+		"editor.formatOnSaveMode": "file",
+		"editor.codeActionsOnSave": {
+			"source.organizeImports.ruff": "always",
+			"source.fixAll": "always"
+		},
+		"editor.inlineSuggest.enabled": true
+	},
+	"files.trimTrailingWhitespace": true,
+	"github.copilot.enable": {
+		"*": false,
+		"plaintext": false,
+		"markdown": false,
+		"scminput": false,
+		"json": false,
+		"yaml": false
+	},
+	// "python.analysis.extraPaths": [
+	// 	"${workspaceFolder}/src"
+	// ],
+	// "python.envFile": "${workspaceFolder}/.venv",
+	"python.analysis.typeCheckingMode": "strict",
+	"python.analysis.diagnosticSeverityOverrides": {
+		"reportUnknownMemberType": "none",
+		"reportUnknownVariableType": "none",
+		"reportUnknownArgumentType": "none",
+		"reportMissingTypeStubs": "none"
+	},
+	"python.defaultInterpreterPath": "${workspaceFolder}\\.venv\\scripts\\python.exe",
+	// Test Settings
+	"python.testing.unittestEnabled": false,
+	"python.testing.pytestEnabled": true,
+	"python.testing.cwd": "${workspaceFolder}",
+	"python.testing.pytestPath": "${workspaceFolder}\\.venv\\scripts\\pytest.exe",
+	"python.testing.autoTestDiscoverOnSaveEnabled": true,
+}

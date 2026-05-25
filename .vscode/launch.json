@@ -1,0 +1,26 @@
+{
+	"version": "0.2.0",
+	"configurations": [
+		{
+			"name": "Run Valley (module)",
+			"type": "debugpy",
+			"request": "launch",
+			//
+			"module": "src.primes.primes",
+			//
+			// "module": "tests.test_main",
+			//
+			"cwd": "${workspaceFolder}",
+			"console": "integratedTerminal",
+			"justMyCode": true,
+			"args": [
+				// "2029",
+				// "data/calendars"
+				// "--file",
+				// "data/calendars/cal_2026.toml",
+				// "4",
+				// "--legend"
+			]
+		}
+	]
+}

@@ -1,0 +1,222 @@
+{
+  "main": {
+    "id": "c6ee1901bbc8b4f4",
+    "type": "split",
+    "children": [
+      {
+        "id": "33dcafea7958e066",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "0f479b4538f959ab",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "rogue_lite/README.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "README"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "1094c47aee694fc4",
+    "type": "split",
+    "children": [
+      {
+        "id": "54037100f6cdd29d",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "4a0e4fc236fd17f8",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "8e9912690019fe26",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "57cd3b0e3a354bf4",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "420f9a51ce49162a",
+    "type": "split",
+    "children": [
+      {
+        "id": "e37fea3f5d0e30d2",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "e1a73c8d194ceb17",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks"
+            }
+          },
+          {
+            "id": "3811204f0669c238",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links"
+            }
+          },
+          {
+            "id": "79eca4b2c999bfb4",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "a5dbbc21ab89b75e",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "All properties"
+            }
+          },
+          {
+            "id": "c2e4e71ad55cc585",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
+      "bases:Create new base": false
+    }
+  },
+  "active": "0f479b4538f959ab",
+  "lastOpenFiles": [
+    "rogue_lite/__pycache__/main.cpython-314.pyc",
+    "rogue_lite/__pycache__",
+    "README.md",
+    "proc_gen/__pycache__/bsp_generator.cpython-314.pyc",
+    "src/__pycache__/gui.cpython-314.pyc",
+    "src/__pycache__",
+    "proc_gen/bsp_generator.py",
+    "src/gui.py",
+    "src",
+    "proc_gen/__pycache__/main.cpython-314.pyc",
+    "proc_gen/__pycache__",
+    "proc_gen/README.md",
+    "proc_gen/pyproject.toml",
+    "markdown/monsters2md/monster/Zruty/zruty.md",
+    "markdown/monsters2md/monster/Zombie/human zombie.md",
+    "markdown/monsters2md/monster/Zombie/skeleton.md",
+    "markdown/monsters2md/monster/Zombie/orc zombie.md",
+    "markdown/monsters2md/monster/Zombie/gnome zombie.md",
+    "markdown/monsters2md/monster/Zombie/kobold zombie.md",
+    "markdown/monsters2md/monster/Zombie/giant zombie.md",
+    "markdown/monsters2md/monster/Zombie/ghoul.md",
+    "markdown/monsters2md/monster/Zombie/ettin zombie.md",
+    "markdown/monsters2md/monster/Zombie/elf zombie.md",
+    "markdown/monsters2md/monster/Zombie/dwarf zombie.md",
+    "markdown/monsters2md/monster/Yeti/owlbear.md",
+    "markdown/monsters2md/monster/Yeti/yeti.md",
+    "markdown/monsters2md/monster/Yeti/sasquatch.md",
+    "markdown/monsters2md/monster/Yeti/monkey.md",
+    "markdown/monsters2md/monster/Yeti/carnivorous ape.md",
+    "markdown/monsters2md/monster/Yeti/ape.md",
+    "markdown/monsters2md/monster/Xorn/xorn.md",
+    "markdown/monsters2md/monster/Xan/xan.md",
+    "markdown/monsters2md/monster/Xan/grid bug.md",
+    "markdown/monsters2md/monster/Vortex/ice vortex.md",
+    "markdown/monsters2md/monster/Wraith/wraith.md",
+    "markdown/monsters2md/monster/Wraith/shade.md"
+  ]
+}
