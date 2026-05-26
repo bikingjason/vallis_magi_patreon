@@ -1,10 +1,12 @@
 [project]
-name = "bj-study"
+name = "vallis_magi_patreon"
 version = "0.1.0"
 description = "Vallis Magi Patreon"
 readme = "README.md"
 requires-python = ">=3.14"
-dependencies = []
+dependencies = [
+    "tomli-w>=1.2.0",
+]
 
 [tool.uv.workspace]
-members = ["rogue_lite"]
+members = ["vallis_magi_classic"]

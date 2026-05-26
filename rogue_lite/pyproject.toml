@@ -1,7 +1,0 @@
-[project]
-name = "rogue-lite"
-version = "0.1.0"
-description = "Vallis Magi - Rogue Lite"
-readme = "README.md"
-requires-python = ">=3.14"
-dependencies = []

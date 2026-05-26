@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "rogue_lite/README.md",
+                "file": "README.md",
                 "mode": "source",
                 "source": false
               },
@@ -182,19 +182,21 @@
   },
   "active": "0f479b4538f959ab",
   "lastOpenFiles": [
+    "vallis_magi_classic/__pycache__/config.cpython-314.pyc",
+    "vallis_magi_classic/config.py",
+    "vallis_magi_classic/main copy.py",
+    "vmclassic.toml",
+    "vallis_magi_classic/__pycache__/main.cpython-314.pyc",
+    "vallis_magi_classic/__pycache__",
+    "vallis_magi_classic/README.md",
+    "vallis_magi_classic/pyproject.toml",
+    "vallis_magi_classic/main.py",
+    "vallis_magi_classic",
+    "rogue_lite/README.md",
     "rogue_lite/__pycache__/main.cpython-314.pyc",
     "rogue_lite/__pycache__",
     "README.md",
-    "proc_gen/__pycache__/bsp_generator.cpython-314.pyc",
-    "src/__pycache__/gui.cpython-314.pyc",
-    "src/__pycache__",
-    "proc_gen/bsp_generator.py",
-    "src/gui.py",
-    "src",
-    "proc_gen/__pycache__/main.cpython-314.pyc",
-    "proc_gen/__pycache__",
     "proc_gen/README.md",
-    "proc_gen/pyproject.toml",
     "markdown/monsters2md/monster/Zruty/zruty.md",
     "markdown/monsters2md/monster/Zombie/human zombie.md",
     "markdown/monsters2md/monster/Zombie/skeleton.md",
@@ -215,8 +217,6 @@
     "markdown/monsters2md/monster/Xorn/xorn.md",
     "markdown/monsters2md/monster/Xan/xan.md",
     "markdown/monsters2md/monster/Xan/grid bug.md",
-    "markdown/monsters2md/monster/Vortex/ice vortex.md",
-    "markdown/monsters2md/monster/Wraith/wraith.md",
-    "markdown/monsters2md/monster/Wraith/shade.md"
+    "markdown/monsters2md/monster/Vortex/ice vortex.md"
   ]
 }
