@@ -182,6 +182,8 @@
   },
   "active": "0f479b4538f959ab",
   "lastOpenFiles": [
+    "vallis_magi_classic/__pycache__/high_scores.cpython-314.pyc",
+    "vallis_magi_classic/high_scores.py",
     "vallis_magi_classic/__pycache__/config.cpython-314.pyc",
     "vallis_magi_classic/config.py",
     "vallis_magi_classic/main copy.py",
@@ -193,8 +195,6 @@
     "vallis_magi_classic/main.py",
     "vallis_magi_classic",
     "rogue_lite/README.md",
-    "rogue_lite/__pycache__/main.cpython-314.pyc",
-    "rogue_lite/__pycache__",
     "README.md",
     "proc_gen/README.md",
     "markdown/monsters2md/monster/Zruty/zruty.md",
