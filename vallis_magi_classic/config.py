@@ -15,6 +15,7 @@ class AppConfig:
     askme: bool = False
     showac: bool = False
     scores: bool = False
+    max_scores: int = 10
     name: str = ""
     fruit: str = ""
     file: str = "vmclassic.toml"
@@ -53,7 +54,6 @@ def load_config(args: argparse.Namespace) -> tuple[AppConfig, list[HighScore]]:
 
     config_section = data.get("config", {})
     high_scores_section = data.get("high_scores", [])
-    high_scores = load_high_scores(high_scores_section)
 
     valid_fields = {field.name for field in fields(AppConfig)}
     config_data = {key: value for key, value in config_section.items() if key in valid_fields}
@@ -66,15 +66,18 @@ def load_config(args: argparse.Namespace) -> tuple[AppConfig, list[HighScore]]:
         askme=config_data.get("askme", False),
         showac=config_data.get("showac", False),
         scores=args.scores,
+        max_scores=config_data.get("max_scores", 10),
         name=config_data.get("name", ""),
         fruit=config_data.get("fruit", ""),
         file=args.file,
     )
 
+    high_scores = load_high_scores(high_scores_section, config.max_scores)
+
     return config, high_scores
 
 
-def get_arguments() -> tuple[AppConfig, list[HighScore]]:
+def get_configuration() -> tuple[AppConfig, list[HighScore]]:
     parser = build_parser()
     args = parser.parse_args()
     config, high_scores = load_config(args)
@@ -84,8 +87,9 @@ def get_arguments() -> tuple[AppConfig, list[HighScore]]:
 
 def display_config(config: AppConfig) -> None:
     output = asdict(config)
-    print("Application configuration")
+    print("\nApplication configuration")
     print("-------------------------")
     for key, value in output.items():
         if value is not None:
             print(f"{key}: {value}")
+    print()

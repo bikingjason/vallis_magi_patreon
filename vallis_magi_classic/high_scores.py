@@ -8,9 +8,9 @@ class HighScore:
     level: int = 1
 
 
-def load_high_scores(high_scores_section: list[dict[str, str | int]]) -> list[HighScore]:
+def load_high_scores(high_scores_section: list[dict[str, str | int]], max_scores: int) -> list[HighScore]:
 
-    return [
+    high_scores = [
         HighScore(
             name=str(entry.get("name", "")),
             score=int(entry.get("score", 0)),
@@ -18,6 +18,13 @@ def load_high_scores(high_scores_section: list[dict[str, str | int]]) -> list[Hi
         )
         for entry in high_scores_section
     ]
+
+    high_scores.sort(
+        key=lambda entry: entry.score,
+        reverse=True,
+    )
+
+    return high_scores[:max_scores]
 
 
 def display_high_scores(high_scores: list[HighScore]) -> None:
