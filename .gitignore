@@ -24,7 +24,6 @@ share/python-wheels/
 *.egg-info/
 .installed.cfg
 *.egg
-*.toml
 MANIFEST
 
 # PyInstaller
@@ -206,3 +205,6 @@ cython_debug/
 marimo/_static/
 marimo/_lsp/
 __marimo__/
+
+# Vallis Magi saved games
+**/saves/*.toml

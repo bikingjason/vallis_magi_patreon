@@ -1,0 +1,7 @@
+[project]
+name = "vallis_magi_classic"
+version = "0.1.0"
+description = "Vallid Magi Classic - A Rogue Lite."
+readme = "README.md"
+requires-python = ">=3.14"
+dependencies = []

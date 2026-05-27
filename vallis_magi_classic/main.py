@@ -7,8 +7,11 @@ from .items import AllItems, load_item_definitions
 
 
 def main() -> None:
+    # Determine the directory that contains main.py
+    working_dir = Path(__file__).resolve().parent
+
     # Load the configuration. optionally display High Scores and exiting.
-    config, high_scores = get_configuration()
+    config, high_scores = get_configuration(working_dir)
 
     if config.scores:
         display_high_scores(high_scores)
@@ -17,7 +20,7 @@ def main() -> None:
     display_config(config)
 
     # Load the Items toml file which describes everything that exists in the game
-    items_file = Path("vallis_magi_classic/items.toml")
+    items_file = Path(working_dir / "data" / "items.toml")
     item_defs = load_item_definitions(items_file)
     all_items = AllItems(item_defs=item_defs, items={})
     print(f"Loaded {len(item_defs)} items from {items_file}\n")
@@ -26,7 +29,7 @@ def main() -> None:
     game_state = GameState(all_items)
 
     # See if there is a saved player, if not create a new one
-    player_file = Path(f"vallis_magi_classic/saves/{config.name}.toml")
+    player_file = Path(working_dir / "saves" / f"{config.name}.toml")
     if not player_file.exists():
         game_state.create_new_player(config.name, all_items)
         game_state.player.display_player_welcome(game_state.all_items, True)

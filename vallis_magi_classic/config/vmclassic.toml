@@ -1,0 +1,21 @@
+[config]
+terse = false
+flush = false
+jump = true
+step = false
+askme = false
+showac = false
+max_scores = 20
+name = "JasonA"
+fruit = ""
+file = "vmclassic.toml"
+
+[[high_scores]]
+name = "Jason"
+score = 1200
+level = 7
+
+[[high_scores]]
+name = "Rogue"
+score = 1950
+level = 6

@@ -30,8 +30,8 @@ def build_parser() -> argparse.ArgumentParser:
     return parser
 
 
-def config_path(file_name: str) -> Path:
-    path = Path(file_name).expanduser()
+def config_path(working_dir: Path, file_name: str) -> Path:
+    path = Path(working_dir / file_name)
 
     if not path.is_absolute():
         path = Path.cwd() / path
@@ -42,8 +42,9 @@ def config_path(file_name: str) -> Path:
     return path
 
 
-def load_config(args: argparse.Namespace) -> tuple[AppConfig, list[HighScore]]:
-    path = config_path(args.file)
+def load_config(working_dir: Path, args: argparse.Namespace) -> tuple[AppConfig, list[HighScore]]:
+    config_dir = Path(working_dir / "config")
+    path = config_path(config_dir, args.file)
 
     if not path.exists():
         print(f"\nConfig: {path} not found, using default config.\n")
@@ -77,10 +78,10 @@ def load_config(args: argparse.Namespace) -> tuple[AppConfig, list[HighScore]]:
     return config, high_scores
 
 
-def get_configuration() -> tuple[AppConfig, list[HighScore]]:
+def get_configuration(working_dir: Path) -> tuple[AppConfig, list[HighScore]]:
     parser = build_parser()
     args = parser.parse_args()
-    config, high_scores = load_config(args)
+    config, high_scores = load_config(working_dir, args)
 
     return config, high_scores
 
