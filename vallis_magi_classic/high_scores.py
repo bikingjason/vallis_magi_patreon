@@ -20,7 +20,7 @@ def load_high_scores(high_scores_section: list[dict[str, str | int]]) -> list[Hi
     ]
 
 
-def print_high_scores(high_scores: list[HighScore]) -> None:
+def display_high_scores(high_scores: list[HighScore]) -> None:
     if not high_scores:
         print("No high scores yet.")
         return

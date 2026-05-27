@@ -1,12 +1,15 @@
-from .config import get_arguments, save_config
+from .config import display_config, get_arguments
+from .high_scores import display_high_scores
 
 
 def main() -> None:
-    config, _ = get_arguments()  # Don't need high_scores yet.
-    if config.score:
+    config, high_scores = get_arguments()  # Don't need high_scores yet.
+
+    if config.scores:
+        display_high_scores(high_scores)
         return
 
-    save_config(config)
+    display_config(config)
 
 
 if __name__ == "__main__":

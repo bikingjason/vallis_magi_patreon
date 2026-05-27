@@ -8,15 +8,15 @@ Please see the [[README]] for details of the licensing and the reference reposit
 
 # CLI Arguments
 
-| Option | Type | Default | Help |
-|---|---|---:|---|
-| `--terse` | `bool` | `False` | Terse output. |
-| `--flush` | `bool` | `False` | Flush typeahead during battle. |
-| `--jump` | `bool` | `True` | Show position only at end of run. |
-| `--step` | `bool` | `False` | Do inventories one line at a time. |
-| `--askme` | `bool` | `False` | Ask me about unidentified things. |
-| `--showac` | `bool` | `False` | Show armour class instead of protection. |
-| `--name` | `str` | `""` | User's name. |
-| `--fruit` | `str` | `""` | Name of favourite fruit. |
-| `--file` | `str` | `"vmclassic.toml"` | Save file name. |
-
+| Option     | Type   |            Default | Help                                     |
+| ---------- | ------ | -----------------: | ---------------------------------------- |
+| `--terse`  | `bool` |            `False` | Terse output.                            |
+| `--flush`  | `bool` |            `False` | Flush typeahead during battle.           |
+| `--jump`   | `bool` |             `True` | Show position only at end of run.        |
+| `--step`   | `bool` |            `False` | Do inventories one line at a time.       |
+| `--askme`  | `bool` |            `False` | Ask me about unidentified things.        |
+| `--showac` | `bool` |            `False` | Show armour class instead of protection. |
+| `--score`  | `bool` |            `False` | Show current high scores and exit.       |
+| `--name`   | `str`  |               `""` | User's name.                             |
+| `--fruit`  | `str`  |               `""` | Name of favourite fruit.                 |
+| `--file`   | `str`  | `"vmclassic.toml"` | Save file name.                          |

@@ -3,9 +3,7 @@ import tomllib
 from dataclasses import asdict, dataclass, fields
 from pathlib import Path
 
-import tomli_w
-
-from .high_scores import HighScore, load_high_scores, print_high_scores
+from .high_scores import HighScore, load_high_scores
 
 
 @dataclass
@@ -16,7 +14,7 @@ class AppConfig:
     step: bool = False
     askme: bool = False
     showac: bool = False
-    score: bool = False
+    scores: bool = False
     name: str = ""
     fruit: str = ""
     file: str = "vmclassic.toml"
@@ -25,16 +23,7 @@ class AppConfig:
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description="Configure and run the application.")
 
-    parser.add_argument("--terse", action="store_true", default=None, help="Terse output.")
-    parser.add_argument("--flush", action="store_true", default=None, help="Flush typeahead during battle.")
-    parser.add_argument("--jump", action="store_false", default=True, help="Show position only at end of run.")
-    parser.add_argument("--step", action="store_true", default=None, help="Do inventories one line at a time.")
-    parser.add_argument("--askme", action="store_true", default=None, help="Ask me about unidentified things.")
-    parser.add_argument("--showac", action="store_true", default=None, help="Show armour class instead of protection.")
-    parser.add_argument("--score", action="store_true", default=None, help="Show me the high scores.")
-
-    parser.add_argument("--name", default=None, type=str, help="User's name.")
-    parser.add_argument("--fruit", default=None, type=str, help="Name of favourite fruit.")
+    parser.add_argument("--scores", action="store_true", default=None, help="Show the high scores.")
     parser.add_argument("--file", default="vmclassic.toml", type=str, help="Save file name.")
 
     return parser
@@ -52,11 +41,12 @@ def config_path(file_name: str) -> Path:
     return path
 
 
-def load_config(file_name: str) -> tuple[AppConfig, list[HighScore]]:
-    path = config_path(file_name)
+def load_config(args: argparse.Namespace) -> tuple[AppConfig, list[HighScore]]:
+    path = config_path(args.file)
 
     if not path.exists():
-        return AppConfig(file=file_name), []
+        print(f"\nConfig: {path} not found, using default config.\n")
+        return AppConfig(file=args.file), []
 
     with path.open("rb") as f:
         data = tomllib.load(f)
@@ -75,40 +65,19 @@ def load_config(file_name: str) -> tuple[AppConfig, list[HighScore]]:
         step=config_data.get("step", False),
         askme=config_data.get("askme", False),
         showac=config_data.get("showac", False),
-        score=False,
+        scores=args.scores,
         name=config_data.get("name", ""),
         fruit=config_data.get("fruit", ""),
-        file=file_name,
+        file=args.file,
     )
 
     return config, high_scores
 
 
-def apply_args(config: AppConfig, args: argparse.Namespace) -> AppConfig:
-    for key in ("terse", "flush", "jump", "step", "askme", "showac", "score"):
-        value = getattr(args, key)
-        if value is not None:
-            setattr(config, key, value)
-
-    if args.name is not None:
-        config.name = args.name.strip()
-
-    if args.fruit is not None:
-        config.fruit = args.fruit.strip()
-
-    config.file = args.file
-    return config
-
-
 def get_arguments() -> tuple[AppConfig, list[HighScore]]:
     parser = build_parser()
     args = parser.parse_args()
-
-    config, high_scores = load_config(args.file)
-    config = apply_args(config, args)
-
-    if config.score:
-        print_high_scores(high_scores)
+    config, high_scores = load_config(args)
 
     return config, high_scores
 
@@ -118,23 +87,5 @@ def display_config(config: AppConfig) -> None:
     print("Application configuration")
     print("-------------------------")
     for key, value in output.items():
-        print(f"{key}: {value}")
-
-
-def save_config(config: AppConfig) -> None:
-    if not config.file:
-        return
-
-    save_path = config_path(config.file)
-    save_path.parent.mkdir(parents=True, exist_ok=True)
-
-    config_dict = asdict(config)
-    del config_dict["score"]
-    config_data = {
-        "config": config_dict,
-    }
-
-    with save_path.open("wb") as f:
-        tomli_w.dump(config_data, f)
-
-    display_config(config)
+        if value is not None:
+            print(f"{key}: {value}")

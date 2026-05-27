@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "README.md",
+                "file": "vallis_magi_classic/README.md",
                 "mode": "source",
                 "source": false
               },
@@ -182,6 +182,9 @@
   },
   "active": "0f479b4538f959ab",
   "lastOpenFiles": [
+    "vallis_magi_classic/character.py",
+    "vallis_magi_classic/items.py",
+    "README.md",
     "vallis_magi_classic/__pycache__/high_scores.cpython-314.pyc",
     "vallis_magi_classic/high_scores.py",
     "vallis_magi_classic/__pycache__/config.cpython-314.pyc",
@@ -192,10 +195,7 @@
     "vallis_magi_classic/__pycache__",
     "vallis_magi_classic/README.md",
     "vallis_magi_classic/pyproject.toml",
-    "vallis_magi_classic/main.py",
-    "vallis_magi_classic",
     "rogue_lite/README.md",
-    "README.md",
     "proc_gen/README.md",
     "markdown/monsters2md/monster/Zruty/zruty.md",
     "markdown/monsters2md/monster/Zombie/human zombie.md",
