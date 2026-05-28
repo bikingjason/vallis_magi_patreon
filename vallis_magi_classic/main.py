@@ -3,13 +3,13 @@ from pathlib import Path
 from .config import ConfigManager
 from .game_state import GameState
 from .high_scores import HighScoresManager
-from .items import AllItems, DataManager
+from .items import AllItems, ItemManager
 
 CONFIG_DIR: str = "config"
 CONFIG_FILE: str = "vmclassic.toml"
 HIGHSCORES_FILE: str = "highscores.toml"
 
-DATA_DIR: str = "data"
+ITEMS_DIR: str = "items"
 SAVES_DIR: str = "saves"
 
 
@@ -31,10 +31,10 @@ def main() -> None:
     config_manager.display_config(config)
 
     # Load the Items toml file which describes everything that exists in the game
-    data_manager = DataManager(working_dir, DATA_DIR, config.data_files)
-    item_defs = data_manager.load_data_definitions()
+    item_manager = ItemManager(working_dir, ITEMS_DIR, config.item_files)
+    item_defs = item_manager.load_item_definitions()
     all_items = AllItems(item_defs=item_defs, items={})
-    print(f"Loaded {len(item_defs)} items from {len(config.data_files)} data files.\n")
+    print(f"Loaded {len(item_defs)} items from {len(config.item_files)} item files.\n")
 
     # Initialise the game state
     game_state = GameState(all_items)

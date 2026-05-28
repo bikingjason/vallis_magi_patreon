@@ -64,12 +64,12 @@ class AllItems:
         return item_id
 
 
-class DataManager:
-    def __init__(self, working_dir: Path, data_dir: str, data_files: dict[str, str]) -> None:
+class ItemManager:
+    def __init__(self, working_dir: Path, items_dir: str, item_files: dict[str, str]) -> None:
         super().__init__()
         self.working_dir = working_dir
-        self.data_dir = Path(working_dir / data_dir)
-        self.data_files = data_files
+        self.items_dir = Path(working_dir / items_dir)
+        self.item_files = item_files
 
     def parse_slot(self, value: object) -> ItemSlot | None:
         if value is None:
@@ -80,12 +80,12 @@ class DataManager:
 
         return ItemSlot(value)
 
-    def load_data_definitions(self) -> dict[ItemDefId, ItemDefinition]:
+    def load_item_definitions(self) -> dict[ItemDefId, ItemDefinition]:
 
         item_defs: dict[ItemDefId, ItemDefinition] = {}
 
-        for data_file in self.data_files:
-            file_path = self.data_dir / f"{data_file}.toml"
+        for item_file in self.item_files:
+            file_path = self.items_dir / f"{item_file}.toml"
             with file_path.open("rb") as f:
                 data = tomllib.load(f)
 

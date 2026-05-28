@@ -19,7 +19,7 @@ class AppConfig:
     fruit: str = ""
     file: str = "vmclassic.toml"
 
-    data_files: dict[str, str] = field(default_factory=dict)
+    item_files: dict[str, str] = field(default_factory=dict)
 
 
 class ConfigManager:
@@ -73,7 +73,7 @@ class ConfigManager:
             name=config_data.get("name", ""),
             fruit=config_data.get("fruit", ""),
             file=args.file,
-            data_files=data_files,
+            item_files=data_files,
         )
 
         return config
