@@ -182,6 +182,8 @@
   },
   "active": "0f479b4538f959ab",
   "lastOpenFiles": [
+    "vallis_magi_classic/data/potions.toml",
+    "vallis_magi_classic/data/rings copy.toml",
     "vallis_magi_classic/data/rings.toml",
     "vallis_magi_classic/data/armour.toml",
     "vallis_magi_classic/data/weapons.toml",
@@ -191,8 +193,6 @@
     "vallis_magi_classic/data/items copy 2.toml",
     "vallis_magi_classic/data/items copy.toml",
     "vallis_magi_classic/config/highscores.toml",
-    "vallis_magi_classic/data/items.toml",
-    "vallis_magi_classic/config/vmclassic.toml",
     "README.md",
     "vallis_magi_classic/README.md",
     "rogue_lite/README.md",

@@ -1,47 +1,71 @@
 [items.leather_armour]
 name = "Leather armour"
+description = "A suit of boiled and layered leather that offers light protection while allowing easy movement."
 weight = 8.0
 slot = "body"
 armour_bonus = 1
+movement_penalty = 0
+stealth_penalty = 0
 
 [items.ring_mail]
 name = "Ring mail"
+description = "Leather armour reinforced with metal rings, giving better protection against cuts and glancing blows."
 weight = 12.0
 slot = "body"
 armour_bonus = 2
+movement_penalty = 1
+stealth_penalty = 1
 
 [items.studded_leather]
 name = "Studded leather"
+description = "A leather cuirass set with metal studs, adding extra protection without the full weight of mail."
 weight = 12.0
 slot = "body"
 armour_bonus = 3
+movement_penalty = 1
+stealth_penalty = 1
 
 [items.scale_mail]
 name = "Scale mail"
-weight = 12.0
+description = "Overlapping metal scales sewn onto a backing, turning aside weapons like the hide of some iron beast."
+weight = 14.0
 slot = "body"
 armour_bonus = 4
+movement_penalty = 2
+stealth_penalty = 2
 
 [items.chain_mail]
 name = "Chain mail"
-weight = 12.0
+description = "A flexible coat of interlocked metal rings that protects well against blades while remaining wearable in battle."
+weight = 18.0
 slot = "body"
 armour_bonus = 5
+movement_penalty = 2
+stealth_penalty = 3
 
 [items.splint_mail]
 name = "Splint mail"
-weight = 12.0
+description = "Armour reinforced with narrow metal strips, stiff and heavy but strong against crushing blows."
+weight = 20.0
 slot = "body"
 armour_bonus = 6
+movement_penalty = 3
+stealth_penalty = 3
 
-[items.Banded_mail]
+[items.banded_mail]
 name = "Banded mail"
-weight = 12.0
+description = "Heavy armour made from broad metal bands, offering strong protection at the cost of comfort and mobility."
+weight = 22.0
 slot = "body"
 armour_bonus = 7
+movement_penalty = 3
+stealth_penalty = 4
 
 [items.plate_mail]
 name = "Plate mail"
-weight = 12.0
+description = "A full harness of shaped metal plates, providing excellent protection against most weapons."
+weight = 25.0
 slot = "body"
 armour_bonus = 8
+movement_penalty = 4
+stealth_penalty = 5
