@@ -1,0 +1,11 @@
+[items.apple]
+name = "Apple"
+weight = 0.2
+stackable = true
+max_stack = 20
+
+[items.food]
+name = "Food ration"
+weight = 0.5
+stackable = true
+max_stack = 20

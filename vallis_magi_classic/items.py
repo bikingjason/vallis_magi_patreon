@@ -64,45 +64,54 @@ class AllItems:
         return item_id
 
 
-def parse_slot(value: object) -> ItemSlot | None:
-    if value is None:
-        return None
+class DataManager:
+    def __init__(self, working_dir: Path, data_dir: str, data_files: dict[str, str]) -> None:
+        super().__init__()
+        self.working_dir = working_dir
+        self.data_dir = Path(working_dir / data_dir)
+        self.data_files = data_files
 
-    if not isinstance(value, str):
-        raise ValueError(f"Item slot must be a string, got {value!r}")
+    def parse_slot(self, value: object) -> ItemSlot | None:
+        if value is None:
+            return None
 
-    return ItemSlot(value)
+        if not isinstance(value, str):
+            raise ValueError(f"Item slot must be a string, got {value!r}")
 
+        return ItemSlot(value)
 
-def load_item_definitions(path: Path) -> dict[ItemDefId, ItemDefinition]:
-    with path.open("rb") as f:
-        data = tomllib.load(f)
+    def load_data_definitions(self) -> dict[ItemDefId, ItemDefinition]:
 
-    item_section = data.get("items", {})
+        item_defs: dict[ItemDefId, ItemDefinition] = {}
 
-    if not isinstance(item_section, dict):
-        raise ValueError("Expected [items] section in TOML file")
+        for data_file in self.data_files:
+            file_path = self.data_dir / f"{data_file}.toml"
+            with file_path.open("rb") as f:
+                data = tomllib.load(f)
 
-    item_defs: dict[ItemDefId, ItemDefinition] = {}
+            item_section = data.get("items", {})
 
-    for raw_id, raw_item in item_section.items():
-        if not isinstance(raw_id, str):
-            raise ValueError(f"Item id must be a string, got {raw_id!r}")
+            if not isinstance(item_section, dict):
+                raise ValueError("Expected [items] section in TOML file")
 
-        if not isinstance(raw_item, dict):
-            raise ValueError(f"Item {raw_id!r} must be a TOML table")
+            for raw_id, raw_item in item_section.items():
+                if not isinstance(raw_id, str):
+                    raise ValueError(f"Item id must be a string, got {raw_id!r}")
 
-        item_id = ItemDefId(raw_id)
+                if not isinstance(raw_item, dict):
+                    raise ValueError(f"Item {raw_id!r} must be a TOML table")
 
-        item_defs[item_id] = ItemDefinition(
-            id=item_id,
-            name=str(raw_item.get("name", raw_id)),
-            weight=float(raw_item.get("weight", 0.0)),
-            slot=parse_slot(raw_item.get("slot")),
-            stackable=bool(raw_item.get("stackable", False)),
-            max_stack=int(raw_item.get("max_stack", 1)),
-            attack_bonus=int(raw_item.get("attack_bonus", 0)),
-            armour_bonus=int(raw_item.get("armour_bonus", 0)),
-        )
+                item_id = ItemDefId(raw_id)
 
-    return item_defs
+                item_defs[item_id] = ItemDefinition(
+                    id=item_id,
+                    name=str(raw_item.get("name", raw_id)),
+                    weight=float(raw_item.get("weight", 0.0)),
+                    slot=self.parse_slot(raw_item.get("slot")),
+                    stackable=bool(raw_item.get("stackable", False)),
+                    max_stack=int(raw_item.get("max_stack", 1)),
+                    attack_bonus=int(raw_item.get("attack_bonus", 0)),
+                    armour_bonus=int(raw_item.get("armour_bonus", 0)),
+                )
+
+        return item_defs

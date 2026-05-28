@@ -1,6 +1,6 @@
 import argparse
 import tomllib
-from dataclasses import asdict, dataclass, fields
+from dataclasses import asdict, dataclass, field, fields
 from pathlib import Path
 
 
@@ -14,9 +14,12 @@ class AppConfig:
     showac: bool = False
     scores: bool = False
     max_scores: int = 10
+
     name: str = ""
     fruit: str = ""
     file: str = "vmclassic.toml"
+
+    data_files: dict[str, str] = field(default_factory=dict)
 
 
 class ConfigManager:
@@ -46,9 +49,17 @@ class ConfigManager:
             data = tomllib.load(f)
 
         config_section = data.get("config", {})
+        data_files_section = data.get("data_files", {})
+
+        if not isinstance(config_section, dict):
+            config_section = {}
+
+        if not isinstance(data_files_section, dict):
+            data_files_section = {}
 
         valid_fields = {field.name for field in fields(AppConfig)}
         config_data = {key: value for key, value in config_section.items() if key in valid_fields}
+        data_files = {str(key): str(value) for key, value in data_files_section.items()}
 
         config = AppConfig(
             terse=config_data.get("terse", False),
@@ -62,6 +73,7 @@ class ConfigManager:
             name=config_data.get("name", ""),
             fruit=config_data.get("fruit", ""),
             file=args.file,
+            data_files=data_files,
         )
 
         return config

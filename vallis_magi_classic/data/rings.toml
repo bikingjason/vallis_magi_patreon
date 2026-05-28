@@ -1,0 +1,4 @@
+[items.silver_ring]
+name = "Silver ring"
+weight = 0.1
+slot = "finger"

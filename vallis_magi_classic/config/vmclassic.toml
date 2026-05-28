@@ -9,3 +9,11 @@ max_scores = 20
 name = "JasonA"
 fruit = ""
 file = "vmclassic.toml"
+
+[data_files]
+food = "food.toml"
+weapons = "weapons.toml"
+armour = "armour.toml"
+# potions = "potions.toml"
+rings = "rings.toml"
+# scrolls = "scrolls.toml"

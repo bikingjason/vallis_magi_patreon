@@ -1,0 +1,11 @@
+[items.iron_sword]
+name = "Iron sword"
+weight = 3.0
+slot = "hand"
+attack_bonus = 3
+
+[items.long_sword]
+name = "Long sword"
+weight = 4.0
+slot = "hand"
+attack_bonus = 5
