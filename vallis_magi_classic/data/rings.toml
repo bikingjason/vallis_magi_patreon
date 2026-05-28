@@ -2,3 +2,61 @@
 name = "Silver ring"
 weight = 0.1
 slot = "finger"
+
+[items.ring_of_protection]
+name = "Ring of protection"
+weight = 0.1
+slot = "finger"
+
+[items.ring_of_strength]
+name = "Ring of Strength"
+weight = 0.1
+slot = "finger"
+
+[items.ring_of_sustain_strength]
+name = "Ring of Sustain Strength"
+weight = 0.1
+slot = "finger"
+
+[items.ring_of_search]
+name = "Ring of Search"
+weight = 0.1
+slot = "finger"
+
+[items.ring_of_see_invisible]
+name = "Ring of See Invisible"
+weight = 0.1
+slot = "finger"
+
+[items.ring_of_aggrevate_monsters]
+name = "Ring of Aggravate Monsters"
+weight = 0.1
+slot = "finger"
+# cursed = true
+
+[items.ring_of_accuracy]
+name = "Ring of Accuracy"
+weight = 0.1
+slot = "finger"
+# extra_food = -3
+
+[items.ring_of_damage]
+name = "Ring of Damage"
+weight = 0.1
+slot = "finger"
+
+[items.ring_of_hunger]
+name = "Ring of Hunger"
+weight = 0.1
+slot = "finger"
+# cursed = true
+
+[items.ring_of_teleport]
+name = "Ring of Teleport"
+weight = 0.1
+slot = "finger"
+
+[items.ring_of_stealth]
+name = "Ring of Stealth"
+weight = 0.1
+slot = "finger"

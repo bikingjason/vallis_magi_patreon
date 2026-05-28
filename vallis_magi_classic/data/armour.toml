@@ -2,10 +2,46 @@
 name = "Leather armour"
 weight = 8.0
 slot = "body"
-armour_bonus = 2
+armour_bonus = 1
 
 [items.ring_mail]
 name = "Ring mail"
 weight = 12.0
 slot = "body"
+armour_bonus = 2
+
+[items.studded_leather]
+name = "Studded leather"
+weight = 12.0
+slot = "body"
+armour_bonus = 3
+
+[items.scale_mail]
+name = "Scale mail"
+weight = 12.0
+slot = "body"
 armour_bonus = 4
+
+[items.chain_mail]
+name = "Chain mail"
+weight = 12.0
+slot = "body"
+armour_bonus = 5
+
+[items.splint_mail]
+name = "Splint mail"
+weight = 12.0
+slot = "body"
+armour_bonus = 6
+
+[items.Banded_mail]
+name = "Banded mail"
+weight = 12.0
+slot = "body"
+armour_bonus = 7
+
+[items.plate_mail]
+name = "Plate mail"
+weight = 12.0
+slot = "body"
+armour_bonus = 8

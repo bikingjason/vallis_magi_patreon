@@ -1,11 +1,73 @@
-[items.iron_sword]
-name = "Iron sword"
+[items.mace]
+name = "Mace sword"
 weight = 3.0
 slot = "hand"
 attack_bonus = 3
 
 [items.long_sword]
-name = "Long sword"
+name = "Long Sword"
+weight = 4.0
+slot = "hand"
+attack_bonus = 5
+
+[items.Bow]
+name = "Bow"
+weight = 4.0
+slot = "hand"
+attack_bonus = 5
+
+[items.Arrow]
+name = "Arrow"
+weight = 0.5
+stackable = true
+max_stack = 20
+attack_bonus = 5
+
+[items.dagger]
+name = "Dagger"
+weight = 4.0
+slot = "hand"
+attack_bonus = 5
+
+[items.rock]
+name = "Rock"
+weight = 4.0
+slot = "hand"
+attack_bonus = 5
+
+[items.two_handed_sword]
+name = "Two handed sword"
+weight = 4.0
+slot = "hand"
+attack_bonus = 5
+
+[items.sling]
+name = "Sling"
+weight = 4.0
+slot = "hand"
+attack_bonus = 5
+
+[items.dart]
+name = "Dart"
+weight = 4.0
+slot = "hand"
+attack_bonus = 5
+
+[items.crossbox]
+name = "Crossbow"
+weight = 4.0
+slot = "hand"
+attack_bonus = 5
+
+[items.bolt]
+name = "Bolt"
+weight = 0.5
+stackable = true
+max_stack = 20
+attack_bonus = 5
+
+[items.spear]
+name = "Spear"
 weight = 4.0
 slot = "hand"
 attack_bonus = 5
