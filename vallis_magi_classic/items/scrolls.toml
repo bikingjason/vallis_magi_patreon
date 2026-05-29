@@ -8,6 +8,8 @@ weight = 0.1
 stackable = true
 max_stack = 20
 scroll_type = "blank"
+value = 1
+probability = 1
 
 # Scrolls
 
@@ -20,6 +22,8 @@ weight = 0.1
 stackable = true
 max_stack = 20
 scroll_type = "confuse_monster"
+value = 170
+probability = 8
 
 [items.scroll_enchant_armour]
 name = "Scroll of enchant armour"
@@ -30,6 +34,8 @@ weight = 0.1
 stackable = true
 max_stack = 20
 scroll_type = "enchant_armour"
+value = 130
+probability = 8
 
 [items.scroll_genocide]
 name = "Scroll of genocide"
@@ -40,6 +46,8 @@ weight = 0.1
 stackable = true
 max_stack = 20
 scroll_type = "genocide"
+value = 200
+probability = 1
 
 [items.scroll_gold_detection]
 name = "Scroll of gold detection"
@@ -51,6 +59,8 @@ weight = 0.1
 stackable = true
 max_stack = 20
 scroll_type = "gold_detection"
+value = 110
+probability = 4
 
 [items.scroll_hold_monster]
 name = "Scroll of hold monster"
@@ -60,6 +70,8 @@ weight = 0.1
 stackable = true
 max_stack = 20
 scroll_type = "hold_monster"
+value = 200
+probability = 2
 
 [items.scroll_identify]
 name = "Scroll of identify"
@@ -70,6 +82,8 @@ weight = 0.1
 stackable = true
 max_stack = 20
 scroll_type = "identify"
+value = 100
+probability = 21
 
 [items.scroll_light]
 name = "Scroll of light"
@@ -81,6 +95,8 @@ weight = 0.1
 stackable = true
 max_stack = 20
 scroll_type = "light"
+value = 100
+probability = 10
 
 [items.scroll_magic_mapping]
 name = "Scroll of magic mapping"
@@ -91,6 +107,8 @@ weight = 0.1
 stackable = true
 max_stack = 20
 scroll_type = "magic_mapping"
+value = 180
+probability = 5
 
 [items.scroll_remove_curse]
 name = "Scroll of remove curse"
@@ -100,6 +118,8 @@ weight = 0.1
 stackable = true
 max_stack = 20
 scroll_type = "remove_curse"
+value = 105
+probability = 8
 
 [items.scroll_scare_monster]
 name = "Scroll of scare monster"
@@ -109,6 +129,8 @@ weight = 0.1
 stackable = true
 max_stack = 20
 scroll_type = "scare_monster"
+value = 180
+probability = 4
 
 [items.scroll_teleportation]
 name = "Scroll of teleportation"
@@ -118,6 +140,8 @@ weight = 0.1
 stackable = true
 max_stack = 20
 scroll_type = "teleportation"
+value = 175
+probability = 7
 
 [items.scroll_enchant_weapon]
 name = "Scroll of enchant weapon"
@@ -127,6 +151,8 @@ weight = 0.1
 stackable = true
 max_stack = 20
 scroll_type = "enchant_weapon"
+value = 150
+probability = 10
 
 # Cursed Scrolls
 
@@ -138,6 +164,8 @@ weight = 0.1
 stackable = true
 max_stack = 20
 scroll_type = "aggravate_monsters"
+value = 60
+probability = 1
 cursed = true
 
 [items.scroll_create_monster]
@@ -149,6 +177,8 @@ weight = 0.1
 stackable = true
 max_stack = 20
 scroll_type = "create_monster"
+value = 75
+probability = 5
 cursed = true
 
 [items.scroll_sleep]
@@ -160,4 +190,6 @@ weight = 0.1
 stackable = true
 max_stack = 20
 scroll_type = "sleep"
+value = 50
+probability = 5
 cursed = true

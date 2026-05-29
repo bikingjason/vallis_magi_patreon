@@ -11,6 +11,7 @@ max_stack = 20
 hit_bonus = 0
 damage_bonus = 2
 speed_penalty = 0
+value = 1
 
 [items.bolt]
 name = "Bolt"
@@ -23,6 +24,7 @@ max_stack = 20
 hit_bonus = 0
 damage_bonus = 3
 speed_penalty = 0
+value = 1
 
 [items.rock]
 name = "Rock"
@@ -35,6 +37,7 @@ hit_bonus = 0
 damage_bonus = 1
 speed_penalty = 0
 can_throw = true
+value = 0
 
 # Blunt melee weapons
 
@@ -48,6 +51,7 @@ slot = "hand"
 hit_bonus = 1
 damage_bonus = 4
 speed_penalty = 1
+value = 8
 
 # Bladed melee weapons
 
@@ -61,6 +65,7 @@ slot = "hand"
 hit_bonus = 3
 damage_bonus = 2
 speed_penalty = 0
+value = 2
 
 [items.long_sword]
 name = "Long sword"
@@ -72,6 +77,7 @@ slot = "hand"
 hit_bonus = 2
 damage_bonus = 5
 speed_penalty = 1
+value = 15
 
 [items.two_handed_sword]
 name = "Two handed sword"
@@ -84,6 +90,7 @@ hands = 2
 hit_bonus = 1
 damage_bonus = 8
 speed_penalty = 3
+value = 30
 
 # Hafted melee weapons
 
@@ -97,6 +104,7 @@ slot = "hand"
 hit_bonus = 2
 damage_bonus = 4
 speed_penalty = 1
+value = 2
 
 # Ranged weapons
 
@@ -111,6 +119,7 @@ hit_bonus = 2
 damage_bonus = 2
 speed_penalty = 1
 requires_ammunition = "arrow"
+value = 75
 
 [items.crossbow]
 name = "Crossbow"
@@ -123,6 +132,7 @@ hit_bonus = 3
 damage_bonus = 4
 speed_penalty = 3
 requires_ammunition = "bolt"
+value = 15
 
 [items.sling]
 name = "Sling"
@@ -135,6 +145,7 @@ hit_bonus = 1
 damage_bonus = 1
 speed_penalty = 1
 requires_ammunition = "rock"
+value = 1
 
 # Thrown weapons
 
@@ -150,3 +161,4 @@ max_stack = 20
 hit_bonus = 2
 damage_bonus = 1
 speed_penalty = 0
+value = 1
