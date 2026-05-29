@@ -13,27 +13,13 @@ name = "Ring of Accuracy"
 description = "A balancing ring that guides the wearer's attacks, making their strikes more likely to hit."
 weight = 0.1
 slot = "finger"
-# extra_food = -3
-
-[items.ring_of_aggravate_monsters]
-name = "Ring of Aggravate Monsters"
-description = "A cursed ring that radiates an irritating presence, drawing the attention and anger of nearby monsters."
-weight = 0.1
-slot = "finger"
-# cursed = true
+extra_food = -3
 
 [items.ring_of_damage]
 name = "Ring of Damage"
 description = "An aggressive ring that lends force to the wearer's blows, increasing the harm caused by successful attacks."
 weight = 0.1
 slot = "finger"
-
-[items.ring_of_hunger]
-name = "Ring of Hunger"
-description = "A cursed ring that gnaws at the wearer from within, greatly increasing their need for food."
-weight = 0.1
-slot = "finger"
-# cursed = true
 
 [items.ring_of_protection]
 name = "Ring of protection"
@@ -71,9 +57,25 @@ description = "A steadying ring that preserves the wearer's strength against wea
 weight = 0.1
 slot = "finger"
 
+# Cursed Magical Rings
+
+[items.ring_of_aggravate_monsters]
+name = "Ring of Aggravate Monsters"
+description = "A cursed ring that radiates an irritating presence, drawing the attention and anger of nearby monsters."
+weight = 0.1
+slot = "finger"
+cursed = true
+
+[items.ring_of_hunger]
+name = "Ring of Hunger"
+description = "A cursed ring that gnaws at the wearer from within, greatly increasing their need for food."
+weight = 0.1
+slot = "finger"
+cursed = true
+
 [items.ring_of_teleport]
 name = "Ring of Teleport"
 description = "An unstable ring that occasionally tears the wearer from one place and drops them somewhere else."
 weight = 0.1
 slot = "finger"
-# cursed = true
+cursed = true

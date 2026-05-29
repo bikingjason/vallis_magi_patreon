@@ -1,13 +1,5 @@
 # Magical Potions
 
-[items.potion_of_blindness]
-name = "Potion of Blindness"
-description = "A dark, clouded potion that blinds the drinker for a time."
-message_classic = "A cloak of darkness falls around you!"
-message_long = "You are blinded by a thick, dark cloud! Your vision is obscured for a time."
-weight = 0.3
-# cursed = true
-
 [items.potion_of_confusion]
 name = "Potion of Confusion"
 description = "A swirling potion that muddles the drinker's senses, making movement and action unreliable."
@@ -66,15 +58,6 @@ message_classic = "You can't move..."
 message_long = "A cold numbness spreads through your body. Your limbs lock in place, and you are unable to move."
 weight = 0.3
 
-[items.potion_of_poison]
-name = "Potion of Poison"
-description = "A foul potion that weakens the drinker and may sap their strength."
-weight = 0.3
-message_classic = "You feel very sick now..."
-message_long = "A foul sickness twists through your body. You feel weak, unsteady, and badly poisoned."
-message_fail = "You feel momentarily sick."
-# cursed = true
-
 [items.potion_of_restore_strength]
 name = "Potion of Restore Strength"
 description = "A bracing potion that restores strength lost to poison, weakness, or draining effects."
@@ -95,3 +78,22 @@ description = "A warming potion that increases the drinker's physical strength."
 message_classic = "You feel stronger, now.  What bulging muscles!"
 message_long = "Power surges through your body. Your muscles harden, your grip tightens, and you feel stronger than before."
 weight = 0.3
+
+# Cursed Magical Potions
+
+[items.potion_of_blindness]
+name = "Potion of Blindness"
+description = "A dark, clouded potion that blinds the drinker for a time."
+message_classic = "A cloak of darkness falls around you!"
+message_long = "You are blinded by a thick, dark cloud! Your vision is obscured for a time."
+weight = 0.3
+cursed = true
+
+[items.potion_of_poison]
+name = "Potion of Poison"
+description = "A foul potion that weakens the drinker and may sap their strength."
+weight = 0.3
+message_classic = "You feel very sick now..."
+message_long = "A foul sickness twists through your body. You feel weak, unsteady, and badly poisoned."
+message_fail = "You feel momentarily sick."
+cursed = true
