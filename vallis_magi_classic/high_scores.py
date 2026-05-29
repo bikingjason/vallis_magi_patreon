@@ -69,10 +69,11 @@ class HighScoresManager:
             print("No high scores yet.")
             return
 
-        print("\nHigh Scores")
-        print("===========")
+        print("\nTop Ten Adventurers\n")
+        print("Rank  Name                 Score       Level")
+        print("--------------------------------------------")
 
         for rank, entry in enumerate(self.high_scores, start=1):
-            print(f"{rank:2}. {entry.name:<20} {entry.score:>8}  Level {entry.level}")
+            print(f" {rank:2}.  {entry.name:<20} {entry.score:<10}  {entry.level:>5}")
 
         print("\n")

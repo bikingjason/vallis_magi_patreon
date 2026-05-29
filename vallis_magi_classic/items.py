@@ -94,6 +94,8 @@ class ItemManager:
             if not isinstance(item_section, dict):
                 raise ValueError("Expected [items] section in TOML file")
 
+            print(f"Found {len(item_section.items()):>3} entries in {file_path.name}.")
+
             for raw_id, raw_item in item_section.items():
                 if not isinstance(raw_id, str):
                     raise ValueError(f"Item id must be a string, got {raw_id!r}")
