@@ -28,12 +28,20 @@ value = 220
 probability = 8
 
 [items.ring_of_protection]
-name = "Ring of protection"
+name = "Ring of Protection"
 description = "A protective ring that surrounds the wearer with a subtle ward, helping to turn aside blows."
 weight = 0.1
 slot = "finger"
 value = 200
 probability = 9
+
+[items.ring_of_regeneration]
+name = "Ring of Regeneration"
+description = "A warm, living ring that pulses faintly against the skin. While worn, it quickens the body's natural healing, helping wounds close faster over time."
+weight = 0.1
+slot = "finger"
+value = 260
+probability = 4
 
 [items.ring_of_search]
 name = "Ring of Search"
@@ -50,6 +58,14 @@ weight = 0.1
 slot = "finger"
 value = 175
 probability = 10
+
+[items.ring_of_slow_digestion]
+name = "Ring of Slow Digestion"
+description = "A plain but comforting ring that seems to quiet the body's hunger. While worn, it slows digestion, allowing the wearer to go much longer without food."
+weight = 0.1
+slot = "finger"
+value = 240
+probability = 9
 
 [items.ring_of_stealth]
 name = "Ring of Stealth"

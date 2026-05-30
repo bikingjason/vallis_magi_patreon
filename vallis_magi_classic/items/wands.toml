@@ -8,6 +8,8 @@ message_long = "Nothing happens as you zap the wand."
 weight = 0.2
 stackable = false
 wand_type = "nothing"
+value = 70
+probability = 1
 
 # Wands
 
@@ -20,6 +22,8 @@ message_fail = "The grey light fades without effect."
 weight = 0.2
 stackable = false
 wand_type = "cancellation"
+value = 130
+probability = 5
 
 [items.wand_cold]
 name = "Wand of cold"
@@ -30,6 +34,8 @@ message_fail = "The wand sputters, but no bolt appears."
 weight = 0.2
 stackable = false
 wand_type = "cold"
+value = 200
+probability = 3
 
 [items.wand_drain_life]
 name = "Wand of drain life"
@@ -40,6 +46,8 @@ message_fail = "You are too weak to use it."
 weight = 0.2
 stackable = false
 wand_type = "drain_life"
+value = 210
+probability = 9
 
 [items.wand_fire]
 name = "Wand of fire"
@@ -50,6 +58,8 @@ message_fail = "The bolt fizzles before it reaches its target."
 weight = 0.2
 stackable = false
 wand_type = "fire"
+value = 200
+probability = 3
 
 [items.wand_light]
 name = "Wand of light"
@@ -60,6 +70,8 @@ message_fail = "The corridor glows and then fades."
 weight = 0.2
 stackable = false
 wand_type = "light"
+value = 120
+probability = 12
 
 [items.wand_lightning]
 name = "Wand of lightning"
@@ -70,6 +82,8 @@ message_fail = "The bolt fizzles before it reaches its target."
 weight = 0.2
 stackable = false
 wand_type = "lightning"
+value = 200
+probability = 3
 
 [items.wand_magic_missile]
 name = "Wand of magic missile"
@@ -80,6 +94,8 @@ message_fail = "The missile vanishes with a puff of smoke."
 weight = 0.2
 stackable = false
 wand_type = "magic_missile"
+value = 170
+probability = 10
 
 [items.wand_polymorph]
 name = "Wand of polymorph"
@@ -90,6 +106,8 @@ message_fail = "The target shudders, but keeps its form."
 weight = 0.2
 stackable = false
 wand_type = "polymorph"
+value = 210
+probability = 15
 
 [items.wand_slow_monster]
 name = "Wand of slow monster"
@@ -100,6 +118,8 @@ message_fail = "The magic clings for a moment, then slips away."
 weight = 0.2
 stackable = false
 wand_type = "slow_monster"
+value = 220
+probability = 11
 
 [items.wand_striking]
 name = "Wand of striking"
@@ -110,6 +130,8 @@ message_fail = "The invisible blow passes harmlessly through the air."
 weight = 0.2
 stackable = false
 wand_type = "striking"
+value = 115
+probability = 9
 
 [items.wand_teleport_away]
 name = "Wand of teleport away"
@@ -120,6 +142,8 @@ message_fail = "Space twists briefly, but nothing moves."
 weight = 0.2
 stackable = false
 wand_type = "teleport_away"
+value = 140
+probability = 5
 
 # Cursed Wands
 
@@ -133,6 +157,8 @@ weight = 0.2
 stackable = false
 wand_type = "haste_monster"
 cursed = true
+value = 50
+probability = 9
 
 [items.wand_teleport_to]
 name = "Wand of teleport to"
@@ -144,3 +170,5 @@ weight = 0.2
 stackable = false
 wand_type = "teleport_to"
 cursed = true
+value = 60
+probability = 5

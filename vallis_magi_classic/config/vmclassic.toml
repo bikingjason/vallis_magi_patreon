@@ -9,6 +9,7 @@ max_scores = 20
 name = "JasonA"
 fruit = ""
 file = "vmclassic.toml"
+version = "Vallis Magi Classic version 0.1"
 
 [data_files]
 armour = "armour.toml"
@@ -18,3 +19,31 @@ rings = "rings.toml"
 scrolls = "scrolls.toml"
 wands = "wands.toml"
 weapons = "weapons.toml"
+
+[[probabilities]]
+name = "potions"
+probability = 27
+
+[[probabilities]]
+name = "scrolls"
+probability = 27
+
+[[probabilities]]
+name = "food"
+probability = 18
+
+[[probabilities]]
+name = "weapons"
+probability = 9
+
+[[probabilities]]
+name = "armour"
+probability = 9
+
+[[probabilities]]
+name = "rings"
+probability = 5
+
+[[probabilities]]
+name = "wands"
+probability = 5
