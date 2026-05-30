@@ -1,6 +1,8 @@
 from pathlib import Path
 
 from .config import ConfigManager
+from .game import Game
+from .game_loop import run_game_loop
 from .game_state import GameState
 from .high_scores import HighScoresManager
 from .items import AllItems, ItemManager
@@ -47,6 +49,8 @@ def main() -> None:
     # TODO Else load the player from a saved toml file.
 
     # Play Game
+    game = Game()
+    run_game_loop(game)
 
     # Save player
     # TODO Save the player as a toml file.
