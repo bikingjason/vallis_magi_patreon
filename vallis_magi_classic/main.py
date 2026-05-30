@@ -1,9 +1,8 @@
-import curses
 from pathlib import Path
 
 from .config import ConfigManager
+from .display_curses import DisplayCurses
 from .game import Game
-from .game_loop import run_curses_game
 from .game_state import GameState
 from .high_scores import HighScoresManager
 from .items import AllItems, ItemManager
@@ -55,9 +54,12 @@ def main() -> None:
         game_state.player.display_player_welcome(game_state.all_items, True)
     # TODO Else load the player from a saved toml file.
 
-    # Play Game
-    game = Game()
-    curses.wrapper(run_curses_game, game)
+    # Create a curses display and create the game engine
+    display = DisplayCurses()
+    game = Game(display)
+
+    # Start the game playing
+    display.run(game)
 
     # Save player
     # TODO Save the player as a toml file.

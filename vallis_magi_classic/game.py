@@ -1,6 +1,8 @@
-import curses
 from collections.abc import Callable
 from dataclasses import dataclass
+
+from .protocols.display_protocol import ESCAPE, DisplayProtocol
+from .protocols.game_protocol import GameProtocol
 
 HELP_COMMANDS: list[tuple[str, str]] = [
     ("?", "Show this help message"),
@@ -56,9 +58,6 @@ RUN_DIRECTIONS: dict[str, Direction] = {
 }
 
 
-ESCAPE = "\x1b"
-
-
 @dataclass
 class PendingDirectionalCommand:
     command: str
@@ -66,11 +65,11 @@ class PendingDirectionalCommand:
     handler: Callable[[Direction], None]
 
 
-class Game:
-    def __init__(self) -> None:
+class Game(GameProtocol):
+    def __init__(self, display: DisplayProtocol) -> None:
+        self.display = display
         self.pending_directional_command: PendingDirectionalCommand | None = None
         self.last_message: str = ""
-        self.screen: curses.window | None = None
         self.should_quit = False
 
         self.command_handlers: dict[str, Callable[[], None]] = {
@@ -118,37 +117,46 @@ class Game:
             ),
         }
 
-    def set_screen(self, screen: curses.window) -> None:
-        self.screen = screen
+    def run_game(self) -> None:
+
+        self.draw_main_screen()
+
+        self.message("Press ? for help.")
+
+        while not self.should_quit:
+            key_text = self.display.getch()
+
+            if key_text is None:
+                continue
+
+            # Ctrl+C
+            if key_text == "\x03":
+                break
+
+            self.handle_key(key_text)
 
     def draw_main_screen(self) -> None:
-        if self.screen is None:
-            return
 
-        self.screen.clear()
+        self.display.clear()
 
-        self.screen.addstr(0, 0, "Vallis Magi - curses prototype")
-        self.screen.addstr(2, 0, "Press ? for help.")
-        self.screen.addstr(4, 0, "@")
-        self.screen.addstr(22, 0, "HP: 12/12   Level: 1   Gold: 0")
-        self.screen.addstr(23, 0, self.last_message)
+        self.display.addstr(0, 0, "Vallis Magi - curses prototype")
+        self.display.addstr(2, 0, "Press ? for help.")
+        self.display.addstr(4, 0, "@")
+        self.display.addstr(22, 0, "HP: 12/12   Level: 1   Gold: 0")
+        self.display.addstr(23, 0, self.last_message)
 
-        self.screen.refresh()
+        self.display.refresh()
 
     def message(self, text: str) -> None:
         self.last_message = text
 
-        if self.screen is None:
-            print(text)
-            return
-
-        height, width = self.screen.getmaxyx()
+        height, width = self.display.getmaxyx()
         row = height - 1
 
-        self.screen.move(row, 0)
-        self.screen.clrtoeol()
-        self.screen.addstr(row, 0, text[: width - 1])
-        self.screen.refresh()
+        self.display.move(row, 0)
+        self.display.clrtoeol()
+        self.display.addstr(row, 0, text[: width - 1])
+        self.display.refresh()
 
     def handle_key(self, key: str) -> None:
         """
@@ -232,10 +240,8 @@ class Game:
     # Immediate commands
 
     def show_help(self) -> None:
-        if self.screen is None:
-            return
 
-        self.screen.clear()
+        self.display.clear()
 
         lines = ["Commands:", ""]
 
@@ -244,13 +250,13 @@ class Game:
         for key, description in HELP_COMMANDS:
             lines.append(f"  {key:<{key_width}}  {description}")
 
-        height, width = self.screen.getmaxyx()
+        height, width = self.display.getmaxyx()
 
         for row, line in enumerate(lines[:height]):
-            self.screen.addstr(row, 0, line[: width - 1])
+            self.display.addstr(row, 0, line[: width - 1])
 
-        self.screen.refresh()
-        self.screen.getch()
+        self.display.refresh()
+        self.display.getch()
         self.draw_main_screen()
 
     def identify_object(self) -> None:
