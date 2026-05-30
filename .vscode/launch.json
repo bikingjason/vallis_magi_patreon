@@ -6,7 +6,7 @@
 			"type": "debugpy",
 			"request": "launch",
 			//
-			"module": "src.primes.primes",
+			"module": "vallis_magi_classic.main",
 			//
 			// "module": "tests.test_main",
 			//
@@ -14,12 +14,7 @@
 			"console": "integratedTerminal",
 			"justMyCode": true,
 			"args": [
-				// "2029",
-				// "data/calendars"
-				// "--file",
-				// "data/calendars/cal_2026.toml",
-				// "4",
-				// "--legend"
+				// "--scores",
 			]
 		}
 	]

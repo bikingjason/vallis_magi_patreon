@@ -6,6 +6,7 @@ readme = "README.md"
 requires-python = ">=3.14"
 dependencies = [
     "tomli-w>=1.2.0",
+    "windows-curses>=2.4.2",
 ]
 
 [tool.uv.workspace]

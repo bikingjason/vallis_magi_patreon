@@ -1,3 +1,4 @@
+import curses
 from collections.abc import Callable
 from dataclasses import dataclass
 
@@ -69,6 +70,8 @@ class Game:
     def __init__(self) -> None:
         self.pending_directional_command: PendingDirectionalCommand | None = None
         self.last_message: str = ""
+        self.screen: curses.window | None = None
+        self.should_quit = False
 
         self.command_handlers: dict[str, Callable[[], None]] = {
             "?": self.show_help,
@@ -114,6 +117,38 @@ class Game:
                 handler=self.zap_wand_in_direction,
             ),
         }
+
+    def set_screen(self, screen: curses.window) -> None:
+        self.screen = screen
+
+    def draw_main_screen(self) -> None:
+        if self.screen is None:
+            return
+
+        self.screen.clear()
+
+        self.screen.addstr(0, 0, "Vallis Magi - curses prototype")
+        self.screen.addstr(2, 0, "Press ? for help.")
+        self.screen.addstr(4, 0, "@")
+        self.screen.addstr(22, 0, "HP: 12/12   Level: 1   Gold: 0")
+        self.screen.addstr(23, 0, self.last_message)
+
+        self.screen.refresh()
+
+    def message(self, text: str) -> None:
+        self.last_message = text
+
+        if self.screen is None:
+            print(text)
+            return
+
+        height, width = self.screen.getmaxyx()
+        row = height - 1
+
+        self.screen.move(row, 0)
+        self.screen.clrtoeol()
+        self.screen.addstr(row, 0, text[: width - 1])
+        self.screen.refresh()
 
     def handle_key(self, key: str) -> None:
         """
@@ -170,10 +205,6 @@ class Game:
         self.pending_directional_command = command
         self.message(f"Direction for {command.description}?")
 
-    def message(self, text: str) -> None:
-        self.last_message = text
-        print(text)
-
     # Movement
 
     def move(self, direction: Direction) -> None:
@@ -201,6 +232,11 @@ class Game:
     # Immediate commands
 
     def show_help(self) -> None:
+        if self.screen is None:
+            return
+
+        self.screen.clear()
+
         lines = ["Commands:", ""]
 
         key_width = max(len(key) for key, _description in HELP_COMMANDS)
@@ -208,7 +244,14 @@ class Game:
         for key, description in HELP_COMMANDS:
             lines.append(f"  {key:<{key_width}}  {description}")
 
-        self.message("\n".join(lines))
+        height, width = self.screen.getmaxyx()
+
+        for row, line in enumerate(lines[:height]):
+            self.screen.addstr(row, 0, line[: width - 1])
+
+        self.screen.refresh()
+        self.screen.getch()
+        self.draw_main_screen()
 
     def identify_object(self) -> None:
         self.message("Identify object.")
@@ -278,4 +321,4 @@ class Game:
         self.message("Save game.")
 
     def quit_game(self) -> None:
-        self.message("Quit game.")
+        self.should_quit = True

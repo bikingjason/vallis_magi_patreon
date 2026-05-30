@@ -182,6 +182,8 @@
   },
   "active": "0f479b4538f959ab",
   "lastOpenFiles": [
+    "vallis_magi_classic/__pycache__/game_loop.cpython-314.pyc",
+    "vallis_magi_classic/__pycache__/game.cpython-314.pyc",
     "vallis_magi_classic/game.py",
     "vallis_magi_classic/game_loop.py",
     "vallis_magi_classic/commands.py",
@@ -191,8 +193,6 @@
     "vallis_magi_classic/monsters",
     "vallis_magi_classic/items/wands.toml",
     "vallis_magi_classic/items/scrolls.toml",
-    "vallis_magi_classic/items/weapons.toml",
-    "vallis_magi_classic/items/rings.toml",
     "README.md",
     "vallis_magi_classic/README.md",
     "rogue_lite/README.md",
