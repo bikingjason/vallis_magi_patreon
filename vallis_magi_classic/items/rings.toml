@@ -6,6 +6,8 @@ description = "A plain silver ring, polished to a soft shine. It may be magical,
 weight = 0.1
 slot = "finger"
 value = 100
+is_ring = true
+priority = 7
 probability = 1
 
 # Magical Rings
@@ -17,6 +19,8 @@ weight = 0.1
 slot = "finger"
 extra_food = -3
 value = 220
+is_ring = true
+priority = 9
 probability = 8
 
 [items.ring_of_damage]
@@ -25,6 +29,8 @@ description = "An aggressive ring that lends force to the wearer's blows, increa
 weight = 0.1
 slot = "finger"
 value = 220
+is_ring = true
+priority = 10
 probability = 8
 
 [items.ring_of_protection]
@@ -33,6 +39,8 @@ description = "A protective ring that surrounds the wearer with a subtle ward, h
 weight = 0.1
 slot = "finger"
 value = 200
+is_ring = true
+priority = 1
 probability = 9
 
 [items.ring_of_regeneration]
@@ -41,6 +49,8 @@ description = "A warm, living ring that pulses faintly against the skin. While w
 weight = 0.1
 slot = "finger"
 value = 260
+is_ring = true
+priority = 11
 probability = 4
 
 [items.ring_of_search]
@@ -49,6 +59,8 @@ description = "A perceptive ring that sharpens the wearer's awareness, helping t
 weight = 0.1
 slot = "finger"
 value = 200
+is_ring = true
+priority = 5
 probability = 10
 
 [items.ring_of_see_invisible]
@@ -57,6 +69,8 @@ description = "A clear, watchful ring that allows the wearer to glimpse creature
 weight = 0.1
 slot = "finger"
 value = 175
+is_ring = true
+priority = 6
 probability = 10
 
 [items.ring_of_slow_digestion]
@@ -65,7 +79,9 @@ description = "A plain but comforting ring that seems to quiet the body's hunger
 weight = 0.1
 slot = "finger"
 value = 240
-probability = 9
+is_ring = true
+priority = 12
+probability = 8
 
 [items.ring_of_stealth]
 name = "Ring of Stealth"
@@ -73,7 +89,9 @@ description = "A quiet ring that muffles the wearer's presence, making it harder
 weight = 0.1
 slot = "finger"
 value = 100
-probability = 7
+is_ring = true
+priority = 14
+probability = 6
 
 [items.ring_of_strength]
 name = "Ring of Strength"
@@ -81,6 +99,8 @@ description = "A heavy-feeling ring that fills the wearer with unnatural vigour 
 weight = 0.1
 slot = "finger"
 value = 200
+is_ring = true
+priority = 3
 probability = 9
 
 [items.ring_of_sustain_strength]
@@ -89,6 +109,8 @@ description = "A steadying ring that preserves the wearer's strength against wea
 weight = 0.1
 slot = "finger"
 value = 180
+is_ring = true
+priority = 4
 probability = 5
 
 # Cursed Magical Rings
@@ -99,7 +121,9 @@ description = "A cursed ring that radiates an irritating presence, drawing the a
 weight = 0.1
 slot = "finger"
 value = 100
-probability = 11
+is_ring = true
+priority = 8
+probability = 9
 cursed = true
 
 [items.ring_of_hunger]
@@ -108,7 +132,9 @@ description = "A cursed ring that gnaws at the wearer from within, greatly incre
 weight = 0.1
 slot = "finger"
 value = 100
-probability = 8
+is_ring = true
+priority = 2
+probability = 6
 cursed = true
 
 [items.ring_of_teleport]
@@ -117,5 +143,7 @@ description = "An unstable ring that occasionally tears the wearer from one plac
 weight = 0.1
 slot = "finger"
 value = 100
-probability = 9
+is_ring = true
+priority = 13
+probability = 7
 cursed = true

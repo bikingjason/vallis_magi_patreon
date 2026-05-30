@@ -9,6 +9,8 @@ weight = 0.2
 stackable = false
 wand_type = "nothing"
 value = 70
+is_wand = true
+priority = 11
 probability = 1
 
 # Wands
@@ -23,6 +25,8 @@ weight = 0.2
 stackable = false
 wand_type = "cancellation"
 value = 130
+is_wand = true
+priority = 14
 probability = 5
 
 [items.wand_cold]
@@ -35,6 +39,8 @@ weight = 0.2
 stackable = false
 wand_type = "cold"
 value = 200
+is_wand = true
+priority = 5
 probability = 3
 
 [items.wand_drain_life]
@@ -47,6 +53,8 @@ weight = 0.2
 stackable = false
 wand_type = "drain_life"
 value = 210
+is_wand = true
+priority = 10
 probability = 9
 
 [items.wand_fire]
@@ -59,6 +67,8 @@ weight = 0.2
 stackable = false
 wand_type = "fire"
 value = 200
+is_wand = true
+priority = 4
 probability = 3
 
 [items.wand_light]
@@ -71,6 +81,8 @@ weight = 0.2
 stackable = false
 wand_type = "light"
 value = 120
+is_wand = true
+priority = 1
 probability = 12
 
 [items.wand_lightning]
@@ -83,6 +95,8 @@ weight = 0.2
 stackable = false
 wand_type = "lightning"
 value = 200
+is_wand = true
+priority = 3
 probability = 3
 
 [items.wand_magic_missile]
@@ -95,6 +109,8 @@ weight = 0.2
 stackable = false
 wand_type = "magic_missile"
 value = 170
+is_wand = true
+priority = 7
 probability = 10
 
 [items.wand_polymorph]
@@ -107,6 +123,8 @@ weight = 0.2
 stackable = false
 wand_type = "polymorph"
 value = 210
+is_wand = true
+priority = 6
 probability = 15
 
 [items.wand_slow_monster]
@@ -119,6 +137,8 @@ weight = 0.2
 stackable = false
 wand_type = "slow_monster"
 value = 220
+is_wand = true
+priority = 9
 probability = 11
 
 [items.wand_striking]
@@ -131,6 +151,8 @@ weight = 0.2
 stackable = false
 wand_type = "striking"
 value = 115
+is_wand = true
+priority = 2
 probability = 9
 
 [items.wand_teleport_away]
@@ -143,6 +165,8 @@ weight = 0.2
 stackable = false
 wand_type = "teleport_away"
 value = 140
+is_wand = true
+priority = 12
 probability = 5
 
 # Cursed Wands
@@ -158,6 +182,8 @@ stackable = false
 wand_type = "haste_monster"
 cursed = true
 value = 50
+is_wand = true
+priority = 8
 probability = 9
 
 [items.wand_teleport_to]
@@ -171,4 +197,6 @@ stackable = false
 wand_type = "teleport_to"
 cursed = true
 value = 60
+is_wand = true
+priority = 13
 probability = 5

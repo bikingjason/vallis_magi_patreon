@@ -1,13 +1,9 @@
-[items.apple]
-name = "Apple"
-description = "A crisp piece of fruit that restores a small amount of hunger when eaten."
-weight = 0.2
-stackable = true
-max_stack = 20
-
 [items.food]
 name = "Food ration"
 description = "A preserved ration of simple travelling food, useful for keeping hunger at bay during a long journey."
 weight = 0.5
 stackable = true
 max_stack = 20
+is_food = true
+priority = 1
+probability = 100

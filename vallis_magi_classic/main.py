@@ -35,9 +35,15 @@ def main() -> None:
 
     # Load the Items toml file which describes everything that exists in the game
     item_manager = ItemManager(working_dir, ITEMS_DIR, config.item_files)
-    item_defs = item_manager.load_item_definitions()
-    all_items = AllItems(item_defs=item_defs, items={})
-    print(f"Loaded {len(item_defs)} items from {len(config.item_files)} item files.\n")
+    item_manager.load_item_definitions()
+    all_items = AllItems(item_defs=item_manager.item_defs, items={})
+    print(f"Loaded {len(item_manager.item_defs)} items from {len(config.item_files)} item files.\n")
+    if config.verify or config.verify_summary:
+        item_manager.verify_item_definitions(config.verify_summary)
+        return
+    if config.probabilities:
+        item_manager.test_random_item_creation(trials=10000)
+        return
 
     # Initialise the game state
     game_state = GameState(all_items)

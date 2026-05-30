@@ -15,6 +15,7 @@
 			"justMyCode": true,
 			"args": [
 				// "--scores",
+				"--verify",
 			]
 		}
 	]

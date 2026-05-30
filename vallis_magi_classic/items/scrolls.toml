@@ -9,6 +9,8 @@ stackable = true
 max_stack = 20
 scroll_type = "blank"
 value = 50
+is_scroll = true
+priority = 15
 probability = 1
 
 # Scrolls
@@ -23,6 +25,8 @@ stackable = true
 max_stack = 20
 scroll_type = "confuse_monster"
 value = 170
+is_scroll = true
+priority = 1
 probability = 8
 
 [items.scroll_enchant_armour]
@@ -35,6 +39,8 @@ stackable = true
 max_stack = 20
 scroll_type = "enchant_armour"
 value = 130
+is_scroll = true
+priority = 6
 probability = 8
 
 [items.scroll_enchant_weapon]
@@ -46,6 +52,8 @@ stackable = true
 max_stack = 20
 scroll_type = "enchant_weapon"
 value = 150
+is_scroll = true
+priority = 11
 probability = 10
 
 [items.scroll_genocide]
@@ -58,6 +66,8 @@ stackable = true
 max_stack = 20
 scroll_type = "genocide"
 value = 200
+is_scroll = true
+priority = 16
 probability = 1
 
 [items.scroll_gold_detection]
@@ -71,6 +81,8 @@ stackable = true
 max_stack = 20
 scroll_type = "gold_detection"
 value = 110
+is_scroll = true
+priority = 9
 probability = 4
 
 [items.scroll_hold_monster]
@@ -82,6 +94,8 @@ stackable = true
 max_stack = 20
 scroll_type = "hold_monster"
 value = 200
+is_scroll = true
+priority = 4
 probability = 2
 
 [items.scroll_identify]
@@ -94,6 +108,8 @@ stackable = true
 max_stack = 20
 scroll_type = "identify"
 value = 100
+is_scroll = true
+priority = 7
 probability = 21
 
 [items.scroll_light]
@@ -107,6 +123,8 @@ stackable = true
 max_stack = 20
 scroll_type = "light"
 value = 100
+is_scroll = true
+priority = 3
 probability = 10
 
 [items.scroll_magic_mapping]
@@ -119,6 +137,8 @@ stackable = true
 max_stack = 20
 scroll_type = "magic_mapping"
 value = 180
+is_scroll = true
+priority = 2
 probability = 5
 
 [items.scroll_remove_curse]
@@ -130,6 +150,8 @@ stackable = true
 max_stack = 20
 scroll_type = "remove_curse"
 value = 105
+is_scroll = true
+priority = 13
 probability = 8
 
 [items.scroll_scare_monster]
@@ -141,6 +163,8 @@ stackable = true
 max_stack = 20
 scroll_type = "scare_monster"
 value = 180
+is_scroll = true
+priority = 8
 probability = 4
 
 [items.scroll_teleportation]
@@ -152,6 +176,8 @@ stackable = true
 max_stack = 20
 scroll_type = "teleportation"
 value = 175
+is_scroll = true
+priority = 10
 probability = 7
 
 # Cursed Scrolls
@@ -165,6 +191,8 @@ stackable = true
 max_stack = 20
 scroll_type = "aggravate_monsters"
 value = 60
+is_scroll = true
+priority = 14
 probability = 1
 cursed = true
 
@@ -178,6 +206,8 @@ stackable = true
 max_stack = 20
 scroll_type = "create_monster"
 value = 75
+is_scroll = true
+priority = 12
 probability = 5
 cursed = true
 
@@ -191,5 +221,7 @@ stackable = true
 max_stack = 20
 scroll_type = "sleep"
 value = 50
+is_scroll = true
+priority = 5
 probability = 5
 cursed = true

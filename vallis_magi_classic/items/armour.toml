@@ -1,8 +1,40 @@
+# Armour
+
+[items.banded_mail]
+name = "Banded mail"
+description = "Heavy armour made from broad metal bands, offering strong protection at the cost of comfort and mobility."
+weight = 22.0
+slot = "body"
+is_armour = true
+priority = 7
+armour_bonus = 7
+armour_class = 4
+movement_penalty = 3
+stealth_penalty = 4
+value = 90
+probability = 10
+
+[items.chain_mail]
+name = "Chain mail"
+description = "A flexible coat of interlocked metal rings that protects well against blades while remaining wearable in battle."
+weight = 18.0
+slot = "body"
+is_armour = true
+priority = 5
+armour_bonus = 5
+armour_class = 5
+movement_penalty = 2
+stealth_penalty = 3
+value = 75
+probability = 12
+
 [items.leather_armour]
 name = "Leather armour"
 description = "A suit of boiled and layered leather that offers light protection while allowing easy movement."
 weight = 8.0
 slot = "body"
+is_armour = true
+priority = 1
 armour_bonus = 1
 armour_class = 8
 movement_penalty = 0
@@ -10,86 +42,72 @@ stealth_penalty = 0
 value = 5
 probability = 20
 
+[items.plate_mail]
+name = "Plate mail"
+description = "A full harness of shaped metal plates, providing excellent protection against most weapons."
+weight = 25.0
+slot = "body"
+is_armour = true
+priority = 8
+armour_bonus = 8
+armour_class = 3
+movement_penalty = 4
+stealth_penalty = 5
+value = 400
+probability = 5
+
 [items.ring_mail]
 name = "Ring mail"
 description = "Leather armour reinforced with metal rings, giving better protection against cuts and glancing blows."
 weight = 12.0
 slot = "body"
+is_armour = true
+priority = 2
 armour_bonus = 2
 armour_class = 7
 movement_penalty = 1
 stealth_penalty = 1
 value = 30
-probability = 35
-
-[items.studded_leather]
-name = "Studded leather"
-description = "A leather cuirass set with metal studs, adding extra protection without the full weight of mail."
-weight = 12.0
-slot = "body"
-armour_bonus = 3
-armour_class = 7
-movement_penalty = 1
-stealth_penalty = 1
-value = 15
-probability = 50
+probability = 15
 
 [items.scale_mail]
 name = "Scale mail"
 description = "Overlapping metal scales sewn onto a backing, turning aside weapons like the hide of some iron beast."
 weight = 14.0
 slot = "body"
+is_armour = true
+priority = 4
 armour_bonus = 4
 armour_class = 6
 movement_penalty = 2
 stealth_penalty = 2
 value = 3
-probability = 63
-
-[items.chain_mail]
-name = "Chain mail"
-description = "A flexible coat of interlocked metal rings that protects well against blades while remaining wearable in battle."
-weight = 18.0
-slot = "body"
-armour_bonus = 5
-armour_class = 5
-movement_penalty = 2
-stealth_penalty = 3
-value = 75
-probability = 75
+probability = 13
 
 [items.splint_mail]
 name = "Splint mail"
 description = "Armour reinforced with narrow metal strips, stiff and heavy but strong against crushing blows."
 weight = 20.0
 slot = "body"
+is_armour = true
+priority = 6
 armour_bonus = 6
 armour_class = 4
 movement_penalty = 3
 stealth_penalty = 3
 value = 80
-probability = 85
+probability = 10
 
-[items.banded_mail]
-name = "Banded mail"
-description = "Heavy armour made from broad metal bands, offering strong protection at the cost of comfort and mobility."
-weight = 22.0
+[items.studded_leather]
+name = "Studded leather"
+description = "A leather cuirass set with metal studs, adding extra protection without the full weight of mail."
+weight = 12.0
 slot = "body"
-armour_bonus = 7
-armour_class = 4
-movement_penalty = 3
-stealth_penalty = 4
-value = 90
-probability = 95
-
-[items.plate_mail]
-name = "Plate mail"
-description = "A full harness of shaped metal plates, providing excellent protection against most weapons."
-weight = 25.0
-slot = "body"
-armour_bonus = 8
-armour_class = 3
-movement_penalty = 4
-stealth_penalty = 5
-value = 400
-probability = 100
+is_armour = true
+priority = 3
+armour_bonus = 3
+armour_class = 7
+movement_penalty = 1
+stealth_penalty = 1
+value = 15
+probability = 15
