@@ -1,7 +1,7 @@
 from collections.abc import Callable
 from dataclasses import dataclass
 
-from .protocols.display_protocol import ESCAPE, DisplayProtocol
+from .protocols.display_protocol import CTRL_C, ESCAPE, DisplayProtocol
 from .protocols.game_protocol import GameProtocol
 
 HELP_COMMANDS: list[tuple[str, str]] = [
@@ -121,7 +121,7 @@ class Game(GameProtocol):
 
         self.draw_main_screen()
 
-        self.message("Press ? for help.")
+        self.display.message("Press ? for help.")
 
         while not self.should_quit:
             key_text = self.display.getch()
@@ -129,8 +129,7 @@ class Game(GameProtocol):
             if key_text is None:
                 continue
 
-            # Ctrl+C
-            if key_text == "\x03":
+            if key_text == CTRL_C:
                 break
 
             self.handle_key(key_text)
@@ -145,17 +144,6 @@ class Game(GameProtocol):
         self.display.addstr(22, 0, "HP: 12/12   Level: 1   Gold: 0")
         self.display.addstr(23, 0, self.last_message)
 
-        self.display.refresh()
-
-    def message(self, text: str) -> None:
-        self.last_message = text
-
-        height, width = self.display.getmaxyx()
-        row = height - 1
-
-        self.display.move(row, 0)
-        self.display.clrtoeol()
-        self.display.addstr(row, 0, text[: width - 1])
         self.display.refresh()
 
     def handle_key(self, key: str) -> None:
@@ -188,7 +176,7 @@ class Game(GameProtocol):
             handler()
             return
 
-        self.message(f"Unknown command: {key!r}")
+        self.display.message(f"Unknown command: {key!r}")
 
     def handle_pending_direction(self, key: str) -> None:
         if key == ESCAPE:
@@ -198,7 +186,7 @@ class Game(GameProtocol):
         direction = DIRECTIONS.get(key.lower())
 
         if direction is None:
-            self.message("Direction expected.")
+            self.display.message("Direction expected.")
             return
 
         pending = self.pending_directional_command
@@ -211,31 +199,31 @@ class Game(GameProtocol):
 
     def start_directional_command(self, command: PendingDirectionalCommand) -> None:
         self.pending_directional_command = command
-        self.message(f"Direction for {command.description}?")
+        self.display.message(f"Direction for {command.description}?")
 
     # Movement
 
     def move(self, direction: Direction) -> None:
         dx, dy = direction
-        self.message(f"Move by ({dx}, {dy}).")
+        self.display.message(f"Move by ({dx}, {dy}).")
 
     def run(self, direction: Direction) -> None:
         dx, dy = direction
-        self.message(f"Run by ({dx}, {dy}).")
+        self.display.message(f"Run by ({dx}, {dy}).")
 
     # Directional commands
 
     def throw_item(self, direction: Direction) -> None:
         dx, dy = direction
-        self.message(f"Throw item by ({dx}, {dy}).")
+        self.display.message(f"Throw item by ({dx}, {dy}).")
 
     def forward_until_find(self, direction: Direction) -> None:
         dx, dy = direction
-        self.message(f"Move forward until finding something by ({dx}, {dy}).")
+        self.display.message(f"Move forward until finding something by ({dx}, {dy}).")
 
     def zap_wand_in_direction(self, direction: Direction) -> None:
         dx, dy = direction
-        self.message(f"Zap wand by ({dx}, {dy}).")
+        self.display.message(f"Zap wand by ({dx}, {dy}).")
 
     # Immediate commands
 
@@ -260,71 +248,71 @@ class Game(GameProtocol):
         self.draw_main_screen()
 
     def identify_object(self) -> None:
-        self.message("Identify object.")
+        self.display.message("Identify object.")
 
     def zap_wand_or_staff(self) -> None:
-        self.message("Zap a wand or staff.")
+        self.display.message("Zap a wand or staff.")
 
     def go_down_stairs(self) -> None:
-        self.message("Go down staircase.")
+        self.display.message("Go down staircase.")
 
     def search(self) -> None:
-        self.message("Search for traps or secret doors.")
+        self.display.message("Search for traps or secret doors.")
 
     def rest(self) -> None:
-        self.message("Rest for a while.")
+        self.display.message("Rest for a while.")
 
     def show_inventory(self) -> None:
-        self.message("Show inventory.")
+        self.display.message("Show inventory.")
 
     def show_single_item_inventory(self) -> None:
-        self.message("Show inventory for one item.")
+        self.display.message("Show inventory for one item.")
 
     def quaff_potion(self) -> None:
-        self.message("Quaff potion.")
+        self.display.message("Quaff potion.")
 
     def read_scroll(self) -> None:
-        self.message("Read paper.")
+        self.display.message("Read paper.")
 
     def eat_food(self) -> None:
-        self.message("Eat food.")
+        self.display.message("Eat food.")
 
     def wield_weapon(self) -> None:
-        self.message("Wield weapon.")
+        self.display.message("Wield weapon.")
 
     def wear_armour(self) -> None:
-        self.message("Wear armour.")
+        self.display.message("Wear armour.")
 
     def take_armour_off(self) -> None:
-        self.message("Take armour off.")
+        self.display.message("Take armour off.")
 
     def put_on_ring(self) -> None:
-        self.message("Put on ring.")
+        self.display.message("Put on ring.")
 
     def remove_ring(self) -> None:
-        self.message("Remove ring.")
+        self.display.message("Remove ring.")
 
     def drop_object(self) -> None:
-        self.message("Drop object.")
+        self.display.message("Drop object.")
 
     def call_object(self) -> None:
-        self.message("Call object.")
+        self.display.message("Call object.")
 
     def examine_options(self) -> None:
-        self.message("Examine or set options.")
+        self.display.message("Examine or set options.")
 
     def repeat_last_message(self) -> None:
         print(self.last_message)
 
     def cancel_command(self) -> None:
         self.pending_directional_command = None
-        self.message("Cancelled.")
+        self.display.message("Cancelled.")
 
     def print_version(self) -> None:
-        self.message("Vallis Magi Rogue prototype version 0.1.")
+        self.display.message("Vallis Magi Rogue prototype version 0.1.")
 
     def save_game(self) -> None:
-        self.message("Save game.")
+        self.display.message("Save game.")
 
     def quit_game(self) -> None:
         self.should_quit = True

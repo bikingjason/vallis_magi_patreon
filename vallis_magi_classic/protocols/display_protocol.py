@@ -2,6 +2,7 @@ from typing import Protocol
 
 from .game_protocol import GameProtocol
 
+CTRL_C = "\x03"
 ESCAPE = "\x1b"
 
 
@@ -19,5 +20,7 @@ class DisplayProtocol(Protocol):
     def clrtoeol(self) -> None: ...
 
     def addstr(self, y: int, x: int, text: str) -> None: ...
+
+    def message(self, text: str) -> None: ...
 
     def run(self, game: GameProtocol) -> None: ...
