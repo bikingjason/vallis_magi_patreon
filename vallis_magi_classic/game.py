@@ -1,7 +1,9 @@
 from collections.abc import Callable
 from dataclasses import dataclass
 
-from .protocols.display_protocol import CTRL_C, ESCAPE, DisplayProtocol
+from .game_state import GameState
+from .game_types import CTRL_C, CTRL_R, ESCAPE, Direction
+from .protocols.display_protocol import DisplayProtocol
 from .protocols.game_protocol import GameProtocol
 
 HELP_COMMANDS: list[tuple[str, str]] = [
@@ -23,15 +25,13 @@ HELP_COMMANDS: list[tuple[str, str]] = [
     ("d", "Drop an object"),
     ("c", "Call or name an object"),
     ("o", "Examine or set options"),
-    ("l", "Repeat the last message"),
+    (CTRL_R, "Repeat the last message"),
     ("Esc", "Cancel command"),
     ("v", "Print program version number"),
     ("S", "Save game"),
     ("Q", "Quit game"),
     ("z", "Zap a wand or staff"),
 ]
-
-Direction = tuple[int, int]
 
 
 DIRECTIONS: dict[str, Direction] = {
@@ -58,6 +58,18 @@ RUN_DIRECTIONS: dict[str, Direction] = {
 }
 
 
+GAME_TITLE = "Vallis Magi - curses prototype"
+GAME_HELP = "Press ? for help."
+
+MAZE_HEIGHT = 24
+MAZE_WIDTH = 70
+
+LINE_TITLE = 0
+LINE_START_OF_MAZE = 2
+LINE_STATS = LINE_START_OF_MAZE + MAZE_HEIGHT
+LINE_MESSAGE = LINE_STATS + 2
+
+
 @dataclass
 class PendingDirectionalCommand:
     command: str
@@ -66,13 +78,20 @@ class PendingDirectionalCommand:
 
 
 class Game(GameProtocol):
-    def __init__(self, display: DisplayProtocol) -> None:
-        self.display = display
+    def __init__(self, display: DisplayProtocol, game_state: GameState) -> None:
+        self.display: DisplayProtocol = display
+        self.game_state: GameState = game_state
+
         self.pending_directional_command: PendingDirectionalCommand | None = None
         self.last_message: str = ""
-        self.should_quit = False
+        self.should_quit: bool = False
 
-        self.command_handlers: dict[str, Callable[[], None]] = {
+        self.height: int = 0
+        self.width: int = 0
+        self.maze_height: int = MAZE_HEIGHT
+        self.maze_width: int = MAZE_WIDTH
+
+        self.command_handlers: dict[str, Callable[[], bool]] = {
             "?": self.show_help,
             "/": self.identify_object,
             ">": self.go_down_stairs,
@@ -91,7 +110,7 @@ class Game(GameProtocol):
             "d": self.drop_object,
             "c": self.call_object,
             "o": self.examine_options,
-            "l": self.repeat_last_message,
+            CTRL_R: self.repeat_last_message,
             ESCAPE: self.cancel_command,
             "v": self.print_version,
             "S": self.save_game,
@@ -119,9 +138,15 @@ class Game(GameProtocol):
 
     def run_game(self) -> None:
 
+        self.height, self.width = self.display.getmaxyx()
+        self.display.set_display_limits(self.width, self.height)
+        self.display.set_message_line(LINE_MESSAGE)
+
+        self.game_state.player.position = (0, 0)
+
         self.draw_main_screen()
 
-        self.display.message("Press ? for help.")
+        self.display.message(GAME_HELP)
 
         while not self.should_quit:
             key_text = self.display.getch()
@@ -132,21 +157,23 @@ class Game(GameProtocol):
             if key_text == CTRL_C:
                 break
 
-            self.handle_key(key_text)
+            needs_redraw = self.handle_key(key_text)
+
+            if needs_redraw:
+                self.draw_main_screen()
 
     def draw_main_screen(self) -> None:
 
         self.display.clear()
 
-        self.display.addstr(0, 0, "Vallis Magi - curses prototype")
-        self.display.addstr(2, 0, "Press ? for help.")
-        self.display.addstr(4, 0, "@")
-        self.display.addstr(22, 0, "HP: 12/12   Level: 1   Gold: 0")
-        self.display.addstr(23, 0, self.last_message)
+        self.display.addstr(LINE_TITLE, 0, GAME_TITLE)
+        self.display.addstr(LINE_START_OF_MAZE + self.game_state.player.position[1], self.game_state.player.position[0], "@")
+        self.display.addstr(LINE_STATS, 0, "HP: 12/12   Level: 1   Gold: 0")
+        self.display.addstr(LINE_MESSAGE, 0, self.last_message)
 
         self.display.refresh()
 
-    def handle_key(self, key: str) -> None:
+    def handle_key(self, key: str) -> bool:
         """
         Main key handler.
 
@@ -156,27 +183,27 @@ class Game(GameProtocol):
 
         if self.pending_directional_command is not None:
             self.handle_pending_direction(key)
-            return
+            return True
 
         if key in DIRECTIONS:
             self.move(DIRECTIONS[key])
-            return
+            return True
 
         if key in RUN_DIRECTIONS:
             self.run(RUN_DIRECTIONS[key])
-            return
+            return True
 
         if key in self.directional_command_handlers:
             self.start_directional_command(self.directional_command_handlers[key])
-            return
+            return True
 
         handler = self.command_handlers.get(key)
 
         if handler is not None:
-            handler()
-            return
+            return handler()
 
         self.display.message(f"Unknown command: {key!r}")
+        return False
 
     def handle_pending_direction(self, key: str) -> None:
         if key == ESCAPE:
@@ -205,7 +232,14 @@ class Game(GameProtocol):
 
     def move(self, direction: Direction) -> None:
         dx, dy = direction
-        self.display.message(f"Move by ({dx}, {dy}).")
+
+        new_x = self.game_state.player.position[0] + dx
+        new_y = self.game_state.player.position[1] + dy
+
+        if (new_x < 0) or (new_x >= self.maze_width) or (new_y < 0) or (new_y >= self.maze_height):
+            return
+
+        self.game_state.player.position = (new_x, new_y)
 
     def run(self, direction: Direction) -> None:
         dx, dy = direction
@@ -227,7 +261,7 @@ class Game(GameProtocol):
 
     # Immediate commands
 
-    def show_help(self) -> None:
+    def show_help(self) -> bool:
 
         self.display.clear()
 
@@ -247,72 +281,97 @@ class Game(GameProtocol):
         self.display.getch()
         self.draw_main_screen()
 
-    def identify_object(self) -> None:
+        return False
+
+    def identify_object(self) -> bool:
         self.display.message("Identify object.")
+        return False
 
-    def zap_wand_or_staff(self) -> None:
+    def zap_wand_or_staff(self) -> bool:
         self.display.message("Zap a wand or staff.")
+        return False
 
-    def go_down_stairs(self) -> None:
+    def go_down_stairs(self) -> bool:
         self.display.message("Go down staircase.")
+        return False
 
-    def search(self) -> None:
+    def search(self) -> bool:
         self.display.message("Search for traps or secret doors.")
+        return False
 
-    def rest(self) -> None:
+    def rest(self) -> bool:
         self.display.message("Rest for a while.")
+        return False
 
-    def show_inventory(self) -> None:
+    def show_inventory(self) -> bool:
         self.display.message("Show inventory.")
+        return False
 
-    def show_single_item_inventory(self) -> None:
+    def show_single_item_inventory(self) -> bool:
         self.display.message("Show inventory for one item.")
+        return False
 
-    def quaff_potion(self) -> None:
+    def quaff_potion(self) -> bool:
         self.display.message("Quaff potion.")
+        return False
 
-    def read_scroll(self) -> None:
+    def read_scroll(self) -> bool:
         self.display.message("Read paper.")
+        return False
 
-    def eat_food(self) -> None:
+    def eat_food(self) -> bool:
         self.display.message("Eat food.")
+        return False
 
-    def wield_weapon(self) -> None:
+    def wield_weapon(self) -> bool:
         self.display.message("Wield weapon.")
+        return False
 
-    def wear_armour(self) -> None:
+    def wear_armour(self) -> bool:
         self.display.message("Wear armour.")
+        return False
 
-    def take_armour_off(self) -> None:
+    def take_armour_off(self) -> bool:
         self.display.message("Take armour off.")
+        return False
 
-    def put_on_ring(self) -> None:
+    def put_on_ring(self) -> bool:
         self.display.message("Put on ring.")
+        return False
 
-    def remove_ring(self) -> None:
+    def remove_ring(self) -> bool:
         self.display.message("Remove ring.")
+        return False
 
-    def drop_object(self) -> None:
+    def drop_object(self) -> bool:
         self.display.message("Drop object.")
+        return False
 
-    def call_object(self) -> None:
+    def call_object(self) -> bool:
         self.display.message("Call object.")
+        return False
 
-    def examine_options(self) -> None:
+    def examine_options(self) -> bool:
         self.display.message("Examine or set options.")
+        return False
 
-    def repeat_last_message(self) -> None:
-        print(self.last_message)
+    def repeat_last_message(self) -> bool:
+        self.display.message(self.display.last_message)
+        return False
 
-    def cancel_command(self) -> None:
+    def cancel_command(self) -> bool:
         self.pending_directional_command = None
         self.display.message("Cancelled.")
+        return False
 
-    def print_version(self) -> None:
+    def print_version(self) -> bool:
         self.display.message("Vallis Magi Rogue prototype version 0.1.")
+        return False
 
-    def save_game(self) -> None:
+    def save_game(self) -> bool:
         self.display.message("Save game.")
+        return False
 
-    def quit_game(self) -> None:
+    def quit_game(self) -> bool:
         self.should_quit = True
+        return False

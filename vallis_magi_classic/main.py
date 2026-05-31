@@ -56,7 +56,7 @@ def main() -> None:
 
     # Create a curses display and create the game engine
     display = DisplayCurses()
-    game = Game(display)
+    game = Game(display, game_state)
 
     # Start the game playing
     display.run(game)

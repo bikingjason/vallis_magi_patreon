@@ -182,6 +182,8 @@
   },
   "active": "0f479b4538f959ab",
   "lastOpenFiles": [
+    "vallis_magi_classic/__pycache__/game_types.cpython-314.pyc",
+    "vallis_magi_classic/game_types.py",
     "keys.log",
     "vallis_magi_classic/protocols/__pycache__/game_protocol.cpython-314.pyc",
     "vallis_magi_classic/protocols/__pycache__/display_protocol.cpython-314.pyc",
@@ -191,8 +193,6 @@
     "vallis_magi_classic/protocols/display_protocol.py",
     "vallis_magi_classic/protocols",
     "vallis_magi_classic/display_curses.py",
-    "vallis_magi_classic/prototypes/display_protocol.py",
-    "vallis_magi_classic/prototypes/screen_protocol.py",
     "README.md",
     "vallis_magi_classic/README.md",
     "rogue_lite/README.md",

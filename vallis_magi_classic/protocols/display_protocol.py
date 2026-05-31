@@ -2,11 +2,10 @@ from typing import Protocol
 
 from .game_protocol import GameProtocol
 
-CTRL_C = "\x03"
-ESCAPE = "\x1b"
-
 
 class DisplayProtocol(Protocol):
+    last_message: str
+
     def getch(self) -> str | None: ...
 
     def clear(self) -> None: ...
@@ -20,6 +19,10 @@ class DisplayProtocol(Protocol):
     def clrtoeol(self) -> None: ...
 
     def addstr(self, y: int, x: int, text: str) -> None: ...
+
+    def set_display_limits(self, max_x: int, max_y: int) -> None: ...
+
+    def set_message_line(self, y: int) -> None: ...
 
     def message(self, text: str) -> None: ...
 

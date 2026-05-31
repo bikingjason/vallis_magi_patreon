@@ -1,5 +1,6 @@
 from dataclasses import dataclass, field
 
+from .game_types import Position
 from .items import AllItems, ItemInstanceId
 
 
@@ -25,6 +26,8 @@ class Player:
     name: str
     inventory: Inventory = field(default_factory=Inventory)
     equipment: Equipment = field(default_factory=Equipment)
+
+    position: Position = field(default_factory=Position)
 
     def describe_item(self, all_items: AllItems, item_id: ItemInstanceId | None) -> str:
         if item_id is None:
