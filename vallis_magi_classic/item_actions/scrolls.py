@@ -1,5 +1,3 @@
-# item_actions/scrolls.py
-
 from collections.abc import Callable
 
 from ..game_context import GameContext
@@ -11,6 +9,7 @@ class ScrollActions:
         self.context = context
 
         self.effects: dict[ItemDefId, Callable[[ItemInstanceId], None]] = {
+            # Mundane Scroll
             ItemDefId("scroll_blank"): self.scroll_blank,
             ItemDefId("scroll_confuse_monster"): self.scroll_confuse_monster,
             ItemDefId("scroll_enchant_armour"): self.scroll_enchant_armour,
@@ -60,17 +59,42 @@ class ScrollActions:
         ctx.redraw()
         return True
 
+    # region Mundane Scroll
+
     def scroll_blank(self, item_id: ItemInstanceId) -> None:
-        self.context.display.message("You have been granted the boon of genocide.")
+        self.context.display.message("This scroll seems to be blank.")
+
+    # endregion
+
+    # region Magic Scrolls
 
     def scroll_confuse_monster(self, item_id: ItemInstanceId) -> None:
-        self.context.display.message("You have been granted the boon of genocide.")
+        self.context.display.message("Your hands begin to glow red.")
 
     def scroll_enchant_armour(self, item_id: ItemInstanceId) -> None:
-        self.context.display.message("You have been granted the boon of genocide.")
+        player = self.context.player
+
+        if player.equipment.body is None:
+            self.context.display.message("You feel a strange sense of loss.")
+            return
+
+        armour = self.context.all_items.items[player.equipment.body]
+        armour.cursed = False
+
+        self.context.display.message("Your armour glows faintly for a moment.")
 
     def scroll_enchant_weapon(self, item_id: ItemInstanceId) -> None:
-        self.context.display.message("You have been granted the boon of genocide.")
+        player = self.context.player
+
+        if player.equipment.right_hand is None:
+            self.context.display.message("You feel a strange sense of loss.")
+            return
+
+        weapon = self.context.all_items.items[player.equipment.right_hand]
+        weapon.cursed = False
+
+        weapon_name = self.context.all_items.item_defs[weapon.definition_id].name
+        self.context.display.message(f"Your {weapon_name} glows blue for a moment.")
 
     def scroll_genocide(self, item_id: ItemInstanceId) -> None:
         self.context.display.message("You have been granted the boon of genocide.", wait=True)
@@ -78,13 +102,16 @@ class ScrollActions:
         # self.context.world.genocide()
 
     def scroll_gold_detection(self, item_id: ItemInstanceId) -> None:
-        self.context.display.message("You have been granted the boon of genocide.")
+        self.context.display.message("You begin to feel greedy, and you sense gold.")
 
     def scroll_hold_monster(self, item_id: ItemInstanceId) -> None:
-        self.context.display.message("You have been granted the boon of genocide.")
+        self.context.display.message("The monsters around you freeze in place.")
 
     def scroll_light(self, item_id: ItemInstanceId) -> None:
-        self.context.display.message("The room is lit by a shimmering blue light.")
+        if self.context.config.terse:
+            self.context.display.message("The room is lit.")
+        else:
+            self.context.display.message("The room is lit by a shimmering blue light.")
 
     def scroll_identify(self, item_id: ItemInstanceId) -> None:
         self.context.display.message("This scroll is an identify scroll.")
@@ -96,33 +123,42 @@ class ScrollActions:
     def scroll_remove_curse(self, item_id: ItemInstanceId | None) -> None:
         player = self.context.player
 
-        for item_id in (
+        for equipped_item_id in (
             player.equipment.body,
             player.equipment.right_hand,
             player.equipment.left_hand,
             player.equipment.left_finger,
             player.equipment.right_finger,
         ):
-            if item_id is None:
+            if equipped_item_id is None:
                 continue
 
-            item = self.context.all_items.items[item_id]
+            item = self.context.all_items.items[equipped_item_id]
             item.cursed = False
-            break
 
         self.context.display.message("You feel as if somebody is watching over you.")
 
     def scroll_scare_monster(self, item_id: ItemInstanceId) -> None:
-        self.context.display.message("You have been granted the boon of genocide.")
+        self.context.display.message("You hear maniacal laughter in the distance.")
 
     def scroll_teleportation(self, item_id: ItemInstanceId) -> None:
-        self.context.display.message("You have been granted the boon of genocide.")
+        self.context.display.message("You feel strangely displaced.")
+        # Later:
+        # self.context.world.teleport_player()
+
+    # endregion
+
+    # region Cursed Scrolls
 
     def scroll_aggravate_monsters(self, item_id: ItemInstanceId) -> None:
-        self.context.display.message("You have been granted the boon of genocide.")
+        self.context.display.message("You hear a high pitched humming noise.")
 
     def scroll_create_monster(self, item_id: ItemInstanceId) -> None:
-        self.context.display.message("You have been granted the boon of genocide.")
+        self.context.display.message("You hear a faint cry of anguish in the distance.")
+        # Later this should only be used when no monster can be created.
+        # If a monster is created successfully, probably no message is needed.
 
     def scroll_sleep(self, item_id: ItemInstanceId) -> None:
-        self.context.display.message("You have been granted the boon of genocide.")
+        self.context.display.message("You fall asleep.")
+
+    # endregion
