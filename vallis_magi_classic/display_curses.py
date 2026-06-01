@@ -101,12 +101,16 @@ class DisplayCurses(DisplayProtocol):
         self._message_line = y
 
     def message(self, text: str, wait: bool = False) -> None:
-        self.last_message = text
+
+        if wait:
+            self.last_message = f"{text} <continue>"
+        else:
+            self.last_message = text
 
         screen = self.screen
         screen.move(self.message_line, 0)
         screen.clrtoeol()
-        screen.addstr(self.message_line, 0, text[: self.max_x - 1])
+        screen.addstr(self.message_line, 0, self.last_message[: self.max_x - 1])
         screen.refresh()
 
         # After updating wait for the user to press a key so that we know they have read the message.

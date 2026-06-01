@@ -214,4 +214,6 @@ class InventoryService:
         """
         Remove an item from the inventory or decrement its count if it is stackable.
         """
-        self.display.message(f"TODO - remove item from inventory = {item_id}", wait=True)
+        # TODO - remove item from inventory
+        # self.display.message(f"TODO - remove item from inventory = {item_id}", wait=True)
+        pass
