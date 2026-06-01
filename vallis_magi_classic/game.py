@@ -5,6 +5,7 @@ from .config import AppConfig
 from .game_context import GameContext
 from .game_types import CTRL_C, CTRL_R, ESCAPE, Direction
 from .inventory import InventoryService
+from .item_actions.potions import PotionActions
 from .item_actions.scrolls import ScrollActions
 from .items import AllItems, ItemInstanceId
 from .player import Player
@@ -159,6 +160,7 @@ class Game(GameProtocol):
             redraw=self.draw_main_screen,
         )
 
+        self.potion_actions = PotionActions(self.context)
         self.scroll_actions = ScrollActions(self.context)
 
     def describe_item(self, item_id: ItemInstanceId | None) -> str:
@@ -372,8 +374,7 @@ class Game(GameProtocol):
         return False
 
     def quaff_potion(self) -> bool:
-        self.display.message("Quaff potion.")
-        return False
+        return self.potion_actions.quaff_potion()
 
     def read_scroll(self) -> bool:
         return self.scroll_actions.read_scroll()
