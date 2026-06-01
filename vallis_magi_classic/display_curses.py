@@ -100,7 +100,7 @@ class DisplayCurses(DisplayProtocol):
     def set_message_line(self, y: int) -> None:
         self._message_line = y
 
-    def message(self, text: str) -> None:
+    def message(self, text: str, wait: bool = False) -> None:
         self.last_message = text
 
         screen = self.screen
@@ -108,6 +108,10 @@ class DisplayCurses(DisplayProtocol):
         screen.clrtoeol()
         screen.addstr(self.message_line, 0, text[: self.max_x - 1])
         screen.refresh()
+
+        # After updating wait for the user to press a key so that we know they have read the message.
+        if wait:
+            self.getch()
 
     def run(self, game: GameProtocol) -> None:
         curses.wrapper(self._run_curses, game)

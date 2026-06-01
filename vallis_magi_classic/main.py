@@ -5,6 +5,7 @@ from .display_curses import DisplayCurses
 from .game import Game
 from .high_scores import HighScoresManager
 from .items import AllItems, ItemManager
+from .player import Player
 
 CONFIG_DIR: str = "config"
 CONFIG_FILE: str = "vmclassic.toml"
@@ -43,16 +44,20 @@ def main() -> None:
         item_manager.test_random_item_creation(trials=10000)
         return
 
-    # Create a curses display and create the game engine
-    display = DisplayCurses()
-    game = Game(config, all_items, display)
-
     # See if there is a saved player, if not create a new one
     player_file = Path(working_dir / SAVES_DIR / f"{config.name}.toml")
+    new_player = False
     if not player_file.exists():
-        game.create_new_player(config.name)
-        game.display_player_welcome(True)
-    # TODO Else load the player from a saved toml file.
+        player = Player.create_new_player(config.name, all_items)
+        new_player = True
+    else:
+        # TODO Else load the player from a saved toml file.
+        player = Player.create_new_player(config.name, all_items)
+
+    # Create a curses display and create the game engine
+    display = DisplayCurses()
+    game = Game(config, all_items, display, player)
+    game.display_player_welcome(new_player)
 
     # Start the game playing
     display.run(game)
