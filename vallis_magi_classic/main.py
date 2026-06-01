@@ -3,7 +3,6 @@ from pathlib import Path
 from .config import ConfigManager
 from .display_curses import DisplayCurses
 from .game import Game
-from .game_state import GameState
 from .high_scores import HighScoresManager
 from .items import AllItems, ItemManager
 
@@ -44,19 +43,16 @@ def main() -> None:
         item_manager.test_random_item_creation(trials=10000)
         return
 
-    # Initialise the game state
-    game_state = GameState(all_items)
+    # Create a curses display and create the game engine
+    display = DisplayCurses()
+    game = Game(config, all_items, display)
 
     # See if there is a saved player, if not create a new one
     player_file = Path(working_dir / SAVES_DIR / f"{config.name}.toml")
     if not player_file.exists():
-        game_state.create_new_player(config.name, all_items)
-        game_state.player.display_player_welcome(game_state.all_items, True)
+        game.create_new_player(config.name)
+        game.display_player_welcome(True)
     # TODO Else load the player from a saved toml file.
-
-    # Create a curses display and create the game engine
-    display = DisplayCurses()
-    game = Game(display, game_state)
 
     # Start the game playing
     display.run(game)
