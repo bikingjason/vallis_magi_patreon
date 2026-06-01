@@ -113,7 +113,7 @@ is_ring = true
 priority = 4
 probability = 5
 
-# Cursed Magical Rings
+# Cursed Rings
 
 [items.ring_of_aggravate_monsters]
 name = "Ring of Aggravate Monsters"

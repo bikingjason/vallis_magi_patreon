@@ -1,4 +1,4 @@
-# Mundane Scroll
+# Mundane Scrolls
 
 [items.scroll_blank]
 name = "Blank scroll"
@@ -13,7 +13,7 @@ is_scroll = true
 priority = 15
 probability = 1
 
-# Scrolls
+# Magic Scrolls
 
 [items.scroll_confuse_monster]
 name = "Scroll of Confuse Monster"

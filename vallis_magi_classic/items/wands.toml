@@ -13,7 +13,7 @@ is_wand = true
 priority = 11
 probability = 1
 
-# Wands
+# Magical Wands
 
 [items.wand_cancellation]
 name = "Wand of cancellation"
