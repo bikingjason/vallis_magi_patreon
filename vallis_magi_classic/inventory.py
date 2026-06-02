@@ -153,7 +153,7 @@ class InventoryService:
         self,
         purpose: str,
         item_type: str | None = None,
-    ) -> ItemInstanceId | None:
+    ) -> tuple[ItemInstanceId | None, bool]:
         """
         Ask the player to choose an item from their inventory.
 
@@ -170,10 +170,11 @@ class InventoryService:
         """
 
         player = self.player
+        redraw = False
 
         if not player.inventory.backpack:
             self.display.message("You aren't carrying anything.")
-            return None
+            return None, redraw
 
         while True:
             if not self.config.terse:
@@ -189,15 +190,16 @@ class InventoryService:
             if not ch or (ch in ("\x1b", "\x07")):  # ESCAPE or Ctrl-G
                 self.after = False
                 self.display.message("")
-                return None
+                return None, redraw
 
             if ch == "*":
+                redraw = True
                 # TODO - Implement item_type filtering. Do I need both? Probably...
                 shown_any = self.show_inventory()  # item_type)
 
                 if not shown_any:
                     self.after = False
-                    return None
+                    return None, redraw
 
                 continue
 
@@ -208,7 +210,7 @@ class InventoryService:
                 self.display.message(f"Please specify a letter between 'a' and '{last_letter}'")
                 continue
 
-            return player.inventory.backpack[index]
+            return player.inventory.backpack[index], redraw
 
     def remove_or_decrement(self, item_id: ItemInstanceId) -> None:
         """

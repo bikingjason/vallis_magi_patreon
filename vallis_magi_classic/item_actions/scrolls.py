@@ -7,6 +7,7 @@ from ..items import ItemDefId, ItemInstanceId
 class ScrollActions:
     def __init__(self, context: GameContext) -> None:
         self.context = context
+        self.redraw = False
 
         self.effects: dict[ItemDefId, Callable[[ItemInstanceId], bool]] = {
             # Mundane Scroll
@@ -31,9 +32,9 @@ class ScrollActions:
     def read_scroll(self) -> bool:
         ctx = self.context
 
-        item_id = ctx.inventory.pick_item("read", "scroll")
+        item_id, self.redraw = ctx.inventory.pick_item("read", "scroll")
         if item_id is None:
-            return False
+            return self.redraw
 
         item = ctx.all_items.items[item_id]
         item_def = ctx.all_items.item_defs[item.definition_id]
@@ -43,17 +44,17 @@ class ScrollActions:
                 ctx.display.message("Nothing to read.")
             else:
                 ctx.display.message("There is nothing on it to read.")
-            return False
+            return self.redraw
 
-        ctx.display.message("As you read the scroll, it vanishes.", wait=True)
+        ctx.display.message("As you read the scroll, it vanishes.", wait=self.redraw)
 
         effect = self.effects.get(item.definition_id)
 
         if effect is None:
             ctx.display.message("What a puzzling scroll!")
-            return False
+            return self.redraw
 
-        redraw = effect(item_id)
+        redraw = effect(item_id) | self.redraw
         ctx.inventory.remove_or_decrement(item_id)
         return redraw
 
@@ -68,67 +69,67 @@ class ScrollActions:
     # region Magic Scrolls
 
     def scroll_confuse_monster(self, item_id: ItemInstanceId) -> bool:
-        self.context.display.message("Your hands begin to glow red.", wait=True)
+        self.context.display.message("Your hands begin to glow red.", wait=self.redraw)
         return False
 
     def scroll_enchant_armour(self, item_id: ItemInstanceId) -> bool:
         player = self.context.player
 
         if player.equipment.body is None:
-            self.context.display.message("You feel a strange sense of loss.", wait=True)
+            self.context.display.message("You feel a strange sense of loss.", wait=self.redraw)
             return False
 
         armour = self.context.all_items.items[player.equipment.body]
         armour.cursed = False
 
-        self.context.display.message("Your armour glows faintly for a moment.", wait=True)
+        self.context.display.message("Your armour glows faintly for a moment.", wait=self.redraw)
         return False
 
     def scroll_enchant_weapon(self, item_id: ItemInstanceId) -> bool:
         player = self.context.player
 
         if player.equipment.right_hand is None:
-            self.context.display.message("You feel a strange sense of loss.", wait=True)
+            self.context.display.message("You feel a strange sense of loss.", wait=self.redraw)
             return False
 
         weapon = self.context.all_items.items[player.equipment.right_hand]
         weapon.cursed = False
 
         weapon_name = self.context.all_items.item_defs[weapon.definition_id].name
-        self.context.display.message(f"Your {weapon_name} glows blue for a moment.", wait=True)
+        self.context.display.message(f"Your {weapon_name} glows blue for a moment.", wait=self.redraw)
         return False
 
     def scroll_genocide(self, item_id: ItemInstanceId) -> bool:
-        self.context.display.message("You have been granted the boon of genocide.", wait=True)
+        self.context.display.message("You have been granted the boon of genocide.", wait=self.redraw)
         # Later:
         # self.context.world.genocide()
         # TODO will require a screen redraw
         return False
 
     def scroll_gold_detection(self, item_id: ItemInstanceId) -> bool:
-        self.context.display.message("You begin to feel greedy, and you sense gold.", wait=True)
+        self.context.display.message("You begin to feel greedy, and you sense gold.", wait=self.redraw)
         # TODO will require a screen redraw
         return False
 
     def scroll_hold_monster(self, item_id: ItemInstanceId) -> bool:
-        self.context.display.message("The monsters around you freeze in place.", wait=True)
+        self.context.display.message("The monsters around you freeze in place.", wait=self.redraw)
         return False
 
     def scroll_light(self, item_id: ItemInstanceId) -> bool:
         if self.context.config.terse:
-            self.context.display.message("The room is lit.", wait=True)
+            self.context.display.message("The room is lit.", wait=self.redraw)
         else:
-            self.context.display.message("The room is lit by a shimmering blue light.", wait=True)
+            self.context.display.message("The room is lit by a shimmering blue light.", wait=self.redraw)
         # TODO will require a screen redraw
         return False
 
     def scroll_identify(self, item_id: ItemInstanceId) -> bool:
-        self.context.display.message("This scroll is an identify scroll.", wait=True)
+        self.context.display.message("This scroll is an identify scroll.", wait=self.redraw)
         # Later call identify flow.
         return False
 
     def scroll_magic_mapping(self, item_id: ItemInstanceId) -> bool:
-        self.context.display.message("Oh, now this scroll has a map on it.", wait=True)
+        self.context.display.message("Oh, now this scroll has a map on it.", wait=self.redraw)
         # TODO will require a screen redraw
         return False
 
@@ -148,15 +149,15 @@ class ScrollActions:
             item = self.context.all_items.items[equipped_item_id]
             item.cursed = False
 
-        self.context.display.message("You feel as if somebody is watching over you.", wait=True)
+        self.context.display.message("You feel as if somebody is watching over you.", wait=self.redraw)
         return False
 
     def scroll_scare_monster(self, item_id: ItemInstanceId) -> bool:
-        self.context.display.message("You hear maniacal laughter in the distance.", wait=True)
+        self.context.display.message("You hear maniacal laughter in the distance.", wait=self.redraw)
         return False
 
     def scroll_teleportation(self, item_id: ItemInstanceId) -> bool:
-        self.context.display.message("You feel strangely displaced.", wait=True)
+        self.context.display.message("You feel strangely displaced.", wait=self.redraw)
         # Later:
         # self.context.world.teleport_player()
         # TODO will require a screen redraw
@@ -167,18 +168,18 @@ class ScrollActions:
     # region Cursed Scrolls
 
     def scroll_aggravate_monsters(self, item_id: ItemInstanceId) -> bool:
-        self.context.display.message("You hear a high pitched humming noise.", wait=True)
+        self.context.display.message("You hear a high pitched humming noise.", wait=self.redraw)
         return False
 
     def scroll_create_monster(self, item_id: ItemInstanceId) -> bool:
-        self.context.display.message("You hear a faint cry of anguish in the distance.", wait=True)
+        self.context.display.message("You hear a faint cry of anguish in the distance.", wait=self.redraw)
         # Later this should only be used when no monster can be created.
         # If a monster is created successfully, probably no message is needed.
         # TODO will require a screen redraw
         return False
 
     def scroll_sleep(self, item_id: ItemInstanceId) -> bool:
-        self.context.display.message("You fall asleep.", wait=True)
+        self.context.display.message("You fall asleep.", wait=self.redraw)
         return False
 
     # endregion
