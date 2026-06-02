@@ -8,6 +8,7 @@ from .inventory import InventoryService
 from .item_actions.potions import PotionActions
 from .item_actions.rings import RingActions
 from .item_actions.scrolls import ScrollActions
+from .item_actions.wands import WandActions
 from .items import AllItems, ItemInstanceId
 from .player import Player
 from .protocols.display_protocol import DisplayProtocol
@@ -119,6 +120,7 @@ class Game(GameProtocol):
         self.potion_actions = PotionActions(self.context)
         self.ring_actions = RingActions(self.context)
         self.scroll_actions = ScrollActions(self.context)
+        self.wand_actions = WandActions(self.context)
 
         self.command_handlers: dict[str, Callable[[], bool]] = {
             "?": self.show_help,
@@ -144,7 +146,7 @@ class Game(GameProtocol):
             "v": self.print_version,
             "S": self.save_game,
             "Q": self.quit_game,
-            "z": self.zap_wand_or_staff,
+            "z": self.wand_actions.zap_wand,
         }
 
         self.directional_command_handlers: dict[str, PendingDirectionalCommand] = {
@@ -347,10 +349,6 @@ class Game(GameProtocol):
 
     def identify_object(self) -> bool:
         self.display.message("Identify object.")
-        return False
-
-    def zap_wand_or_staff(self) -> bool:
-        self.display.message("Zap a wand or staff.")
         return False
 
     def go_down_stairs(self) -> bool:
