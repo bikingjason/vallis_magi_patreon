@@ -6,6 +6,7 @@ from .game_context import GameContext
 from .game_types import CTRL_C, CTRL_R, ESCAPE, Direction
 from .inventory import InventoryService
 from .item_actions.potions import PotionActions
+from .item_actions.rings import RingActions
 from .item_actions.scrolls import ScrollActions
 from .items import AllItems, ItemInstanceId
 from .player import Player
@@ -99,6 +100,26 @@ class Game(GameProtocol):
         self.maze_height: int = MAZE_HEIGHT
         self.maze_width: int = MAZE_WIDTH
 
+        self.inventory = InventoryService(
+            config=self.config,
+            display=self.display,
+            all_items=self.all_items,
+            player=self.player,
+        )
+
+        self.context = GameContext(
+            config=self.config,
+            display=self.display,
+            all_items=self.all_items,
+            inventory=self.inventory,
+            player=self.player,
+            redraw=self.draw_main_screen,
+        )
+
+        self.potion_actions = PotionActions(self.context)
+        self.ring_actions = RingActions(self.context)
+        self.scroll_actions = ScrollActions(self.context)
+
         self.command_handlers: dict[str, Callable[[], bool]] = {
             "?": self.show_help,
             "/": self.identify_object,
@@ -107,14 +128,14 @@ class Game(GameProtocol):
             ".": self.rest,
             "i": self.show_inventory,
             "I": self.show_single_item_inventory,
-            "q": self.quaff_potion,
-            "r": self.read_scroll,
+            "q": self.potion_actions.quaff_potion,
+            "r": self.scroll_actions.read_scroll,
             "e": self.eat_food,
             "w": self.wield_weapon,
             "W": self.wear_armour,
             "T": self.take_armour_off,
-            "P": self.put_on_ring,
-            "R": self.remove_ring,
+            "P": self.ring_actions.put_on_ring,
+            "R": self.ring_actions.remove_ring,
             "d": self.drop_object,
             "c": self.call_object,
             "o": self.examine_options,
@@ -143,25 +164,6 @@ class Game(GameProtocol):
                 handler=self.zap_wand_in_direction,
             ),
         }
-
-        self.inventory = InventoryService(
-            config=self.config,
-            display=self.display,
-            all_items=self.all_items,
-            player=self.player,
-        )
-
-        self.context = GameContext(
-            config=self.config,
-            display=self.display,
-            all_items=self.all_items,
-            inventory=self.inventory,
-            player=self.player,
-            redraw=self.draw_main_screen,
-        )
-
-        self.potion_actions = PotionActions(self.context)
-        self.scroll_actions = ScrollActions(self.context)
 
     def describe_item(self, item_id: ItemInstanceId | None) -> str:
         if item_id is None:
@@ -373,12 +375,6 @@ class Game(GameProtocol):
         self.display.message("Show inventory for one item.")
         return False
 
-    def quaff_potion(self) -> bool:
-        return self.potion_actions.quaff_potion()
-
-    def read_scroll(self) -> bool:
-        return self.scroll_actions.read_scroll()
-
     def eat_food(self) -> bool:
         self.display.message("Eat food.")
         return False
@@ -393,14 +389,6 @@ class Game(GameProtocol):
 
     def take_armour_off(self) -> bool:
         self.display.message("Take armour off.")
-        return False
-
-    def put_on_ring(self) -> bool:
-        self.display.message("Put on ring.")
-        return False
-
-    def remove_ring(self) -> bool:
-        self.display.message("Remove ring.")
         return False
 
     def drop_object(self) -> bool:
