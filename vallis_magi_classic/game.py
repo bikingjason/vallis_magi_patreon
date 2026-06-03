@@ -132,7 +132,7 @@ class Game(GameProtocol):
             ">": self.go_down_stairs,
             "s": self.search,
             ".": self.rest,
-            "i": self.inventory.show_inventory,
+            "i": self.show_inventory,
             "I": self.show_single_item_inventory,
             "q": self.potion_actions.quaff_potion,
             "r": self.scroll_actions.read_scroll,
@@ -366,6 +366,10 @@ class Game(GameProtocol):
     def rest(self) -> bool:
         self.display.message("Rest for a while.")
         return False
+
+    def show_inventory(self) -> bool:
+        _, redraw = self.inventory.show_inventory()
+        return redraw
 
     def show_single_item_inventory(self) -> bool:
         self.display.message("Show inventory for one item.")
