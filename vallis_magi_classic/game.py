@@ -6,6 +6,7 @@ from .game_context import GameContext
 from .game_types import CTRL_C, CTRL_R, ESCAPE, Direction
 from .inventory import InventoryService
 from .item_actions.armour import ArmourActions
+from .item_actions.food import FoodActions
 from .item_actions.potions import PotionActions
 from .item_actions.rings import RingActions
 from .item_actions.scrolls import ScrollActions
@@ -120,6 +121,7 @@ class Game(GameProtocol):
         )
 
         self.armour_actions = ArmourActions(self.context)
+        self.food_actions = FoodActions(self.context)
         self.potion_actions = PotionActions(self.context)
         self.ring_actions = RingActions(self.context)
         self.scroll_actions = ScrollActions(self.context)
@@ -136,7 +138,7 @@ class Game(GameProtocol):
             "I": self.show_single_item_inventory,
             "q": self.potion_actions.quaff_potion,
             "r": self.scroll_actions.read_scroll,
-            "e": self.eat_food,
+            "e": self.food_actions.eat_food,
             "w": self.weapon_actions.wield_weapon,
             "W": self.armour_actions.wear_armour,
             "T": self.armour_actions.take_armour_off,
@@ -373,10 +375,6 @@ class Game(GameProtocol):
 
     def show_single_item_inventory(self) -> bool:
         self.display.message("Show inventory for one item.")
-        return False
-
-    def eat_food(self) -> bool:
-        self.display.message("Eat food.")
         return False
 
     def drop_object(self) -> bool:
