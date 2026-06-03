@@ -5,10 +5,12 @@ from .config import AppConfig
 from .game_context import GameContext
 from .game_types import CTRL_C, CTRL_R, ESCAPE, Direction
 from .inventory import InventoryService
+from .item_actions.armour import ArmourActions
 from .item_actions.potions import PotionActions
 from .item_actions.rings import RingActions
 from .item_actions.scrolls import ScrollActions
 from .item_actions.wands import WandActions
+from .item_actions.weapons import WeaponActions
 from .items import AllItems, ItemInstanceId
 from .player import Player
 from .protocols.display_protocol import DisplayProtocol
@@ -117,10 +119,12 @@ class Game(GameProtocol):
             redraw=self.draw_main_screen,
         )
 
+        self.armour_actions = ArmourActions(self.context)
         self.potion_actions = PotionActions(self.context)
         self.ring_actions = RingActions(self.context)
         self.scroll_actions = ScrollActions(self.context)
         self.wand_actions = WandActions(self.context)
+        self.weapon_actions = WeaponActions(self.context)
 
         self.command_handlers: dict[str, Callable[[], bool]] = {
             "?": self.show_help,
@@ -128,14 +132,14 @@ class Game(GameProtocol):
             ">": self.go_down_stairs,
             "s": self.search,
             ".": self.rest,
-            "i": self.show_inventory,
+            "i": self.inventory.show_inventory,
             "I": self.show_single_item_inventory,
             "q": self.potion_actions.quaff_potion,
             "r": self.scroll_actions.read_scroll,
             "e": self.eat_food,
-            "w": self.wield_weapon,
-            "W": self.wear_armour,
-            "T": self.take_armour_off,
+            "w": self.weapon_actions.wield_weapon,
+            "W": self.armour_actions.wear_armour,
+            "T": self.armour_actions.take_armour_off,
             "P": self.ring_actions.put_on_ring,
             "R": self.ring_actions.remove_ring,
             "d": self.drop_object,
@@ -363,30 +367,12 @@ class Game(GameProtocol):
         self.display.message("Rest for a while.")
         return False
 
-    def show_inventory(self) -> bool:
-        self.inventory.show_inventory()
-        self.display.message("--Press space to continue--", wait=True)
-        self.draw_main_screen()
-        return False
-
     def show_single_item_inventory(self) -> bool:
         self.display.message("Show inventory for one item.")
         return False
 
     def eat_food(self) -> bool:
         self.display.message("Eat food.")
-        return False
-
-    def wield_weapon(self) -> bool:
-        self.display.message("Wield weapon.")
-        return False
-
-    def wear_armour(self) -> bool:
-        self.display.message("Wear armour.")
-        return False
-
-    def take_armour_off(self) -> bool:
-        self.display.message("Take armour off.")
         return False
 
     def drop_object(self) -> bool:

@@ -88,7 +88,7 @@ class InventoryService:
         self,
         item_ids: list[ItemInstanceId] | None = None,
         item_type: str | None = None,
-    ) -> bool:
+    ) -> tuple[bool, bool]:
         """
         Show inventory contents.
 
@@ -132,11 +132,11 @@ class InventoryService:
                 self.display.message("Empty handed." if item_type is None else "Nothing appropriate.")
             else:
                 self.display.message("You are empty handed." if item_type is None else "You don't have anything appropriate.")
-            return False
+            return False, False
 
         if len(lines) == 1:
-            self.display.message(lines[0])
-            return True
+            self.display.message(lines[0], wait=True)
+            return True, False
 
         # TODO - Do I need the slow_inventory option?
         # if self.config.slow_invent:
@@ -147,7 +147,9 @@ class InventoryService:
 
         self.show_inventory_window(lines)
 
-        return True
+        self.display.message("--Press space to continue--", wait=True)
+
+        return True, True
 
     def pick_item(
         self,
@@ -193,9 +195,8 @@ class InventoryService:
                 return None, redraw
 
             if ch == "*":
-                redraw = True
                 # TODO - Implement item_type filtering. Do I need both? Probably...
-                shown_any = self.show_inventory()  # item_type)
+                shown_any, redraw = self.show_inventory(item_type=item_type)
 
                 if not shown_any:
                     self.after = False
