@@ -217,6 +217,16 @@ class InventoryService:
         """
         Remove an item from the inventory or decrement its count if it is stackable.
         """
-        # TODO - remove item from inventory
-        # self.display.message(f"TODO - remove item from inventory = {item_id}", wait=True)
-        pass
+        if not item_id:
+            return
+
+        item_ids = self.player.inventory.backpack
+        if item_id not in item_ids:
+            return
+
+        item = self.all_items.items[item_id]
+
+        if 1 >= item.quantity:
+            item_ids.remove(item_id)
+        else:
+            item.quantity -= 1
