@@ -60,10 +60,26 @@ class InventoryService:
         You can expand this later for identified/cursed/charges/etc.
         """
 
-        if item.quantity > 1:
-            return f"{item.quantity} {item_def.name}s"
+        if item_def.is_identified:
+            name = item_def.name
+        else:
+            name = self.all_items.called_names.get(item.definition_id, "")
+            if 0 == len(name):
+                if item_def.is_potion:
+                    name = "Unknown Potion"
+                elif item_def.is_ring:
+                    name = "Unknown Ring"
+                elif item_def.is_scroll:
+                    name = "Unknown Scroll"
+                elif item_def.is_wand:
+                    name = "Unknown Wand"
+                else:
+                    raise RuntimeError(f"Unknown item {item_def.name} in inventory_name.")
 
-        return item_def.name
+        if item.quantity > 1:
+            return f"{item.quantity} {name}s"
+
+        return name
 
     def show_inventory_window(
         self,

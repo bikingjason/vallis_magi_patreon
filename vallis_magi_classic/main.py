@@ -35,7 +35,7 @@ def main() -> None:
     # Load the Items toml file which describes everything that exists in the game
     item_manager = ItemManager(working_dir, ITEMS_DIR, config.item_files)
     item_manager.load_item_definitions()
-    all_items = AllItems(item_defs=item_manager.item_defs, items={})
+    all_items = AllItems(item_defs=item_manager.item_defs, items={}, called_names={})
     print(f"Loaded {len(item_manager.item_defs)} items from {len(config.item_files)} item files.\n")
     if config.verify or config.verify_summary:
         item_manager.verify_item_definitions(config.verify_summary)

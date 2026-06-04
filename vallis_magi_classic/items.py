@@ -24,7 +24,7 @@ class ItemProbabilityRange:
     end: int  # exclusive
 
 
-@dataclass(frozen=True)
+@dataclass
 class ItemDefinition:
     id: ItemDefId
     name: str
@@ -37,6 +37,7 @@ class ItemDefinition:
     armour_bonus: int = 0
     priority: int = 0
     probability: int = 0
+    is_identified: bool = False
     is_armour: bool = False
     is_food: bool = False
     is_potion: bool = False
@@ -63,6 +64,7 @@ class ItemInstance:
 class AllItems:
     item_defs: dict[ItemDefId, ItemDefinition]
     items: dict[ItemInstanceId, ItemInstance]
+    called_names: dict[ItemDefId, str]
     next_item_id: int = 1
 
     def new_item(
@@ -166,6 +168,15 @@ class ItemManager:
 
                 item_id = ItemDefId(raw_id)
 
+                is_potion = bool(raw_item.get("is_potion", False))
+                is_ring = bool(raw_item.get("is_ring", False))
+                is_scroll = bool(raw_item.get("is_scroll", False))
+                is_wand = bool(raw_item.get("is_wand", False))
+
+                is_identified = True
+                if is_potion or is_ring or is_scroll or is_wand:
+                    is_identified = False
+
                 self.item_defs[item_id] = ItemDefinition(
                     id=item_id,
                     name=str(raw_item.get("name", raw_id)),
@@ -177,12 +188,13 @@ class ItemManager:
                     armour_bonus=int(raw_item.get("armour_bonus", 0)),
                     priority=int(raw_item.get("priority", 0)),
                     probability=int(raw_item.get("probability", 0)),
+                    is_identified=is_identified,
                     is_armour=bool(raw_item.get("is_armour", False)),
                     is_food=bool(raw_item.get("is_food", False)),
-                    is_potion=bool(raw_item.get("is_potion", False)),
-                    is_ring=bool(raw_item.get("is_ring", False)),
-                    is_scroll=bool(raw_item.get("is_scroll", False)),
-                    is_wand=bool(raw_item.get("is_wand", False)),
+                    is_potion=is_potion,
+                    is_ring=is_ring,
+                    is_scroll=is_scroll,
+                    is_wand=is_wand,
                     is_weapon=bool(raw_item.get("is_weapon", False)),
                 )
 

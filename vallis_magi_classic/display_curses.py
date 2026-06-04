@@ -74,6 +74,36 @@ class DisplayCurses(DisplayProtocol):
         key_code = self.screen.getch()
         return self._key_code_to_text(key_code)
 
+    def prompt(self, prompt: str) -> str:
+        """
+        Display a prompt and read a line of text from the player.
+        """
+        self.clear_message_line()
+        self.screen.addstr(self.message_line, 0, prompt)
+        self.screen.refresh()
+
+        curses.echo()
+        curses.curs_set(1)
+
+        try:
+            y = self.message_line
+            x = len(prompt)
+
+            # Read up to 60 characters after the prompt.
+            raw = self.screen.getstr(y, x, 60)
+
+            return raw.decode("utf-8").strip()
+
+        finally:
+            curses.noecho()
+            curses.curs_set(0)
+            self.clear_message_line()
+            self.screen.refresh()
+
+    def clear_message_line(self) -> None:
+        self.screen.move(self.message_line, 0)
+        self.clrtoeol()
+
     def clear(self) -> None:
         self.screen.clear()
 
@@ -104,9 +134,9 @@ class DisplayCurses(DisplayProtocol):
 
         self.last_message = text
 
+        self.clear_message_line()
+
         screen = self.screen
-        screen.move(self.message_line, 0)
-        screen.clrtoeol()
         if wait:
             screen.addstr(self.message_line, 0, f"{text} <continue>"[: self.max_x - 1])
         else:

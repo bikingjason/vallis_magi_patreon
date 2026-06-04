@@ -7,6 +7,7 @@ from .game_types import CTRL_C, CTRL_R, ESCAPE, Direction
 from .inventory import InventoryService
 from .item_actions.armour import ArmourActions
 from .item_actions.food import FoodActions
+from .item_actions.inventory import InventoryActions
 from .item_actions.potions import PotionActions
 from .item_actions.rings import RingActions
 from .item_actions.scrolls import ScrollActions
@@ -35,10 +36,8 @@ HELP_COMMANDS: list[tuple[str, str]] = [
     ("R", "Remove a ring"),
     ("d", "Drop an object"),
     ("c", "Call or name an object"),
-    ("o", "Examine or set options"),
     (CTRL_R, "Repeat the last message"),
     ("Esc", "Cancel command"),
-    ("v", "Print program version number"),
     ("S", "Save game"),
     ("Q", "Quit game"),
     ("z", "Zap a wand or staff"),
@@ -69,7 +68,7 @@ RUN_DIRECTIONS: dict[str, Direction] = {
 }
 
 
-GAME_TITLE = "Vallis Magi - curses prototype"
+GAME_TITLE = "Vallis Magi - curses prototype version 0.1"
 GAME_HELP = "Press ? for help."
 
 MAZE_HEIGHT = 24
@@ -120,13 +119,17 @@ class Game(GameProtocol):
             redraw=self.draw_main_screen,
         )
 
-        self.armour_actions = ArmourActions(self.context)
         self.food_actions = FoodActions(self.context)
+
+        self.armour_actions = ArmourActions(self.context)
+        self.weapon_actions = WeaponActions(self.context)
+
         self.potion_actions = PotionActions(self.context)
         self.ring_actions = RingActions(self.context)
         self.scroll_actions = ScrollActions(self.context)
         self.wand_actions = WandActions(self.context)
-        self.weapon_actions = WeaponActions(self.context)
+
+        self.inventory_actions = InventoryActions(self.context)
 
         self.command_handlers: dict[str, Callable[[], bool]] = {
             "?": self.show_help,
@@ -144,12 +147,10 @@ class Game(GameProtocol):
             "T": self.armour_actions.take_armour_off,
             "P": self.ring_actions.put_on_ring,
             "R": self.ring_actions.remove_ring,
-            "d": self.drop_object,
-            "c": self.call_object,
-            "o": self.examine_options,
+            "d": self.inventory_actions.drop_object,
+            "c": self.inventory_actions.call_object,
             CTRL_R: self.repeat_last_message,
             ESCAPE: self.cancel_command,
-            "v": self.print_version,
             "S": self.save_game,
             "Q": self.quit_game,
             "z": self.wand_actions.zap_wand,
@@ -377,18 +378,6 @@ class Game(GameProtocol):
         self.display.message("Show inventory for one item.")
         return False
 
-    def drop_object(self) -> bool:
-        self.display.message("Drop object.")
-        return False
-
-    def call_object(self) -> bool:
-        self.display.message("Call object.")
-        return False
-
-    def examine_options(self) -> bool:
-        self.display.message("Examine or set options.")
-        return False
-
     def repeat_last_message(self) -> bool:
         self.display.message(self.display.last_message)
         return False
@@ -396,10 +385,6 @@ class Game(GameProtocol):
     def cancel_command(self) -> bool:
         self.pending_directional_command = None
         self.display.message("Cancelled.")
-        return False
-
-    def print_version(self) -> bool:
-        self.display.message("Vallis Magi Rogue prototype version 0.1.")
         return False
 
     def save_game(self) -> bool:
