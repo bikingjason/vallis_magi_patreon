@@ -3,9 +3,12 @@ import tomllib
 from dataclasses import asdict, dataclass, field, fields
 from pathlib import Path
 
+from .localisation import _
+
 
 @dataclass
 class AppConfig:
+    language: str = "en"
     terse: bool = False
     flush: bool = False
     jump: bool = False
@@ -69,6 +72,7 @@ class ConfigManager:
         data_files = {str(key): str(value) for key, value in data_files_section.items()}
 
         config = AppConfig(
+            language=config_data.get("language", "en").lower(),
             terse=config_data.get("terse", False),
             flush=config_data.get("flush", False),
             jump=config_data.get("jump", True),
@@ -97,8 +101,11 @@ class ConfigManager:
 
     def display_config(self, config: AppConfig) -> None:
         output = asdict(config)
-        print("\nApplication configuration")
-        print("-------------------------")
+
+        app_config_str = _("Application configuration")
+        print()
+        print(app_config_str)
+        print("-" * len(app_config_str))
         for key, value in output.items():
             if value is not None:
                 print(f"{key}: {value}")

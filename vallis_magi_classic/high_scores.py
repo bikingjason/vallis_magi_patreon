@@ -4,6 +4,8 @@ from pathlib import Path
 
 import tomli_w
 
+from .localisation import _
+
 
 @dataclass
 class HighScore:
@@ -29,7 +31,7 @@ class HighScoresManager:
 
     def load_high_scores(self) -> None:
         if not self.file_path.exists():
-            print(f"\nConfig: {self.file_path} not found, using default config.\n")
+            print(_("\nConfig: {file_path} not found, using default config.\n", file_apth=self.file_path))
             return
 
         with self.file_path.open("rb") as f:
@@ -69,11 +71,21 @@ class HighScoresManager:
             print("No high scores yet.")
             return
 
-        print("\nTop Ten Adventurers\n")
-        print("Rank  Name                 Score       Level")
-        print("--------------------------------------------")
+        rank_str = _("Rank  Name                 Score       Level")
+
+        print(_("\nTop Ten Adventurers\n"))
+        print(rank_str)
+        print("-" * len(rank_str))
 
         for rank, entry in enumerate(self.high_scores, start=1):
-            print(f" {rank:2}.  {entry.name:<20} {entry.score:<10}  {entry.level:>5}")
+            print(
+                _(
+                    "{rank:2}.  {entry_name:<20} {entry_score:<10}  {entry_level:>5}",
+                    rank=rank,
+                    entry_name=entry.name,
+                    entry_score=entry.score,
+                    entry_level=entry.level,
+                )
+            )
 
         print("\n")

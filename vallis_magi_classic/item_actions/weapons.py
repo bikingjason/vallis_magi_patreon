@@ -3,6 +3,7 @@ from random import randrange
 
 from ..game_context import GameContext
 from ..items import ItemInstanceId
+from ..localisation import _
 
 NO_LAUNCHER = None
 
@@ -57,7 +58,7 @@ class WeaponActions:
         item_def = self.context.all_items.item_defs[item.definition_id]
 
         if item_def.is_armour:
-            self.context.display.message("You can't wield armour")
+            self.context.display.message(_("You can't wield armour."))
             return redraw
 
         if self.is_current(item_id):
@@ -66,9 +67,9 @@ class WeaponActions:
         self.context.player.equipment.right_hand = item_id
 
         if self.context.config.terse:
-            self.context.display.message(f"Wielding {item_def.name}")
+            self.context.display.message(_("Wielding {name}", name=item_def.name))
         else:
-            self.context.display.message(f"You are now wielding {item_def.name}")
+            self.context.display.message(_("You are now wielding {name}", name=item_def.name))
 
         return redraw
 
@@ -147,7 +148,7 @@ class WeaponActions:
         if print_message:
             item = self.context.all_items.items[item_id]
             item_def = self.context.all_items.item_defs[item.definition_id]
-            self.context.display.message(f"Your {item_def.name} vanishes as it hits the ground.")
+            self.context.display.message(_("Your {name} vanishes as it hits the ground.", anme=item_def.name))
 
         # TODO Implement weapon discard
         # if hasattr(self.context.all_items, "discard_item"):
@@ -165,7 +166,6 @@ class WeaponActions:
         stats = WEAPON_INITIAL_STATS.get(str(item.definition_id))
         if stats is None:
             stats = WEAPON_INITIAL_STATS.get(item_def.name.lower().replace(" ", "_"))
-
         if stats is None:
             return
 

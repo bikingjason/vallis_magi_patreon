@@ -1,5 +1,6 @@
 from ..game_context import GameContext
 from ..items import ItemInstanceId
+from ..localisation import _
 
 
 class ArmourActions:
@@ -8,16 +9,14 @@ class ArmourActions:
 
     def wear_armour(self) -> bool:
         """
-        Equivalent of Rogue's wear().
-
         The player can only wear one suit of armour at a time.
         Wearing armour consumes time and identifies the armour.
         """
         if self.context.player.equipment.body is not None:
             if self.context.config.terse:
-                self.context.display.message("You are already wearing some.")
+                self.context.display.message(_("You are already wearing some."))
             else:
-                self.context.display.message("You are already wearing some. You'll have to take it off first.")
+                self.context.display.message(_("You are already wearing some. You'll have to take it off first."))
 
             # Original Rogue sets after = FALSE here.
             return False
@@ -31,7 +30,7 @@ class ArmourActions:
         item_def = self.context.all_items.item_defs[item.definition_id]
 
         if not item_def.is_armour:
-            self.context.display.message("You can't wear that.", wait=redraw)
+            self.context.display.message(_("You can't wear that."), wait=redraw)
             return redraw
 
         self.waste_time()
@@ -40,16 +39,14 @@ class ArmourActions:
         # item.known = True
 
         if self.context.config.terse:
-            self.context.display.message(f"Wearing {item_def.name}.", wait=redraw)
+            self.context.display.message(_("Wearing {name}.", name=item_def.name), wait=redraw)
         else:
-            self.context.display.message(f"You are now wearing {item_def.name}.", wait=redraw)
+            self.context.display.message(_("You are now wearing {name}.", name=item_def.name), wait=redraw)
 
         return redraw
 
     def take_armour_off(self) -> bool:
         """
-        Equivalent of Rogue's take_off().
-
         Armour can only be removed if dropcheck succeeds.
         This preserves the Rogue behaviour where cursed/stuck equipment
         can prevent removal.
@@ -58,9 +55,9 @@ class ArmourActions:
 
         if item_id is None:
             if self.context.config.terse:
-                self.context.display.message("Not wearing armour.")
+                self.context.display.message(_("Not wearing armour."))
             else:
-                self.context.display.message("You aren't wearing any armour.")
+                self.context.display.message(_("You aren't wearing any armour."))
             return False
 
         if not self.dropcheck(item_id):
@@ -72,9 +69,9 @@ class ArmourActions:
         item_def = self.context.all_items.item_defs[item.definition_id]
 
         if self.context.config.terse:
-            self.context.display.message(f"Was wearing {item_def.name}.")
+            self.context.display.message(_("Was wearing {name}.", anme=item_def.name))
         else:
-            self.context.display.message(f"You used to be wearing {item_def.name}.")
+            self.context.display.message(_("You used to be wearing {name}.", name=item_def.name))
 
         return False
 

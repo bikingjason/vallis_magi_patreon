@@ -5,11 +5,13 @@ from .display_curses import DisplayCurses
 from .game import Game
 from .high_scores import HighScoresManager
 from .items import AllItems, ItemManager
+from .localisation import initialise_localisation
 from .player import Player
 
 CONFIG_DIR: str = "config"
 CONFIG_FILE: str = "vmclassic.toml"
 HIGHSCORES_FILE: str = "highscores.toml"
+LANGUAGES_DIR: str = "languages"
 
 ITEMS_DIR: str = "items"
 SAVES_DIR: str = "saves"
@@ -22,6 +24,8 @@ def main() -> None:
     # Load the configuration.
     config_manager = ConfigManager(working_dir, CONFIG_DIR, CONFIG_FILE)
     config = config_manager.load_configuration()
+
+    initialise_localisation(working_dir, LANGUAGES_DIR, config.language)
 
     # Load the high scores, and optionally display them and exit.
     high_scores_manager = HighScoresManager(working_dir, CONFIG_DIR, HIGHSCORES_FILE, config.max_scores)

@@ -1,5 +1,6 @@
 from .config import AppConfig
 from .items import AllItems, ItemDefinition, ItemInstance, ItemInstanceId
+from .localisation import _
 from .player import Player
 from .protocols.display_protocol import DisplayProtocol
 
@@ -66,18 +67,18 @@ class InventoryService:
             name = self.all_items.called_names.get(item.definition_id, "")
             if 0 == len(name):
                 if item_def.is_potion:
-                    name = "Unknown Potion"
+                    name = _("Unknown Potion")
                 elif item_def.is_ring:
-                    name = "Unknown Ring"
+                    name = _("Unknown Ring")
                 elif item_def.is_scroll:
-                    name = "Unknown Scroll"
+                    name = _("Unknown Scroll")
                 elif item_def.is_wand:
-                    name = "Unknown Wand"
+                    name = _("Unknown Wand")
                 else:
                     raise RuntimeError(f"Unknown item {item_def.name} in inventory_name.")
 
         if item.quantity > 1:
-            return f"{item.quantity} {name}s"
+            return f"{item.quantity}x {name}"
 
         return name
 
@@ -145,9 +146,9 @@ class InventoryService:
 
         if not lines:
             if self.config.terse:
-                self.display.message("Empty handed." if item_type is None else "Nothing appropriate.")
+                self.display.message(_("Empty handed.") if item_type is None else _("Nothing appropriate."))
             else:
-                self.display.message("You are empty handed." if item_type is None else "You don't have anything appropriate.")
+                self.display.message(_("You are empty handed.") if item_type is None else _("You don't have anything appropriate."))
             return False, False
 
         if len(lines) == 1:
@@ -163,7 +164,7 @@ class InventoryService:
 
         self.show_inventory_window(lines)
 
-        self.display.message("--Press space to continue--", wait=True)
+        self.display.message(_("--Press space to continue--"), wait=True)
 
         return True, True
 
@@ -191,14 +192,15 @@ class InventoryService:
         redraw = False
 
         if not player.inventory.backpack:
-            self.display.message("You aren't carrying anything.")
+            self.display.message(_("You aren't carrying anything."))
             return None, redraw
 
         while True:
             if not self.config.terse:
-                prompt = f"Which object do you want to {purpose}? (* for list): "
+                prompt = _("Which object do you want to {purpose}? (* for list): ", purpose=purpose)
             else:
-                prompt = f"{purpose} what? (* for list): "
+                prompt = _("{purpose} what? (* for list): ", purpose=purpose)
+
             self.display.message(prompt)
 
             ch = self.display.getch()
@@ -224,7 +226,7 @@ class InventoryService:
 
             if index < 0 or index >= len(player.inventory.backpack):
                 last_letter = chr(ord("a") + len(player.inventory.backpack) - 1)
-                self.display.message(f"Please specify a letter between 'a' and '{last_letter}'")
+                self.display.message(_("Please specify a letter between 'a' and '{last_letter}'", last_letter=last_letter), wait=True)
                 continue
 
             return player.inventory.backpack[index], redraw

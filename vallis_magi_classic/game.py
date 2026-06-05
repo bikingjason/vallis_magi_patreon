@@ -14,35 +14,10 @@ from .item_actions.scrolls import ScrollActions
 from .item_actions.wands import WandActions
 from .item_actions.weapons import WeaponActions
 from .items import AllItems, ItemInstanceId
+from .localisation import _
 from .player import Player
 from .protocols.display_protocol import DisplayProtocol
 from .protocols.game_protocol import GameProtocol
-
-HELP_COMMANDS: list[tuple[str, str]] = [
-    ("?", "Show this help message"),
-    ("/", "Identify an object"),
-    (">", "Go down a staircase"),
-    ("s", "Search for a trap or secret door"),
-    (".", "Rest for a while"),
-    ("i", "Show inventory"),
-    ("I", "Show a single inventory item"),
-    ("q", "Quaff a potion"),
-    ("r", "Read a scroll or paper"),
-    ("e", "Eat food"),
-    ("w", "Wield a weapon"),
-    ("W", "Wear armour"),
-    ("T", "Take armour off"),
-    ("P", "Put on a ring"),
-    ("R", "Remove a ring"),
-    ("d", "Drop an object"),
-    ("c", "Call or name an object"),
-    (CTRL_R, "Repeat the last message"),
-    ("Esc", "Cancel command"),
-    ("S", "Save game"),
-    ("Q", "Quit game"),
-    ("z", "Zap a wand or staff"),
-]
-
 
 DIRECTIONS: dict[str, Direction] = {
     "h": (-1, 0),
@@ -335,6 +310,31 @@ class Game(GameProtocol):
     def show_help(self) -> bool:
 
         self.display.clear()
+
+        HELP_COMMANDS: list[tuple[str, str]] = [
+            ("?", _("Show this help message")),
+            ("/", _("Identify an object")),
+            (">", _("Go down a staircase")),
+            ("s", _("Search for a trap or secret door")),
+            (".", _("Rest for a while")),
+            ("i", _("Show inventory")),
+            ("I", _("Show a single inventory item")),
+            ("q", _("Quaff a potion")),
+            ("r", _("Read a scroll or paper")),
+            ("e", _("Eat food")),
+            ("w", _("Wield a weapon")),
+            ("W", _("Wear armour")),
+            ("T", _("Take armour off")),
+            ("P", _("Put on a ring")),
+            ("R", _("Remove a ring")),
+            ("d", _("Drop an object")),
+            ("c", _("Call or name an object")),
+            (CTRL_R, _("Repeat the last message")),
+            ("Esc", _("Cancel command")),
+            ("S", _("Save game")),
+            ("Q", _("Quit game")),
+            ("z", _("Zap a wand or staff")),
+        ]
 
         lines = ["Commands:", ""]
 

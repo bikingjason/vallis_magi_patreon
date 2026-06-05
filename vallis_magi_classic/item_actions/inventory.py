@@ -1,5 +1,6 @@
 from ..game_context import GameContext
 from ..items import ItemDefId, ItemDefinition, ItemInstanceId
+from ..localisation import _
 
 
 class InventoryActions:
@@ -13,7 +14,7 @@ class InventoryActions:
         matching the original Rogue behaviour.
         """
         if not self.can_drop_on_current_tile():
-            self.context.display.message("There is something there already")
+            self.context.display.message(_("There is something there already."))
             return False
 
         item_id, redraw = self.context.inventory.pick_item("drop", None)
@@ -38,7 +39,7 @@ class InventoryActions:
         # dropped_item = self.context.all_items.items[dropped_item_id]
         # dropped_item_def = self.context.all_items.item_defs[dropped_item.definition_id]
 
-        self.context.display.message(f"Dropped {self.inventory_name(dropped_item_id, drop=True)}")
+        self.context.display.message(_("Dropped {name}", name=self.inventory_name(dropped_item_id, drop=True)))
 
         return redraw
 
@@ -59,15 +60,15 @@ class InventoryActions:
         item_def = self.context.all_items.item_defs[item.definition_id]
 
         if not self.can_call_item(item_def):
-            self.context.display.message("You can't call that anything.")
+            self.context.display.message(_("You can't call that anything."))
             return redraw
 
         current_name = self.get_called_name(item.definition_id)
 
         if current_name:
-            prompt = f"Was called {current_name}. Call it: "
+            prompt = _("Was called {current_name}. Call it: ", current_name=current_name)
         else:
-            prompt = "Call it: "
+            prompt = _("Call it: ")
 
         called_name = self.read_line(prompt).strip()
 
@@ -89,7 +90,7 @@ class InventoryActions:
             return True
 
         if self.is_cursed(item_id):
-            self.context.display.message("You can't.  It appears to be cursed.")
+            self.context.display.message(_("You can't. It appears to be cursed."))
             return False
 
         equipment = self.context.player.equipment
@@ -224,9 +225,9 @@ class InventoryActions:
             name = item_def.name
 
         if item.quantity > 1:
-            name = f"{item.quantity} {name}s"
+            name = f"{item.quantity}x {name}"
         else:
-            name = f"a {name}"
+            name = _("a {name}", anme=name)
 
         if not drop:
             name = name[:1].upper() + name[1:] + "."

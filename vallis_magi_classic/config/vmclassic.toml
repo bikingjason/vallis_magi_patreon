@@ -1,4 +1,15 @@
 [config]
+# Language Options
+# en = English: UK, AU, NZ.
+#      This is the English in the code, so there is no file for these languages.
+# ca = Canadian English
+# us = American Englilsh
+# cn = Simplified Chinese (zh-CN)
+# tw = Traditional Chinese (zh-TW)
+# fr = French
+# de = German
+# th = Thai
+language = "au"
 terse = false
 flush = false
 jump = true

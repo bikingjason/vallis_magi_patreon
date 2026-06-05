@@ -2,6 +2,7 @@ from random import randint
 
 from ..game_context import GameContext
 from ..items import ItemInstanceId
+from ..localisation import _
 
 HUNGERTIME = 1300
 STOMACHSIZE = 2000
@@ -26,18 +27,18 @@ class FoodActions:
 
         if not item_def.is_food:
             if self.context.config.terse:
-                self.context.display.message("That's Inedible!")
+                self.context.display.message(_("That's Inedible!"))
             else:
-                self.context.display.message("Ugh, you would get ill if you ate that.")
+                self.context.display.message(_("Ugh, you would get ill if you ate that."))
             return redraw
 
         if randint(0, 99) > 70:
-            self.context.display.message("Yuk, this food tastes awful")
+            self.context.display.message(_("Yuk, this food tastes awful."))
             # TODO Add food effect
             # self.context.player.stats.exp += 1
             # self.check_level()
         else:
-            self.context.display.message("Yum, that tasted good")
+            self.context.display.message(_("Yum, that tasted good."))
 
         # TODO Add food effect
         # self.context.player.food_left += HUNGERTIME + randint(0, 399) - 200

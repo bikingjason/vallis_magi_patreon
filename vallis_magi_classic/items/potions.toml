@@ -73,8 +73,8 @@ probability = 6
 [items.potion_of_raise_level]
 name = "Potion of Raise Level"
 description = "A rare and powerful potion that deepens the drinker's experience and increases their level."
-message_classic = "You suddenly feel much more skillful."
-message_long = "You suddenly feel much more skillful. Your knowledge and abilities have increased as you advance in your studies."
+message_classic = "You suddenly feel much more skilful."
+message_long = "You suddenly feel much more skilful. Your knowledge and abilities have increased as you advance in your studies."
 weight = 0.3
 value = 220
 is_potion = true

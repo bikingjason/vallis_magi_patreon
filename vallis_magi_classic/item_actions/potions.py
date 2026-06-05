@@ -2,6 +2,7 @@ from collections.abc import Callable
 
 from ..game_context import GameContext
 from ..items import ItemDefId, ItemInstanceId
+from ..localisation import _
 
 
 class PotionActions:
@@ -41,15 +42,15 @@ class PotionActions:
 
         if not item_def.is_potion:
             if ctx.config.terse:
-                ctx.display.message("That's undrinkable.")
+                ctx.display.message(_("That's undrinkable."))
             else:
-                ctx.display.message("Yuk! Why would you want to drink that?")
+                ctx.display.message(_("Yuk! Why would you want to drink that?"))
             return self.redraw
 
         effect = self.effects.get(item.definition_id)
 
         if effect is None:
-            ctx.display.message("What an odd tasting potion!")
+            ctx.display.message(_("What an odd tasting potion!"))
             return self.redraw
 
         redraw = effect(item_id) | self.redraw
@@ -59,7 +60,7 @@ class PotionActions:
     # region Mundane Potions
 
     def potion_quench_thirst(self, item_id: ItemInstanceId) -> bool:
-        self.context.display.message("You feel your thirst fade away.", wait=self.redraw)
+        self.context.display.message(_("You feel your thirst fade away."), wait=self.redraw)
         return False
 
     # endregion
@@ -67,7 +68,7 @@ class PotionActions:
     # region Magic Potions
 
     def potion_extra_healing(self, item_id: ItemInstanceId) -> bool:
-        self.context.display.message("You begin to feel much better.", wait=self.redraw)
+        self.context.display.message(_("You begin to feel much better."), wait=self.redraw)
         # Later:
         # - heal by a larger amount
         # - possibly increase max HP by 1 if overhealed
@@ -75,13 +76,13 @@ class PotionActions:
         return False
 
     def potion_haste_self(self, item_id: ItemInstanceId) -> bool:
-        self.context.display.message("You feel yourself moving much faster.", wait=self.redraw)
+        self.context.display.message(_("You feel yourself moving much faster."), wait=self.redraw)
         # Later:
         # - add or extend haste status
         return False
 
     def potion_healing(self, item_id: ItemInstanceId) -> bool:
-        self.context.display.message("You begin to feel better.", wait=self.redraw)
+        self.context.display.message(_("You begin to feel better."), wait=self.redraw)
         # Later:
         # - heal by a smaller amount than extra healing
         # - possibly increase max HP by 1 if overhealed
@@ -89,7 +90,7 @@ class PotionActions:
         return False
 
     def potion_magic_detection(self, item_id: ItemInstanceId) -> bool:
-        self.context.display.message("You have a strange feeling for a moment, then it passes.", wait=self.redraw)
+        self.context.display.message(_("You have a strange feeling for a moment, then it passes."), wait=self.redraw)
         # Later:
         # If there are magic items on the level:
         # self.context.display.message("You sense the presence of magic on this level.", wait=self.redraw)
@@ -97,7 +98,7 @@ class PotionActions:
         return False
 
     def potion_monster_detection(self, item_id: ItemInstanceId) -> bool:
-        self.context.display.message("You have a strange feeling for a moment, then it passes.", wait=self.redraw)
+        self.context.display.message(_("You have a strange feeling for a moment, then it passes."), wait=self.redraw)
         # Later:
         # If there are monsters on the level:
         # self.context.display.message("You begin to sense the presence of monsters.", wait=self.redraw)
@@ -105,21 +106,21 @@ class PotionActions:
         return False
 
     def potion_raise_level(self, item_id: ItemInstanceId) -> bool:
-        self.context.display.message("You suddenly feel much more skillful.", wait=self.redraw)
+        self.context.display.message(_("You suddenly feel much more skilful."), wait=self.redraw)
         # Later:
         # - raise player level
         # - adjust HP, combat stats, etc.
         return False
 
     def potion_restore_strength(self, item_id: ItemInstanceId) -> bool:
-        self.context.display.message("Hey, this tastes great. It makes you feel warm all over.", wait=self.redraw)
+        self.context.display.message(_("Hey, this tastes great. It makes you feel warm all over."), wait=self.redraw)
         # Later:
         # - restore current strength to maximum strength
         return False
 
     def potion_see_invisible(self, item_id: ItemInstanceId) -> bool:
         fruit = self.context.config.fruit or "fruit"
-        self.context.display.message(f"This potion tastes like {fruit} juice.", wait=self.redraw)
+        self.context.display.message(_("This potion tastes like {fruit} juice.", fruit=fruit), wait=self.redraw)
         # Later:
         # - add temporary see-invisible status
         # - relight/reveal visible monsters
@@ -127,7 +128,7 @@ class PotionActions:
         return False
 
     def potion_strength(self, item_id: ItemInstanceId) -> bool:
-        self.context.display.message("You feel stronger, now. What bulging muscles!", wait=self.redraw)
+        self.context.display.message(_("You feel stronger, now. What bulging muscles!"), wait=self.redraw)
         # Later:
         # - increase strength by 1
         return False
@@ -137,7 +138,7 @@ class PotionActions:
     # region Cursed Potions
 
     def potion_blindness(self, item_id: ItemInstanceId) -> bool:
-        self.context.display.message("A cloak of darkness falls around you.", wait=self.redraw)
+        self.context.display.message(_("A cloak of darkness falls around you."), wait=self.redraw)
         # Later:
         # - add temporary blindness status
         # - redraw visible map accordingly
@@ -145,19 +146,19 @@ class PotionActions:
         return False
 
     def potion_confusion(self, item_id: ItemInstanceId) -> bool:
-        self.context.display.message("Wait, what's going on here. Huh? What? Who?", wait=self.redraw)
+        self.context.display.message(_("Wait, what's going on here. Huh? What? Who?"), wait=self.redraw)
         # Later:
         # - add or extend confusion status
         return False
 
     def potion_paralysis(self, item_id: ItemInstanceId) -> bool:
-        self.context.display.message("You can't move.", wait=self.redraw)
+        self.context.display.message(_("You can't move."), wait=self.redraw)
         # Later:
         # - prevent commands for HOLDTIME turns
         return False
 
     def potion_poison(self, item_id: ItemInstanceId) -> bool:
-        self.context.display.message("You feel very sick now.", wait=self.redraw)
+        self.context.display.message(_("You feel very sick now."), wait=self.redraw)
         # Later:
         # - reduce strength unless wearing sustain strength
         return False

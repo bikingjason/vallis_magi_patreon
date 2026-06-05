@@ -2,6 +2,7 @@ from collections.abc import Callable
 
 from ..game_context import GameContext
 from ..items import ItemDefId, ItemInstanceId
+from ..localisation import _
 
 
 class WandActions:
@@ -41,16 +42,16 @@ class WandActions:
         item_def = ctx.all_items.item_defs[item.definition_id]
 
         if not getattr(item_def, "is_wand", False):
-            ctx.display.message("You can't zap with that!")
+            ctx.display.message(_("You can't zap with that!"))
             return self.redraw
 
         if not self._has_charge(item_id):
-            ctx.display.message("Nothing happens.", wait=self.redraw)
+            ctx.display.message(_("Nothing happens."), wait=self.redraw)
             return self.redraw
 
         effect = self.effects.get(item.definition_id)
         if effect is None:
-            ctx.display.message("What a bizarre schtick!", wait=self.redraw)
+            ctx.display.message(_("What a bizarre schtick!"), wait=self.redraw)
             self._spend_charge(item_id)
             return self.redraw
 
@@ -83,7 +84,7 @@ class WandActions:
     # region Mundane Wands
 
     def wand_nothing(self, item_id: ItemInstanceId) -> bool:
-        self.context.display.message("What a bizarre schtick!", wait=self.redraw)
+        self.context.display.message(_("What a bizarre schtick!"), wait=self.redraw)
         return False
 
     # endregion
@@ -92,9 +93,9 @@ class WandActions:
 
     def wand_light(self, item_id: ItemInstanceId) -> bool:
         if self.context.config.terse:
-            self.context.display.message("The room is lit.", wait=self.redraw)
+            self.context.display.message(_("The room is lit."), wait=self.redraw)
         else:
-            self.context.display.message("The room is lit by a shimmering blue light.", wait=self.redraw)
+            self.context.display.message(_("The room is lit by a shimmering blue light."), wait=self.redraw)
         # Later:
         # - if the hero is in a corridor, show "The corridor glows and then fades"
         # - clear the room's dark flag
@@ -102,7 +103,7 @@ class WandActions:
         return True
 
     def wand_drain_life(self, item_id: ItemInstanceId) -> bool:
-        self.context.display.message("You have a tingling feeling.", wait=self.redraw)
+        self.context.display.message(_("You have a tingling feeling."), wait=self.redraw)
         # Later:
         # Original Rogue behaviour:
         # - if the player has fewer than 2 HP, show "You are too weak to use it."
@@ -117,7 +118,7 @@ class WandActions:
     # region Directional Monster-effect Wands
 
     def wand_cancellation(self, item_id: ItemInstanceId) -> bool:
-        self.context.display.message("The wand hums briefly, then the air goes still.", wait=self.redraw)
+        self.context.display.message(_("The wand hums briefly, then the air goes still."), wait=self.redraw)
         # Later:
         # - trace a ray in the chosen direction until it reaches a monster
         # - mark that monster as cancelled
@@ -125,7 +126,7 @@ class WandActions:
         return False
 
     def wand_polymorph(self, item_id: ItemInstanceId) -> bool:
-        self.context.display.message("The air shimmers and twists.", wait=self.redraw)
+        self.context.display.message(_("The air shimmers and twists."), wait=self.redraw)
         # Later:
         # - trace a ray in the chosen direction until it reaches a monster
         # - replace that monster with a random new monster type
@@ -134,7 +135,7 @@ class WandActions:
         return True
 
     def wand_slow_monster(self, item_id: ItemInstanceId) -> bool:
-        self.context.display.message("The wand releases a sluggish grey ray.", wait=self.redraw)
+        self.context.display.message(_("The wand releases a sluggish grey ray."), wait=self.redraw)
         # Later:
         # - trace a ray in the chosen direction until it reaches a monster
         # - if the monster is hasted, remove haste
@@ -143,7 +144,7 @@ class WandActions:
         return False
 
     def wand_haste_monster(self, item_id: ItemInstanceId) -> bool:
-        self.context.display.message("The wand releases a quicksilver ray.", wait=self.redraw)
+        self.context.display.message(_("The wand releases a quicksilver ray."), wait=self.redraw)
         # Later:
         # - trace a ray in the chosen direction until it reaches a monster
         # - if the monster is slowed, remove slow
@@ -152,7 +153,7 @@ class WandActions:
         return False
 
     def wand_teleport_away(self, item_id: ItemInstanceId) -> bool:
-        self.context.display.message("Space folds around the target.", wait=self.redraw)
+        self.context.display.message(_("Space folds around the target."), wait=self.redraw)
         # Later:
         # - trace a ray in the chosen direction until it reaches a monster
         # - move that monster to a random valid floor position in a random room
@@ -160,7 +161,7 @@ class WandActions:
         return True
 
     def wand_teleport_to(self, item_id: ItemInstanceId) -> bool:
-        self.context.display.message("Space folds back toward you.", wait=self.redraw)
+        self.context.display.message(_("Space folds back toward you."), wait=self.redraw)
         # Later:
         # - trace a ray in the chosen direction until it reaches a monster
         # - move that monster to the square adjacent to the player in the ray direction
@@ -173,9 +174,9 @@ class WandActions:
 
     def wand_magic_missile(self, item_id: ItemInstanceId) -> bool:
         if self.context.config.terse:
-            self.context.display.message("Missile vanishes.", wait=self.redraw)
+            self.context.display.message(_("Missile vanishes."), wait=self.redraw)
         else:
-            self.context.display.message("The missile vanishes with a puff of smoke.", wait=self.redraw)
+            self.context.display.message(_("The missile vanishes with a puff of smoke."), wait=self.redraw)
         # Later:
         # - ask for / use a direction
         # - animate a 1d4 missile along that path
@@ -183,7 +184,7 @@ class WandActions:
         return True
 
     def wand_striking(self, item_id: ItemInstanceId) -> bool:
-        self.context.display.message("The wand strikes with invisible force.", wait=self.redraw)
+        self.context.display.message(_("The wand strikes with invisible force."), wait=self.redraw)
         # Later:
         # - affect only the adjacent square in the chosen direction
         # - if a monster is there, fight it using the wand as the weapon
@@ -202,9 +203,9 @@ class WandActions:
 
     def _bolt_wand(self, name: str) -> bool:
         if self.context.config.terse:
-            self.context.display.message(f"The {name} flashes.", wait=self.redraw)
+            self.context.display.message(_("The {name} flashes.", name=name), wait=self.redraw)
         else:
-            self.context.display.message(f"The {name} shoots from the wand.", wait=self.redraw)
+            self.context.display.message(_("The {name} shoots from the wand.", name=name), wait=self.redraw)
         # Later:
         # Original Rogue behaviour for lightning/fire/cold:
         # - fire a 6d6 bolt/flame/ice in the chosen direction
