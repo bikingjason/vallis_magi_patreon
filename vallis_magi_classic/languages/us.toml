@@ -1,3 +1,10 @@
+# This file only contains translation strings for the US.
+# The en.toml file is loaded first, then these entries overwrite the English versions.
+
+[config]
+parent = "en"
+
+[common]
 "Not wearing armour." = "Not wearing armor."
 "You aren't wearing any armour." = "You aren't wearing any armor."
 "You can't wield armour." = "You can't wield armor."

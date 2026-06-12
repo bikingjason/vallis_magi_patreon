@@ -1,0 +1,5 @@
+# This file only contains translation strings for the United Kingdom, currently none but maybe if we need weights.
+# The en.toml file is loaded first, then these entries overwrite the English versions.
+
+[config]
+parent = "en"

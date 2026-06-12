@@ -8,7 +8,7 @@
 			//
 			"module": "vallis_magi_classic.main",
 			//
-			// "module": "tests.test_main",
+			// "module": "vallis_magi_classic.tests.support.localise_check",
 			//
 			"cwd": "${workspaceFolder}",
 			"console": "integratedTerminal",
@@ -16,6 +16,14 @@
 			"args": [
 				// "--scores",
 				// "--verify",
+				// "--source-root",
+				// "E:\\Projects\\Vallis Magi\\vallis_magi_patreon\\vallis_magi_classic\\languages",
+				// "--locales",
+				// "cn",
+				// "tw",
+				// "th",
+				// "fr",
+				// "de"
 			]
 		}
 	]

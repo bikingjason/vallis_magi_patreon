@@ -65,11 +65,7 @@ class WeaponActions:
             return redraw
 
         self.context.player.equipment.right_hand = item_id
-
-        if self.context.config.terse:
-            self.context.display.message(_("Wielding {name}", name=item_def.name))
-        else:
-            self.context.display.message(_("You are now wielding {name}", name=item_def.name))
+        self.context.display.message(_("You are now wielding {name}", name=item_def.name))
 
         return redraw
 

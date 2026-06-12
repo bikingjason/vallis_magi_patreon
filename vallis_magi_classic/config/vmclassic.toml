@@ -1,14 +1,21 @@
 [config]
 # Language Options
-# en = English: UK, AU, NZ.
-#      This is the English in the code, so there is no file for these languages.
+# English
+# en = English: Generic Metric English.
+# au = Australian English
 # ca = Canadian English
+# nz = New Zealand English
+# uk = UK English
 # us = American Englilsh
+# Asian
+# jp = Japanese
 # cn = Simplified Chinese (zh-CN)
-# tw = Traditional Chinese (zh-TW)
-# fr = French
-# de = German
 # th = Thai
+# tw = Traditional Chinese (zh-TW)
+# Euopean
+# de = German
+# fr = French
+# es = Spanish
 language = "au"
 terse = false
 flush = false

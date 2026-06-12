@@ -1,0 +1,5 @@
+# This file only contains translation strings for New Zealand, currently none and I cannot think of any right now.
+# The en.toml file is loaded first, then these entries overwrite the English versions.
+
+[config]
+parent = "au"

@@ -1,1 +1,8 @@
+# This file only contains translation strings for the US.
+# The en.toml file is loaded first, then these entries overwrite the English versions.
+
+[config]
+parent = "en"
+
+[common]
 "You suddenly feel much more skilful." = "You suddenly feel much more skillful."

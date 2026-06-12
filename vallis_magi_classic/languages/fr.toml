@@ -1,6 +1,10 @@
 # Apologies in advance since I cannot read French.
 # Apologies in regards to un, une, le, la, etc.
 
+[config]
+parent = ""
+
+[common]
 "\nConfig: {file_path} not found, using default config.\n" = "\nConfig : {file_path} introuvable, utilisation de la configuration par défaut.\n"
 "\nTop Ten Adventurers\n" = "\nDix meilleurs aventuriers\n"
 "--Press space to continue--" = "--Appuyez sur Espace pour continuer--"
@@ -28,8 +32,6 @@
 "Rank  Name                 Score       Level" = "Rang  Nom                  Score       Niveau"
 "Space folds around the target." = "L'espace se replie autour de la cible."
 "Space folds back toward you." = "L'espace se replie vers vous."
-"That's Inedible!" = "C'est immangeable !"
-"That's undrinkable." = "C'est imbuvable."
 "The air shimmers and twists." = "L'air scintille et se tord."
 "The missile vanishes with a puff of smoke." = "Le projectile disparaît dans un nuage de fumée."
 "The monsters around you freeze in place." = "Les monstres autour de vous se figent sur place."
@@ -47,7 +49,6 @@
 "This potion tastes like {fruit} juice." = "Cette potion a le goût de jus de {fruit}."
 "This scroll is an identify scroll." = "Ce parchemin est un parchemin d'identification."
 "This scroll seems to be blank." = "Ce parchemin semble être vierge."
-"Ugh, you would get ill if you ate that." = "Beurk, vous tomberiez malade si vous mangiez cela."
 "Unknown Potion" = "Potion inconnue"
 "Unknown Ring" = "Bague inconnue"
 "Unknown Scroll" = "Parchemin inconnu"
@@ -62,14 +63,12 @@
 "What a puzzling scroll!" = "Quel parchemin déroutant !"
 "What an odd tasting potion!" = "Quelle potion au goût étrange !"
 "Which object do you want to {purpose}? (* for list): " = "Quel objet voulez-vous {purpose} ? (* pour la liste) : "
-"Wielding {name}" = "Vous maniez {name}"
 "You already have a ring on each hand." = "Vous avez déjà une bague à chaque main."
 "You are already wearing some." = "Vous en portez déjà."
 "You are already wearing some. You'll have to take it off first." = "Vous en portez déjà. Vous devrez d'abord l'enlever."
 "You are already wearing that." = "Vous portez déjà cela."
 "You are empty handed." = "Vous avez les mains vides."
 "You are now wearing {name}." = "Vous portez maintenant {name}."
-"You are now wielding {name}" = "Vous maniez maintenant {name}"
 "You aren't carrying anything." = "Vous ne transportez rien."
 "You aren't wearing any armour." = "Vous ne portez aucune armure."
 "You aren't wearing any rings." = "Vous ne portez aucune bague."
@@ -128,7 +127,6 @@
 "Your weapon hand feels more forceful." = "Votre main armée semble plus puissante."
 "Your {name} vanishes as it hits the ground." = "Votre {name} disparaît en touchant le sol."
 "Your {weapon_name} glows blue for a moment." = "Votre {weapon_name} luit en bleu pendant un moment."
-"Yuk! Why would you want to drink that?" = "Beurk ! Pourquoi voudriez-vous boire cela ?"
 "Yuk, this food tastes awful." = "Beurk, cette nourriture a un goût affreux."
 "Yum, that tasted good." = "Miam, c'était bon."
 "{purpose} what? (* for list): " = "{purpose} quoi ? (* pour la liste) : "
@@ -155,3 +153,13 @@
 "Save game" = "Sauvegarder la partie"
 "Quit game" = "Quitter la partie"
 "Zap a wand or staff" = "Utiliser une baguette ou un bâton"
+
+[terse]
+"You are now wielding {name}" = "Vous maniez {name}"
+"Yuk! Why would you want to drink that?" = "C'est imbuvable."
+"Ugh, you would get ill if you ate that." = "C'est immangeable !"
+
+[long]
+"You are now wielding {name}" = "Vous maniez maintenant {name}"
+"Yuk! Why would you want to drink that?" = "Beurk ! Pourquoi voudriez-vous boire cela ?"
+"Ugh, you would get ill if you ate that." = "Beurk, vous tomberiez malade si vous mangiez cela."

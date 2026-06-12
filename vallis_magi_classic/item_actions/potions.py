@@ -41,10 +41,7 @@ class PotionActions:
         item_def = ctx.all_items.item_defs[item.definition_id]
 
         if not item_def.is_potion:
-            if ctx.config.terse:
-                ctx.display.message(_("That's undrinkable."))
-            else:
-                ctx.display.message(_("Yuk! Why would you want to drink that?"))
+            ctx.display.message(_("Yuk! Why would you want to drink that?"))
             return self.redraw
 
         effect = self.effects.get(item.definition_id)

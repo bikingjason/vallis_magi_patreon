@@ -1,5 +1,10 @@
+# Simplified Chinese translations.
 # Apologies in advance since I cannot read Chinese Simplified (or Traditional).
 
+[config]
+parent = ""
+
+[common]
 "\nConfig: {file_path} not found, using default config.\n" = "\n找不到配置文件：{file_path}，使用默认配置。\n"
 "\nTop Ten Adventurers\n" = "\n十大冒险者\n"
 "--Press space to continue--" = "--按空格键继续--"
@@ -27,8 +32,6 @@
 "Rank  Name                 Score       Level" = "排名  名称                 分数        层级"
 "Space folds around the target." = "空间在目标周围折叠。"
 "Space folds back toward you." = "空间朝你折叠回来。"
-"That's Inedible!" = "那不能吃！"
-"That's undrinkable." = "那不能喝。"
 "The air shimmers and twists." = "空气闪烁并扭曲。"
 "The missile vanishes with a puff of smoke." = "飞弹伴随一缕烟雾消失了。"
 "The monsters around you freeze in place." = "你周围的怪物都僵在原地。"
@@ -46,7 +49,6 @@
 "This potion tastes like {fruit} juice." = "这瓶药水喝起来像{fruit}汁。"
 "This scroll is an identify scroll." = "这张卷轴是鉴定卷轴。"
 "This scroll seems to be blank." = "这张卷轴似乎是空白的。"
-"Ugh, you would get ill if you ate that." = "呃，你要是吃了那个会生病的。"
 "Unknown Potion" = "未知药水"
 "Unknown Ring" = "未知戒指"
 "Unknown Scroll" = "未知卷轴"
@@ -61,14 +63,12 @@
 "What a puzzling scroll!" = "真是一张令人困惑的卷轴！"
 "What an odd tasting potion!" = "这药水味道真古怪！"
 "Which object do you want to {purpose}? (* for list): " = "你想对哪个物品执行“{purpose}”？（* 显示列表）："
-"Wielding {name}" = "你正挥舞着{name}"
 "You already have a ring on each hand." = "你每只手上都已经有一枚戒指了。"
 "You are already wearing some." = "你已经穿戴了一些。"
 "You are already wearing some. You'll have to take it off first." = "你已经穿戴了一些。你必须先把它脱下。"
 "You are already wearing that." = "你已经穿戴着那个了。"
 "You are empty handed." = "你空着手。"
 "You are now wearing {name}." = "你现在穿戴着{name}。"
-"You are now wielding {name}" = "你现在挥舞着{name}"
 "You aren't carrying anything." = "你没有携带任何东西。"
 "You aren't wearing any armour." = "你没有穿戴任何盔甲。"
 "You aren't wearing any rings." = "你没有戴任何戒指。"
@@ -127,7 +127,6 @@
 "Your weapon hand feels more forceful." = "你持武器的手感觉更有力量了。"
 "Your {name} vanishes as it hits the ground." = "你的{name}在碰到地面时消失了。"
 "Your {weapon_name} glows blue for a moment." = "你的{weapon_name}短暂地发出蓝光。"
-"Yuk! Why would you want to drink that?" = "噁！你为什么会想喝那个？"
 "Yuk, this food tastes awful." = "噁，这食物味道糟透了。"
 "Yum, that tasted good." = "嗯，味道不错。"
 "{purpose} what? (* for list): " = "要对什么执行“{purpose}”？（* 显示列表）："
@@ -154,3 +153,13 @@
 "Save game" = "保存游戏"
 "Quit game" = "退出游戏"
 "Zap a wand or staff" = "使用魔杖或法杖"
+
+[terse]
+"You are now wielding {name}" = "你正挥舞着{name}"
+"Yuk! Why would you want to drink that?" = "那不能喝。"
+"Ugh, you would get ill if you ate that." = "那不能吃！"
+
+[long]
+"You are now wielding {name}" = "你现在挥舞着{name}"
+"Yuk! Why would you want to drink that?" = "噁！你为什么会想喝那个？"
+"Ugh, you would get ill if you ate that." = "呃，你要是吃了那个会生病的。"

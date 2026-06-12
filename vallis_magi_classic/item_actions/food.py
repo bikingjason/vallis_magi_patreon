@@ -26,10 +26,7 @@ class FoodActions:
         item_def = self.context.all_items.item_defs[item.definition_id]
 
         if not item_def.is_food:
-            if self.context.config.terse:
-                self.context.display.message(_("That's Inedible!"))
-            else:
-                self.context.display.message(_("Ugh, you would get ill if you ate that."))
+            self.context.display.message(_("Ugh, you would get ill if you ate that."))
             return redraw
 
         if randint(0, 99) > 70:

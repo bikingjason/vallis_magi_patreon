@@ -1,6 +1,10 @@
 # Apologies in advance since I cannot read German.
 # Apologies in regards to ein, eine, dein, deine, dein, etc.
 
+[config]
+parent = ""
+
+[common]
 "\nConfig: {file_path} not found, using default config.\n" = "\nKonfiguration: {file_path} nicht gefunden, Standardkonfiguration wird verwendet.\n"
 "\nTop Ten Adventurers\n" = "\nDie zehn besten Abenteurer\n"
 "--Press space to continue--" = "--Leertaste drücken, um fortzufahren--"
@@ -28,8 +32,6 @@
 "Rank  Name                 Score       Level" = "Rang  Name                 Punkte      Stufe"
 "Space folds around the target." = "Der Raum faltet sich um das Ziel."
 "Space folds back toward you." = "Der Raum faltet sich zu dir zurück."
-"That's Inedible!" = "Das ist ungenießbar!"
-"That's undrinkable." = "Das ist untrinkbar."
 "The air shimmers and twists." = "Die Luft schimmert und verzieht sich."
 "The missile vanishes with a puff of smoke." = "Das Geschoss verschwindet in einer Rauchwolke."
 "The monsters around you freeze in place." = "Die Monster um dich herum erstarren an Ort und Stelle."
@@ -47,7 +49,6 @@
 "This potion tastes like {fruit} juice." = "Dieser Trank schmeckt wie {fruit}saft."
 "This scroll is an identify scroll." = "Diese Schriftrolle ist eine Identifikationsschriftrolle."
 "This scroll seems to be blank." = "Diese Schriftrolle scheint leer zu sein."
-"Ugh, you would get ill if you ate that." = "Igitt, davon würdest du krank werden, wenn du es äßest."
 "Unknown Potion" = "Unbekannter Trank"
 "Unknown Ring" = "Unbekannter Ring"
 "Unknown Scroll" = "Unbekannte Schriftrolle"
@@ -62,14 +63,12 @@
 "What a puzzling scroll!" = "Was für eine rätselhafte Schriftrolle!"
 "What an odd tasting potion!" = "Was für ein seltsam schmeckender Trank!"
 "Which object do you want to {purpose}? (* for list): " = "Welchen Gegenstand möchtest du {purpose}? (* für Liste): "
-"Wielding {name}" = "Du führst {name}"
 "You already have a ring on each hand." = "Du hast bereits an jeder Hand einen Ring."
 "You are already wearing some." = "Du trägst bereits etwas davon."
 "You are already wearing some. You'll have to take it off first." = "Du trägst bereits etwas davon. Du musst es zuerst ablegen."
 "You are already wearing that." = "Du trägst das bereits."
 "You are empty handed." = "Du hast die Hände leer."
 "You are now wearing {name}." = "Du trägst jetzt {name}."
-"You are now wielding {name}" = "Du führst jetzt {name}"
 "You aren't carrying anything." = "Du trägst nichts bei dir."
 "You aren't wearing any armour." = "Du trägst keine Rüstung."
 "You aren't wearing any rings." = "Du trägst keine Ringe."
@@ -128,7 +127,6 @@
 "Your weapon hand feels more forceful." = "Deine Waffenhand fühlt sich kraftvoller an."
 "Your {name} vanishes as it hits the ground." = "Dein/deine {name} verschwindet, als es den Boden berührt."
 "Your {weapon_name} glows blue for a moment." = "Dein/deine {weapon_name} leuchtet einen Moment lang blau."
-"Yuk! Why would you want to drink that?" = "Igitt! Warum solltest du das trinken wollen?"
 "Yuk, this food tastes awful." = "Igitt, dieses Essen schmeckt furchtbar."
 "Yum, that tasted good." = "Mmh, das hat gut geschmeckt."
 "{purpose} what? (* for list): " = "Was möchtest du {purpose}? (* für Liste): "
@@ -155,3 +153,13 @@
 "Save game" = "Spiel speichern"
 "Quit game" = "Spiel beenden"
 "Zap a wand or staff" = "Einen Zauberstab oder Stab einsetzen"
+
+[terse]
+"You are now wielding {name}" = "Du führst {name}"
+"Yuk! Why would you want to drink that?" = "Das ist untrinkbar."
+"Ugh, you would get ill if you ate that." = "Das ist ungenießbar!"
+
+[long]
+"You are now wielding {name}" = "Du führst jetzt {name}"
+"Yuk! Why would you want to drink that?" = "Igitt! Warum solltest du das trinken wollen?"
+"Ugh, you would get ill if you ate that." = "Igitt, davon würdest du krank werden, wenn du es äßest."

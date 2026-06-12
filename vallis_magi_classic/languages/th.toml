@@ -1,5 +1,10 @@
+# Thai translations.
 # Apologies in advance since I cannot read Thai.
 
+[config]
+parent = ""
+
+[common]
 "\nConfig: {file_path} not found, using default config.\n" = "\nไม่พบไฟล์ตั้งค่า: {file_path} กำลังใช้การตั้งค่าเริ่มต้น\n"
 "\nTop Ten Adventurers\n" = "\nสิบนักผจญภัยอันดับสูงสุด\n"
 "--Press space to continue--" = "--กด Space เพื่อดำเนินการต่อ--"
@@ -27,8 +32,6 @@
 "Rank  Name                 Score       Level" = "อันดับ ชื่อ                 คะแนน      ชั้น"
 "Space folds around the target." = "อวกาศพับตัวรอบเป้าหมาย"
 "Space folds back toward you." = "อวกาศพับตัวกลับมาหาคุณ"
-"That's Inedible!" = "นั่นกินไม่ได้!"
-"That's undrinkable." = "นั่นดื่มไม่ได้"
 "The air shimmers and twists." = "อากาศระยิบระยับและบิดเบี้ยว"
 "The missile vanishes with a puff of smoke." = "กระสุนเวทหายไปพร้อมกลุ่มควัน"
 "The monsters around you freeze in place." = "เหล่ามอนสเตอร์รอบตัวคุณหยุดนิ่งอยู่กับที่"
@@ -46,7 +49,6 @@
 "This potion tastes like {fruit} juice." = "ยานี้รสชาติเหมือนน้ำ{fruit}"
 "This scroll is an identify scroll." = "ม้วนคัมภีร์นี้เป็นคัมภีร์ระบุสิ่งของ"
 "This scroll seems to be blank." = "ม้วนคัมภีร์นี้ดูเหมือนจะว่างเปล่า"
-"Ugh, you would get ill if you ate that." = "อึ๋ย คุณคงป่วยแน่ถ้ากินสิ่งนั้น"
 "Unknown Potion" = "ยาที่ไม่รู้จัก"
 "Unknown Ring" = "แหวนที่ไม่รู้จัก"
 "Unknown Scroll" = "ม้วนคัมภีร์ที่ไม่รู้จัก"
@@ -61,14 +63,12 @@
 "What a puzzling scroll!" = "ช่างเป็นม้วนคัมภีร์ที่น่าฉงนจริง ๆ!"
 "What an odd tasting potion!" = "ช่างเป็นยาที่รสชาติแปลกจริง ๆ!"
 "Which object do you want to {purpose}? (* for list): " = "คุณต้องการ{purpose}สิ่งของใด? (* เพื่อดูรายการ): "
-"Wielding {name}" = "คุณถือ {name} เป็นอาวุธ"
 "You already have a ring on each hand." = "คุณมีแหวนอยู่ที่มือแต่ละข้างแล้ว"
 "You are already wearing some." = "คุณสวมบางอย่างอยู่แล้ว"
 "You are already wearing some. You'll have to take it off first." = "คุณสวมบางอย่างอยู่แล้ว คุณต้องถอดมันออกก่อน"
 "You are already wearing that." = "คุณสวมสิ่งนั้นอยู่แล้ว"
 "You are empty handed." = "คุณมือเปล่า"
 "You are now wearing {name}." = "ตอนนี้คุณสวม {name} แล้ว"
-"You are now wielding {name}" = "ตอนนี้คุณถือ {name} เป็นอาวุธแล้ว"
 "You aren't carrying anything." = "คุณไม่ได้ถืออะไรอยู่เลย"
 "You aren't wearing any armour." = "คุณไม่ได้สวมเกราะใด ๆ"
 "You aren't wearing any rings." = "คุณไม่ได้สวมแหวนใด ๆ"
@@ -127,7 +127,6 @@
 "Your weapon hand feels more forceful." = "มือที่ถืออาวุธของคุณรู้สึกมีพลังมากขึ้น"
 "Your {name} vanishes as it hits the ground." = "{name} ของคุณหายไปเมื่อกระทบพื้น"
 "Your {weapon_name} glows blue for a moment." = "{weapon_name} ของคุณเรืองแสงสีน้ำเงินชั่วครู่"
-"Yuk! Why would you want to drink that?" = "อี๋! ทำไมคุณถึงอยากดื่มสิ่งนั้น?"
 "Yuk, this food tastes awful." = "อี๋ อาหารนี้รสชาติแย่มาก"
 "Yum, that tasted good." = "อร่อย รสชาติดีมาก"
 "{purpose} what? (* for list): " = "{purpose}อะไร? (* เพื่อดูรายการ): "
@@ -154,3 +153,13 @@
 "Save game" = "บันทึกเกม"
 "Quit game" = "ออกจากเกม"
 "Zap a wand or staff" = "ใช้ไม้กายสิทธิ์หรือไม้เท้า"
+
+[terse]
+"You are now wielding {name}" = "คุณถือ {name} เป็นอาวุธ"
+"Yuk! Why would you want to drink that?" = "นั่นดื่มไม่ได้"
+"Ugh, you would get ill if you ate that." = "นั่นกินไม่ได้!"
+
+[long]
+"You are now wielding {name}" = "ตอนนี้คุณถือ {name} เป็นอาวุธแล้ว"
+"Yuk! Why would you want to drink that?" = "อี๋! ทำไมคุณถึงอยากดื่มสิ่งนั้น?"
+"Ugh, you would get ill if you ate that." = "อึ๋ย คุณคงป่วยแน่ถ้ากินสิ่งนั้น"
