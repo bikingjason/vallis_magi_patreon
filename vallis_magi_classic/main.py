@@ -25,7 +25,7 @@ def main() -> None:
     config_manager = ConfigManager(working_dir, CONFIG_DIR, CONFIG_FILE)
     config = config_manager.load_configuration()
 
-    initialise_localisation(working_dir, LANGUAGES_DIR, config.language)
+    initialise_localisation(config.terse, working_dir, LANGUAGES_DIR, config.language)
 
     # Load the high scores, and optionally display them and exit.
     high_scores_manager = HighScoresManager(working_dir, CONFIG_DIR, HIGHSCORES_FILE, config.max_scores)

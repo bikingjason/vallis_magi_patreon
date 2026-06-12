@@ -5,6 +5,7 @@ from pathlib import Path
 class Localisation:
     def __init__(
         self,
+        verbosity: str,
         working_dir: Path,
         languages_dir: str,
         language: str,
@@ -15,12 +16,12 @@ class Localisation:
         self.language = language
         self.default_language = default_language
 
-        default_messages = self._load_language(default_language)
+        default_messages = self._load_language(verbosity, default_language)
 
         if self.language == default_language:
             configured_messages: dict[str, str] = {}
         else:
-            configured_messages = self._load_language(self.language)
+            configured_messages = self._load_language(verbosity, self.language)
 
         # English first, configured language second.
         # Configured language entries override English entries.
@@ -29,8 +30,12 @@ class Localisation:
             **configured_messages,
         }
 
-    def _load_language(self, language: str) -> dict[str, str]:
-        path = self.languages_dir / f"{language}.toml"
+    def _load_language(self, verbosity: str, locale_language: str) -> dict[str, str]:
+
+        if verbosity not in {"terse", "long"}:
+            raise ValueError(f"Unknown translation verbosity: {verbosity!r}")
+
+        path = self.languages_dir / f"{locale_language}.toml"
 
         if not path.exists():
             return {}
@@ -38,9 +43,21 @@ class Localisation:
         with path.open("rb") as f:
             data = tomllib.load(f)
 
+        common = data.get("common", {})
+        selected = data.get(verbosity, {})
+
+        if not isinstance(common, dict):
+            raise TypeError(f"{path} [common] section is not a table")
+
+        if not isinstance(selected, dict):
+            raise TypeError(f"{path} [{verbosity}] section is not a table")
+
+        # selected overrides common if a key appears in both
+        translations = common | selected
+
         messages: dict[str, str] = {}
 
-        for key, value in data.items():
+        for key, value in translations.items():
             if isinstance(value, str):
                 messages[key] = value
             else:
@@ -64,6 +81,7 @@ _localisation: Localisation | None = None
 
 
 def initialise_localisation(
+    terse: bool,
     working_dir: Path,
     languages_dir: str,
     language: str,
@@ -71,7 +89,12 @@ def initialise_localisation(
 ) -> None:
     global _localisation
 
-    _localisation = Localisation(working_dir, languages_dir, language, default_language)
+    if terse:
+        verbosity = "terse"
+    else:
+        verbosity = "long"
+
+    _localisation = Localisation(verbosity, working_dir, languages_dir, language, default_language)
 
 
 def _(original: str, **kwargs: object) -> str:
