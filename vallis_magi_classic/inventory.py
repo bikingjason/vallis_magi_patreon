@@ -145,10 +145,7 @@ class InventoryService:
             lines.append(f"{letter}) {self.inventory_name(item, item_def)}")
 
         if not lines:
-            if self.config.terse:
-                self.display.message(_("Empty handed.") if item_type is None else _("Nothing appropriate."))
-            else:
-                self.display.message(_("You are empty handed.") if item_type is None else _("You don't have anything appropriate."))
+            self.display.message(_("You are empty handed.") if item_type is None else _("You don't have anything appropriate."))
             return False, False
 
         if len(lines) == 1:
@@ -196,11 +193,7 @@ class InventoryService:
             return None, redraw
 
         while True:
-            if not self.config.terse:
-                prompt = _("Which object do you want to {purpose}? (* for list): ", purpose=purpose)
-            else:
-                prompt = _("{purpose} what? (* for list): ", purpose=purpose)
-
+            prompt = _("{purpose} what? (* for list): ", purpose=purpose)
             self.display.message(prompt)
 
             ch = self.display.getch()

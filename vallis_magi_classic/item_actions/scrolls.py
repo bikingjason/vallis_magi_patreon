@@ -41,10 +41,7 @@ class ScrollActions:
         item_def = ctx.all_items.item_defs[item.definition_id]
 
         if not item_def.is_scroll:
-            if ctx.config.terse:
-                ctx.display.message(_("Nothing to read."))
-            else:
-                ctx.display.message(_("There is nothing on it to read."))
+            ctx.display.message(_("There is nothing on it to read."))
             return self.redraw
 
         ctx.display.message(_("As you read the scroll, it vanishes."), wait=self.redraw)
@@ -117,10 +114,7 @@ class ScrollActions:
         return False
 
     def scroll_light(self, item_id: ItemInstanceId) -> bool:
-        if self.context.config.terse:
-            self.context.display.message(_("The room is lit."), wait=self.redraw)
-        else:
-            self.context.display.message(_("The room is lit by a shimmering blue light."), wait=self.redraw)
+        self.context.display.message(_("The room is lit by a shimmering blue light."), wait=self.redraw)
         # TODO will require a screen redraw
         return False
 

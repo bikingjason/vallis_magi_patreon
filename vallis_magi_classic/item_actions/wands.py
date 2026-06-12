@@ -92,10 +92,7 @@ class WandActions:
     # region Area / Room-effect Wands
 
     def wand_light(self, item_id: ItemInstanceId) -> bool:
-        if self.context.config.terse:
-            self.context.display.message(_("The room is lit."), wait=self.redraw)
-        else:
-            self.context.display.message(_("The room is lit by a shimmering blue light."), wait=self.redraw)
+        self.context.display.message(_("The room is lit by a shimmering blue light."), wait=self.redraw)
         # Later:
         # - if the hero is in a corridor, show "The corridor glows and then fades"
         # - clear the room's dark flag
@@ -173,10 +170,7 @@ class WandActions:
     # region Directional Damage Wands
 
     def wand_magic_missile(self, item_id: ItemInstanceId) -> bool:
-        if self.context.config.terse:
-            self.context.display.message(_("Missile vanishes."), wait=self.redraw)
-        else:
-            self.context.display.message(_("The missile vanishes with a puff of smoke."), wait=self.redraw)
+        self.context.display.message(_("The missile vanishes with a puff of smoke."), wait=self.redraw)
         # Later:
         # - ask for / use a direction
         # - animate a 1d4 missile along that path
@@ -202,10 +196,7 @@ class WandActions:
         return self._bolt_wand("ice")
 
     def _bolt_wand(self, name: str) -> bool:
-        if self.context.config.terse:
-            self.context.display.message(_("The {name} flashes.", name=name), wait=self.redraw)
-        else:
-            self.context.display.message(_("The {name} shoots from the wand.", name=name), wait=self.redraw)
+        self.context.display.message(_("The {name} shoots from the wand.", name=name), wait=self.redraw)
         # Later:
         # Original Rogue behaviour for lightning/fire/cold:
         # - fire a 6d6 bolt/flame/ice in the chosen direction

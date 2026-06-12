@@ -13,10 +13,7 @@ class ArmourActions:
         Wearing armour consumes time and identifies the armour.
         """
         if self.context.player.equipment.body is not None:
-            if self.context.config.terse:
-                self.context.display.message(_("You are already wearing some."))
-            else:
-                self.context.display.message(_("You are already wearing some. You'll have to take it off first."))
+            self.context.display.message(_("You are already wearing some. You'll have to take it off first."))
 
             # Original Rogue sets after = FALSE here.
             return False
@@ -38,10 +35,7 @@ class ArmourActions:
         self.context.player.equipment.body = item_id
         # item.known = True
 
-        if self.context.config.terse:
-            self.context.display.message(_("Wearing {name}.", name=item_def.name), wait=redraw)
-        else:
-            self.context.display.message(_("You are now wearing {name}.", name=item_def.name), wait=redraw)
+        self.context.display.message(_("You are now wearing {name}.", name=item_def.name), wait=redraw)
 
         return redraw
 
@@ -54,10 +48,7 @@ class ArmourActions:
         item_id = self.context.player.equipment.body
 
         if item_id is None:
-            if self.context.config.terse:
-                self.context.display.message(_("Not wearing armour."))
-            else:
-                self.context.display.message(_("You aren't wearing any armour."))
+            self.context.display.message(_("You aren't wearing any armour."))
             return False
 
         if not self.dropcheck(item_id):
@@ -68,10 +59,7 @@ class ArmourActions:
         item = self.context.all_items.items[item_id]
         item_def = self.context.all_items.item_defs[item.definition_id]
 
-        if self.context.config.terse:
-            self.context.display.message(_("Was wearing {name}.", anme=item_def.name))
-        else:
-            self.context.display.message(_("You used to be wearing {name}.", name=item_def.name))
+        self.context.display.message(_("You used to be wearing {name}.", name=item_def.name))
 
         return False
 

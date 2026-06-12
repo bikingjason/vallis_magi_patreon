@@ -66,10 +66,7 @@ class RingActions:
         item_def = ctx.all_items.item_defs[item.definition_id]
 
         if not item_def.is_ring:
-            if ctx.config.terse:
-                ctx.display.message(_("Not a ring."), wait=self.redraw)
-            else:
-                ctx.display.message(_("It would be difficult to wrap that around a finger."), wait=self.redraw)
+            ctx.display.message(_("It would be difficult to wrap that around a finger."), wait=self.redraw)
             return self.redraw
 
         if self.is_wearing_ring(item_id):
@@ -102,10 +99,7 @@ class RingActions:
         player = ctx.player
 
         if player.equipment.left_finger is None and player.equipment.right_finger is None:
-            if ctx.config.terse:
-                ctx.display.message(_("No rings."), wait=self.redraw)
-            else:
-                ctx.display.message(_("You aren't wearing any rings."), wait=self.redraw)
+            ctx.display.message(_("You aren't wearing any rings."), wait=self.redraw)
             return False
 
         hand = self.choose_ring_hand_for_remove()
@@ -160,10 +154,7 @@ class RingActions:
         if right_empty:
             return RIGHT_HAND
 
-        if self.context.config.terse:
-            self.context.display.message(_("Wearing two."), wait=self.redraw)
-        else:
-            self.context.display.message(_("You already have a ring on each hand."), wait=self.redraw)
+        self.context.display.message(_("You already have a ring on each hand."), wait=self.redraw)
 
         return None
 
@@ -174,10 +165,7 @@ class RingActions:
         right_empty = player.equipment.right_finger is None
 
         if left_empty and right_empty:
-            if self.context.config.terse:
-                self.context.display.message(_("No rings."), wait=self.redraw)
-            else:
-                self.context.display.message(_("You aren't wearing any rings."), wait=self.redraw)
+            self.context.display.message(_("You aren't wearing any rings."), wait=self.redraw)
             return None
 
         if left_empty:
@@ -192,11 +180,7 @@ class RingActions:
         ctx = self.context
 
         while True:
-            if ctx.config.terse:
-                ctx.display.message(_("Left or Right ring? "))
-            else:
-                ctx.display.message(_("Left hand or right hand? "))
-
+            ctx.display.message(_("Left hand or right hand? "))
             ch = ctx.display.getch()
             ctx.display.message("")
 
@@ -210,10 +194,7 @@ class RingActions:
                 ctx.display.message("")
                 return None
 
-            if ctx.config.terse:
-                ctx.display.message(_("L or R."), wait=self.redraw)
-            else:
-                ctx.display.message(_("Please type L or R."), wait=self.redraw)
+            ctx.display.message(_("Please type L or R."), wait=self.redraw)
 
     def is_wearing_ring(self, item_id: ItemInstanceId) -> bool:
         player = self.context.player
