@@ -21,7 +21,7 @@ def main() -> None:
 
     args = parser.parse_args()
 
-    run_localise_check(args.locales)
+    run_localise_check(args.source_root, args.locales)
 
 
 if __name__ == "__main__":

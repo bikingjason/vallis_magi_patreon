@@ -160,7 +160,8 @@ def run_localise_check(source_root: Path, locales: list[str]) -> bool:
 
     all_ok = True
 
-    for locale_path in locales:
+    for locale_name in locales:
+        locale_path = source_root / "languages" / locale_name
         all_ok = check_locale(source_strings, locale_path) and all_ok
 
     if all_ok:
