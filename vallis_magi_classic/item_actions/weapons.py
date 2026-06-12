@@ -3,7 +3,7 @@ from random import randrange
 
 from ..game_context import GameContext
 from ..items import ItemInstanceId
-from ..localisation import _
+from ..tools.localisation import _
 
 NO_LAUNCHER = None
 

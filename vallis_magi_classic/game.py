@@ -14,10 +14,10 @@ from .item_actions.scrolls import ScrollActions
 from .item_actions.wands import WandActions
 from .item_actions.weapons import WeaponActions
 from .items import AllItems, ItemInstanceId
-from .localisation import _
 from .player import Player
 from .protocols.display_protocol import DisplayProtocol
 from .protocols.game_protocol import GameProtocol
+from .tools.localisation import _
 
 DIRECTIONS: dict[str, Direction] = {
     "h": (-1, 0),

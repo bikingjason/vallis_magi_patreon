@@ -1,8 +1,8 @@
 from .config import AppConfig
 from .items import AllItems, ItemDefinition, ItemInstance, ItemInstanceId
-from .localisation import _
 from .player import Player
 from .protocols.display_protocol import DisplayProtocol
+from .tools.localisation import _
 
 
 class InventoryService:
@@ -193,7 +193,7 @@ class InventoryService:
             return None, redraw
 
         while True:
-            prompt = _("{purpose} what? (* for list): ", purpose=purpose)
+            prompt = _("Which object do you want to {purpose}? (* for list): ", purpose=purpose)
             self.display.message(prompt)
 
             ch = self.display.getch()
@@ -203,7 +203,7 @@ class InventoryService:
             if not ch or (ch in ("\x1b", "\x07")):  # ESCAPE or Ctrl-G
                 self.after = False
                 self.display.message("")
-                return None, redraw
+                return None, True
 
             if ch == "*":
                 # TODO - Implement item_type filtering. Do I need both? Probably...

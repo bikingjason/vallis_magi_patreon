@@ -2,7 +2,7 @@ from collections.abc import Callable
 
 from ..game_context import GameContext
 from ..items import ItemDefId, ItemInstanceId
-from ..localisation import _
+from ..tools.localisation import _
 
 
 class ScrollActions:

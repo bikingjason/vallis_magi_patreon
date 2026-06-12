@@ -4,7 +4,7 @@ from pathlib import Path
 
 import tomli_w
 
-from .localisation import _
+from .tools.localisation import _
 
 
 @dataclass

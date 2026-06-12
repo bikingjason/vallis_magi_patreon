@@ -3,7 +3,7 @@ import tomllib
 from dataclasses import asdict, dataclass, field, fields
 from pathlib import Path
 
-from .localisation import _
+from .tools.localisation import _
 
 
 @dataclass

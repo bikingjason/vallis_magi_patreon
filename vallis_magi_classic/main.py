@@ -5,8 +5,8 @@ from .display_curses import DisplayCurses
 from .game import Game
 from .high_scores import HighScoresManager
 from .items import AllItems, ItemManager
-from .localisation import initialise_localisation
 from .player import Player
+from .tools.localisation import initialise_localisation
 
 CONFIG_DIR: str = "config"
 CONFIG_FILE: str = "vmclassic.toml"

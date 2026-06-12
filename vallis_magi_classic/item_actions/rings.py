@@ -3,7 +3,7 @@ from collections.abc import Callable
 from ..game_context import GameContext
 from ..game_types import ESCAPE
 from ..items import ItemDefId, ItemInstanceId
-from ..localisation import _
+from ..tools.localisation import _
 
 LEFT_HAND = "left"
 RIGHT_HAND = "right"

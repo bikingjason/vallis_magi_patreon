@@ -1,6 +1,6 @@
 from ..game_context import GameContext
 from ..items import ItemInstanceId
-from ..localisation import _
+from ..tools.localisation import _
 
 
 class ArmourActions:
