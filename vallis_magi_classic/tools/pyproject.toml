@@ -1,0 +1,7 @@
+[project]
+name = "tools"
+version = "0.1.0"
+description = "Common tools used in VM Classic that may be useable in other applications later."
+readme = "README.md"
+requires-python = ">=3.14"
+dependencies = []

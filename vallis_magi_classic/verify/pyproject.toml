@@ -1,0 +1,7 @@
+[project]
+name = "verify"
+version = "0.1.0"
+description = "Verification and reporting tools used to check that the state of VM is consistent."
+readme = "README.md"
+requires-python = ">=3.14"
+dependencies = []
