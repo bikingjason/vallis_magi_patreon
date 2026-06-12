@@ -1,6 +1,7 @@
 import curses
 
 from .game_types import CTRL_C, CTRL_R, ESCAPE
+from .localisation import _
 from .protocols.display_protocol import DisplayProtocol
 from .protocols.game_protocol import GameProtocol
 
@@ -138,7 +139,8 @@ class DisplayCurses(DisplayProtocol):
 
         screen = self.screen
         if wait:
-            screen.addstr(self.message_line, 0, f"{text} <continue>"[: self.max_x - 1])
+            continue_str = _("continue")
+            screen.addstr(self.message_line, 0, f"{text} <{continue_str}>"[: self.max_x - 1])
         else:
             screen.addstr(self.message_line, 0, text[: self.max_x - 1])
         screen.refresh()

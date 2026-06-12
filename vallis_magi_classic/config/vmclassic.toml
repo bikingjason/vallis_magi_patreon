@@ -16,7 +16,7 @@
 # de = German
 # fr = French
 # es = Spanish
-language = "au"
+language = "cn"
 terse = false
 flush = false
 jump = true
@@ -27,7 +27,6 @@ max_scores = 20
 name = "JasonA"
 fruit = ""
 file = "vmclassic.toml"
-version = "Vallis Magi Classic version 0.1"
 
 [data_files]
 armour = "armour.toml"

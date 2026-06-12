@@ -43,8 +43,7 @@ RUN_DIRECTIONS: dict[str, Direction] = {
 }
 
 
-GAME_TITLE = "Vallis Magi - curses prototype version 0.1"
-GAME_HELP = "Press ? for help."
+VERSION = "0.1"
 
 MAZE_HEIGHT = 24
 MAZE_WIDTH = 70
@@ -192,7 +191,7 @@ class Game(GameProtocol):
 
         self.draw_main_screen()
 
-        self.display.message(GAME_HELP)
+        self.display.message(_("Game Help"))
 
         while not self.should_quit:
             key_text = self.display.getch()
@@ -212,7 +211,7 @@ class Game(GameProtocol):
 
         self.display.clear()
 
-        self.display.addstr(LINE_TITLE, 0, GAME_TITLE)
+        self.display.addstr(LINE_TITLE, 0, _("Vallis Magi Classic version", version=VERSION))
         self.display.addstr(LINE_START_OF_MAZE + self.player.position[1], self.player.position[0], "@")
         self.display.addstr(LINE_STATS, 0, "HP: 12/12   Level: 1   Gold: 0")
         self.display.addstr(LINE_MESSAGE, 0, self.last_message)
