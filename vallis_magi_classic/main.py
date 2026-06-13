@@ -23,7 +23,8 @@ def main() -> None:
 
     # Load the configuration.
     config_manager = ConfigManager(working_dir, CONFIG_DIR, CONFIG_FILE)
-    config = config_manager.load_configuration()
+    config_args = config_manager.get_configuration()
+    config = config_manager.load_config(config_args.file, config_args.score)
 
     initialise_localisation(config.terse, working_dir, LANGUAGES_DIR, config.language)
 
@@ -40,13 +41,6 @@ def main() -> None:
     item_manager = ItemManager(working_dir, ITEMS_DIR, config.item_files)
     item_manager.load_item_definitions()
     all_items = AllItems(item_defs=item_manager.item_defs, items={}, called_names={})
-    print(f"Loaded {len(item_manager.item_defs)} items from {len(config.item_files)} item files.\n")
-    if config.verify or config.verify_summary:
-        item_manager.verify_item_definitions(config.verify_summary)
-        return
-    if config.probabilities:
-        item_manager.test_random_item_creation(trials=10000)
-        return
 
     # See if there is a saved player, if not create a new one
     player_file = Path(working_dir / SAVES_DIR / f"{config.name}.toml")

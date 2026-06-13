@@ -16,9 +16,6 @@ class AppConfig:
     askme: bool = False
     showac: bool = False
     scores: bool = False
-    verify: bool = False
-    verify_summary: bool = False
-    probabilities: bool = False
     debug: bool = False
     max_scores: int = 10
 
@@ -41,19 +38,16 @@ class ConfigManager:
     def build_parser(self) -> argparse.ArgumentParser:
         parser = argparse.ArgumentParser(description="Configure and run the application.")
 
-        parser.add_argument("--verify", action="store_true", default=None, help="Verify configuration.")
-        parser.add_argument("--verify_summary", action="store_true", default=None, help="Verify configuration with summary results.")
-        parser.add_argument("--probabilities", action="store_true", default=None, help="Verify probability distributions.")
         parser.add_argument("--scores", action="store_true", default=None, help="Show the high scores.")
         parser.add_argument("--file", default="vmclassic.toml", type=str, help="Save file name.")
 
         return parser
 
-    def load_config(self, args: argparse.Namespace) -> AppConfig:
+    def load_config(self, config_file: str, high_scores: bool) -> AppConfig:
 
         if not self.file_path.exists():
             print(f"\nConfig: {self.file_path} not found, using default config.\n")
-            return AppConfig(file=args.file)
+            return AppConfig(file=config_file)
 
         with self.file_path.open("rb") as f:
             data = tomllib.load(f)
@@ -79,25 +73,20 @@ class ConfigManager:
             step=config_data.get("step", False),
             askme=config_data.get("askme", False),
             showac=config_data.get("showac", False),
-            scores=args.scores,
-            verify=args.verify,
-            verify_summary=args.verify_summary,
-            probabilities=args.probabilities,
+            scores=high_scores,
             max_scores=config_data.get("max_scores", 10),
             name=config_data.get("name", ""),
             fruit=config_data.get("fruit", ""),
-            file=args.file,
+            file=config_file,
             item_files=data_files,
         )
 
         return config
 
-    def load_configuration(self) -> AppConfig:
+    def get_configuration(self) -> argparse.Namespace:
         parser = self.build_parser()
         args = parser.parse_args()
-        config = self.load_config(args)
-
-        return config
+        return args
 
     def display_config(self, config: AppConfig) -> None:
         output = asdict(config)

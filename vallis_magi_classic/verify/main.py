@@ -1,6 +1,7 @@
 import argparse
 from pathlib import Path
 
+from .config_check import run_configuration_check
 from .localise_check import run_localise_check
 
 
@@ -21,6 +22,10 @@ def main() -> None:
 
     args = parser.parse_args()
 
+    # Determine the directory that contains main.py
+    working_dir = Path(__file__).resolve().parent.parent
+
+    run_configuration_check(working_dir)
     run_localise_check(args.source_root, args.locales)
 
 
