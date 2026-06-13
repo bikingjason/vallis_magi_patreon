@@ -78,14 +78,6 @@ class HighScoresManager:
         print("-" * len(rank_str))
 
         for rank, entry in enumerate(self.high_scores, start=1):
-            print(
-                _(
-                    "{rank:2}.  {entry_name:<20} {entry_score:<10}  {entry_level:>5}",
-                    rank=rank,
-                    entry_name=entry.name,
-                    entry_score=entry.score,
-                    entry_level=entry.level,
-                )
-            )
+            print(f"{rank:2}.  {entry.name:<20} {entry.score:<10}  {entry.level:>5}")
 
         print("\n")

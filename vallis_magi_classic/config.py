@@ -1,9 +1,7 @@
 import argparse
 import tomllib
-from dataclasses import asdict, dataclass, field, fields
+from dataclasses import dataclass, field, fields
 from pathlib import Path
-
-from .tools.localisation import _
 
 
 @dataclass
@@ -87,15 +85,3 @@ class ConfigManager:
         parser = self.build_parser()
         args = parser.parse_args()
         return args
-
-    def display_config(self, config: AppConfig) -> None:
-        output = asdict(config)
-
-        app_config_str = _("Application configuration")
-        print()
-        print(app_config_str)
-        print("-" * len(app_config_str))
-        for key, value in output.items():
-            if value is not None:
-                print(f"{key}: {value}")
-        print()

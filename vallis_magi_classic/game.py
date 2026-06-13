@@ -211,7 +211,7 @@ class Game(GameProtocol):
 
         self.display.clear()
 
-        self.display.addstr(LINE_TITLE, 0, _("Vallis Magi Classic version", version=VERSION))
+        self.display.addstr(LINE_TITLE, 0, _("Vallis Magi Classic version {version}", version=VERSION))
         self.display.addstr(LINE_START_OF_MAZE + self.player.position[1], self.player.position[0], "@")
         self.display.addstr(LINE_STATS, 0, "HP: 12/12   Level: 1   Gold: 0")
         self.display.addstr(LINE_MESSAGE, 0, self.last_message)

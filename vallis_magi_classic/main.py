@@ -24,7 +24,7 @@ def main() -> None:
     # Load the configuration.
     config_manager = ConfigManager(working_dir, CONFIG_DIR, CONFIG_FILE)
     config_args = config_manager.get_configuration()
-    config = config_manager.load_config(config_args.file, config_args.score)
+    config = config_manager.load_config(config_args.file, config_args.scores)
 
     initialise_localisation(config.terse, working_dir, LANGUAGES_DIR, config.language)
 
@@ -34,8 +34,6 @@ def main() -> None:
     if config.scores:
         high_scores_manager.display_high_scores()
         return
-
-    config_manager.display_config(config)
 
     # Load the Items toml file which describes everything that exists in the game
     item_manager = ItemManager(working_dir, ITEMS_DIR, config.item_files)

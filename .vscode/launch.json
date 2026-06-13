@@ -6,9 +6,9 @@
 			"type": "debugpy",
 			"request": "launch",
 			//
-			"module": "vallis_magi_classic.main",
+			// "module": "vallis_magi_classic.main",
 			//
-			// "module": "vallis_magi_classic.tests.support.localise_check",
+			"module": "vallis_magi_classic.verify.main",
 			//
 			"cwd": "${workspaceFolder}",
 			"console": "integratedTerminal",
@@ -17,13 +17,9 @@
 				// "--scores",
 				// "--verify",
 				// "--source-root",
-				// "E:\\Projects\\Vallis Magi\\vallis_magi_patreon\\vallis_magi_classic\\languages",
-				// "--locales",
-				// "cn",
-				// "tw",
-				// "th",
-				// "fr",
-				// "de"
+				// "E:\\Projects\\Vallis Magi\\vallis_magi_patreon\\vallis_magi_classic",
+				"--locales",
+				"cn,tw,th,fr,de",
 			]
 		}
 	]

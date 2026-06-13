@@ -352,6 +352,10 @@ def check_locale(
 
 
 def run_localise_check(source_root: Path, locales: list[str]) -> bool:
+
+    print()
+    print(f"Loading localisation files for {','.join(locales)}")
+
     source_strings = extract_source_strings(source_root)
 
     if not source_strings:
@@ -375,7 +379,7 @@ def run_localise_check(source_root: Path, locales: list[str]) -> bool:
         )
 
     if all_ok:
-        print("\nAll locale files look complete.")
+        print("All locale files look complete.")
         return True
 
     return False
