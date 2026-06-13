@@ -125,6 +125,8 @@ parent = ""
 "Save game" = "保存游戏"
 "Quit game" = "退出游戏"
 "Zap a wand or staff" = "使用魔杖或法杖"
+"Unknown command: {key!r}" = "未知命令：{key!r}"
+"Direction expected." = "需要方向。"
 
 [terse]
 "You are now wielding {name}" = "你正挥舞着{name}"

@@ -247,7 +247,7 @@ class Game(GameProtocol):
         if handler is not None:
             return handler()
 
-        self.display.message(f"Unknown command: {key!r}")
+        self.display.message(_("Unknown command: {key!r}", key=key))
         return False
 
     def handle_pending_direction(self, key: str) -> None:
@@ -258,7 +258,7 @@ class Game(GameProtocol):
         direction = DIRECTIONS.get(key.lower())
 
         if direction is None:
-            self.display.message("Direction expected.")
+            self.display.message(_("Direction expected."))
             return
 
         pending = self.pending_directional_command

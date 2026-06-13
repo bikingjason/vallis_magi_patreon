@@ -58,3 +58,4 @@ def run_configuration_check(working_dir: Path) -> None:
         print("No saved player found.")
     else:
         print(f"Saved player found: {config.name}.")
+        # TODO game.display_player_welcome(new_player)

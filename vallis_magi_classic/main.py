@@ -42,10 +42,8 @@ def main() -> None:
 
     # See if there is a saved player, if not create a new one
     player_file = Path(working_dir / SAVES_DIR / f"{config.name}.toml")
-    new_player = False
     if not player_file.exists():
         player = Player.create_new_player(config.name, all_items)
-        new_player = True
     else:
         # TODO Else load the player from a saved toml file.
         player = Player.create_new_player(config.name, all_items)
@@ -53,7 +51,6 @@ def main() -> None:
     # Create a curses display and create the game engine
     display = DisplayCurses()
     game = Game(config, all_items, display, player)
-    game.display_player_welcome(new_player)
 
     # Start the game playing
     display.run(game)
