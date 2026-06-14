@@ -127,6 +127,7 @@ parent = ""
 "Zap a wand or staff" = "Einen Zauberstab oder Stab einsetzen"
 "Unknown command: {key!r}" = "Unbekannter Befehl: {key!r}"
 "Direction expected." = "Richtung erwartet."
+"HP: {hp}/{max_hp}   Level: {level}   Gold: {gold}" = "TP: {hp}/{max_hp}   Stufe: {level}   Gold: {gold}"
 
 [terse]
 "You are now wielding {name}" = "Du führst {name}"

@@ -127,6 +127,7 @@ parent = ""
 "Zap a wand or staff" = "ใช้ไม้กายสิทธิ์หรือไม้เท้า"
 "Unknown command: {key!r}" = "คำสั่งที่ไม่รู้จัก: {key!r}"
 "Direction expected." = "ต้องระบุทิศทาง"
+"HP: {hp}/{max_hp}   Level: {level}   Gold: {gold}" = "HP: {hp}/{max_hp}   ระดับ: {level}   ทอง: {gold}"
 
 [terse]
 "You are now wielding {name}" = "คุณถือ {name} เป็นอาวุธ"

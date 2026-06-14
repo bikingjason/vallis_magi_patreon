@@ -127,6 +127,7 @@ parent = ""
 "Zap a wand or staff" = "使用魔杖或法杖"
 "Unknown command: {key!r}" = "未知指令：{key!r}"
 "Direction expected." = "需要方向。"
+"HP: {hp}/{max_hp}   Level: {level}   Gold: {gold}" = "生命值：{hp}/{max_hp}   等級：{level}   金幣：{gold}"
 
 [terse]
 "You are now wielding {name}" = "你正揮舞著{name}"
