@@ -125,6 +125,9 @@ parent = ""
 "Save game" = "Save game"
 "Quit game" = "Quit game"
 "Zap a wand or staff" = "Zap a wand or staff"
+"Unknown command: {key!r}" = "Unknown command: {key!r}"
+"Direction expected." = "Direction expected."
+"HP: {hp}/{max_hp}   Level: {level}   Gold: {gold}" = "HP: {hp}/{max_hp}   Level: {level}   Gold: {gold}"
 
 [terse]
 "You are now wielding {name}" = "Wielding {name}"

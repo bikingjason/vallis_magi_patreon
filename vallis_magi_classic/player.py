@@ -31,6 +31,11 @@ class Player:
 
         self.position: Position = (0, 0)
 
+        self.hit_points = 11
+        self.max_hit_points = 15
+        self.level = 2
+        self.gold = 5
+
     @staticmethod
     def create_new_player(name: str, all_items: AllItems) -> Player:
 
