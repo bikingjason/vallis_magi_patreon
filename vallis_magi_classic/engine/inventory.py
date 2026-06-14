@@ -1,8 +1,8 @@
-from .config import AppConfig
-from .items import AllItems, ItemDefinition, ItemInstance, ItemInstanceId
-from .player import Player
-from .protocols.display_protocol import DisplayProtocol
-from .tools.localisation import _
+from ..config.config import AppConfig
+from ..config.items import AllItems, ItemDefinition, ItemInstance, ItemInstanceId
+from ..protocols.display_protocol import DisplayProtocol
+from ..state.player import Player
+from ..tools.localisation import _
 
 
 class InventoryService:

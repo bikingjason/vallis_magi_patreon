@@ -1,23 +1,23 @@
 from collections.abc import Callable
 from dataclasses import dataclass
 
-from .config import AppConfig
-from .game_context import GameContext
-from .game_types import CTRL_C, CTRL_R, ESCAPE, Direction
+from ..config.config import AppConfig
+from ..config.items import AllItems, ItemInstanceId
+from ..item_actions.armour import ArmourActions
+from ..item_actions.food import FoodActions
+from ..item_actions.inventory import InventoryActions
+from ..item_actions.potions import PotionActions
+from ..item_actions.rings import RingActions
+from ..item_actions.scrolls import ScrollActions
+from ..item_actions.wands import WandActions
+from ..item_actions.weapons import WeaponActions
+from ..protocols.display_protocol import DisplayProtocol
+from ..protocols.game_protocol import GameProtocol
+from ..state.game_context import GameContext
+from ..state.game_types import CTRL_C, CTRL_R, ESCAPE, Direction
+from ..state.player import Player
+from ..tools.localisation import _
 from .inventory import InventoryService
-from .item_actions.armour import ArmourActions
-from .item_actions.food import FoodActions
-from .item_actions.inventory import InventoryActions
-from .item_actions.potions import PotionActions
-from .item_actions.rings import RingActions
-from .item_actions.scrolls import ScrollActions
-from .item_actions.wands import WandActions
-from .item_actions.weapons import WeaponActions
-from .items import AllItems, ItemInstanceId
-from .player import Player
-from .protocols.display_protocol import DisplayProtocol
-from .protocols.game_protocol import GameProtocol
-from .tools.localisation import _
 
 DIRECTIONS: dict[str, Direction] = {
     "h": (-1, 0),

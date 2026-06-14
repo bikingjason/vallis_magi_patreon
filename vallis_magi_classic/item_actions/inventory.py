@@ -1,5 +1,5 @@
-from ..game_context import GameContext
-from ..items import ItemDefId, ItemDefinition, ItemInstanceId
+from ..config.items import ItemDefId, ItemDefinition, ItemInstanceId
+from ..state.game_context import GameContext
 from ..tools.localisation import _
 
 

@@ -1,9 +1,9 @@
 import curses
 
-from .game_types import CTRL_C, CTRL_R, ESCAPE
-from .protocols.display_protocol import DisplayProtocol
-from .protocols.game_protocol import GameProtocol
-from .tools.localisation import _
+from ..protocols.display_protocol import DisplayProtocol
+from ..protocols.game_protocol import GameProtocol
+from ..state.game_types import CTRL_C, CTRL_R, ESCAPE
+from ..tools.localisation import _
 
 
 class DisplayCurses(DisplayProtocol):

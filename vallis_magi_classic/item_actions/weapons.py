@@ -1,8 +1,8 @@
 from dataclasses import dataclass
 from random import randrange
 
-from ..game_context import GameContext
-from ..items import ItemInstanceId
+from ..config.items import ItemInstanceId
+from ..state.game_context import GameContext
 from ..tools.localisation import _
 
 NO_LAUNCHER = None

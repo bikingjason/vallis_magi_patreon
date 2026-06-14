@@ -1,9 +1,9 @@
 from dataclasses import asdict
 from pathlib import Path
 
-from ..config import ConfigManager
-from ..high_scores import HighScoresManager
-from ..items import ItemManager
+from ..config.config import ConfigManager
+from ..config.high_scores import HighScoresManager
+from ..config.items import ItemManager
 from ..tools.localisation import initialise_localisation
 
 # Note: I created copies here so that I am forced to check this

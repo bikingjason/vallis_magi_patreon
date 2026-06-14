@@ -1,7 +1,7 @@
 from dataclasses import dataclass, field
 
+from ..config.items import AllItems, ItemDefId, ItemInstanceId
 from .game_types import Position
-from .items import AllItems, ItemDefId, ItemInstanceId
 
 
 @dataclass

@@ -1,11 +1,11 @@
 from pathlib import Path
 
-from .config import ConfigManager
-from .display_curses import DisplayCurses
-from .game import Game
-from .high_scores import HighScoresManager
-from .items import AllItems, ItemManager
-from .player import Player
+from .config.config import ConfigManager
+from .config.high_scores import HighScoresManager
+from .config.items import AllItems, ItemManager
+from .engine.display_curses import DisplayCurses
+from .engine.game import Game
+from .state.player import Player
 from .tools.localisation import initialise_localisation
 
 CONFIG_DIR: str = "config"

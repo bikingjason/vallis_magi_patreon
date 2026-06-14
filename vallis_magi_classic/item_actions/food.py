@@ -1,7 +1,7 @@
 from random import randint
 
-from ..game_context import GameContext
-from ..items import ItemInstanceId
+from ..config.items import ItemInstanceId
+from ..state.game_context import GameContext
 from ..tools.localisation import _
 
 HUNGERTIME = 1300

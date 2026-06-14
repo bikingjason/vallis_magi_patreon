@@ -1,7 +1,7 @@
 from collections.abc import Callable
 
-from ..game_context import GameContext
-from ..items import ItemDefId, ItemInstanceId
+from ..config.items import ItemDefId, ItemInstanceId
+from ..state.game_context import GameContext
 from ..tools.localisation import _
 
 

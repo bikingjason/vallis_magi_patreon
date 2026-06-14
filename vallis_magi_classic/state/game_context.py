@@ -3,11 +3,11 @@
 from collections.abc import Callable
 from dataclasses import dataclass
 
-from .config import AppConfig
-from .inventory import InventoryService
-from .items import AllItems
+from ..config.config import AppConfig
+from ..config.items import AllItems
+from ..engine.inventory import InventoryService
+from ..protocols.display_protocol import DisplayProtocol
 from .player import Player
-from .protocols.display_protocol import DisplayProtocol
 
 
 @dataclass

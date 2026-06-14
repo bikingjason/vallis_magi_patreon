@@ -1,8 +1,8 @@
 from collections.abc import Callable
 
-from ..game_context import GameContext
-from ..game_types import ESCAPE
-from ..items import ItemDefId, ItemInstanceId
+from ..config.items import ItemDefId, ItemInstanceId
+from ..state.game_context import GameContext
+from ..state.game_types import ESCAPE
 from ..tools.localisation import _
 
 LEFT_HAND = "left"
