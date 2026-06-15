@@ -1,0 +1,92 @@
+# Mundane Potions
+
+[items.potion_of_quench_thirst]
+name = "Potion of Quench Thirst"
+description = "A simple potion that quenches the drinker's thirst."
+message_classic = "This potion tastes extremely dull."
+message_long = "Your mouth feels refreshed as you quench your thirst."
+
+# Magical Potions
+
+[items.potion_of_extra_healing]
+name = "Potion of Extra Healing"
+description = "A potent restorative draught that greatly restores the drinker's health."
+message_classic = "You begin to feel much better."
+message_long = "Your body feels a warm, healing glow as you recover from your injuries."
+
+[items.potion_of_haste_self]
+name = "Potion of Haste Self"
+description = "A sharp, fizzing potion that quickens the drinker's movements for a short time."
+message_classic = "You feel yourself moving much faster."
+message_long = "Your movements become swift and nimble as you feel the effects of the potion."
+
+[items.potion_of_healing]
+name = "Potion of Healing"
+description = "A soothing potion that restores some of the drinker's health."
+message_classic = "You begin to feel better."
+message_long = "Your body feels a warm, healing glow as you recover from some of your injuries."
+
+[items.potion_of_magic_detection]
+name = "Potion of Magic Detection"
+description = "A shimmering potion that reveals magical items nearby."
+message_classic = "You sense the presence of magic on this level."
+message_long = "You sense the presence of magic on this level. The air is thick with arcane energy."
+message_fail = "You have a strange feeling for a moment, then it passes."
+
+[items.potion_of_monster_detection]
+name = "Potion of Monster Detection"
+description = "A sharp-tasting potion that reveals the presence of nearby monsters."
+message_classic = "You begin to sense the presence of monsters."
+message_long = "Your senses stretch outward through the dungeon. For a moment, you can feel the presence of nearby monsters."
+message_fail = "You have a strange feeling for a moment, then it passes."
+
+[items.potion_of_raise_level]
+name = "Potion of Raise Level"
+description = "A rare and powerful potion that deepens the drinker's experience and increases their level."
+message_classic = "You suddenly feel much more skilful."
+message_long = "You suddenly feel much more skilful. Your knowledge and abilities have increased as you advance in your studies."
+
+[items.potion_of_restore_strength]
+name = "Potion of Restore Strength"
+description = "A bracing potion that restores strength lost to poison, weakness, or draining effects."
+message_classic = "Hey, this tastes great. It makes you feel warm all over."
+message_long = "A pleasant warmth spreads through your body. Your strength returns, and the weakness fades from your limbs."
+
+[items.potion_of_see_invisible]
+name = "Potion of See Invisible"
+description = "A clear, glassy potion that allows the drinker to see invisible creatures and hidden presences."
+message_classic = "This potion tastes like {fruit} juice."
+message_long = "Your eyes tingle and the air seems to shimmer. Hidden things become clear to your sight."
+
+[items.potion_of_strength]
+name = "Potion of Strength"
+description = "A warming potion that increases the drinker's physical strength."
+message_classic = "You feel stronger, now.  What bulging muscles!"
+message_long = "Power surges through your body. Your muscles harden, your grip tightens, and you feel stronger than before."
+
+# Cursed Magical Potions
+
+[items.potion_of_blindness]
+name = "Potion of Blindness"
+description = "A dark, clouded potion that blinds the drinker for a time."
+message_classic = "A cloak of darkness falls around you!"
+message_long = "You are blinded by a thick, dark cloud! Your vision is obscured for a time."
+
+[items.potion_of_confusion]
+name = "Potion of Confusion"
+description = "A swirling potion that muddles the drinker's senses, making movement and action unreliable."
+message_classic = "Wait, what's going on here. Huh? What? Who?"
+message_long = "Your senses are overwhelmed by a swirling mist! You feel dizzy and disoriented for a time."
+
+[items.potion_of_paralysis]
+name = "Potion of Paralysis"
+description = "A numbing potion that freezes the drinker's body, leaving them unable to move for a short time."
+message_classic = "You can't move..."
+message_long = "A cold numbness spreads through your body. Your limbs lock in place, and you are unable to move."
+
+[items.potion_of_poison]
+name = "Potion of Poison"
+description = "A foul potion that weakens the drinker and may sap their strength."
+message_classic = "You feel very sick now..."
+message_long = "A foul sickness twists through your body. You feel weak, unsteady, and badly poisoned."
+message_fail = "You feel momentarily sick."

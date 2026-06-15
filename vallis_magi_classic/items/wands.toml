@@ -1,202 +1,97 @@
+# Default settings for all Wands.
+
+[default.wands]
+weight = 0.2
+is_wand = true
+
 # Mundane Wands
 
 [items.wand_nothing]
-name = "Wand of nothing"
-description = "A plain wand with no trace of magic left in it. When zapped, nothing happens."
-message_classic = "What a bizarre schtick!"
-message_long = "Nothing happens as you zap the wand."
-weight = 0.2
-stackable = false
 wand_type = "nothing"
 value = 70
-is_wand = true
 priority = 11
 probability = 1
 
 # Magical Wands
 
 [items.wand_cancellation]
-name = "Wand of cancellation"
-description = "A dull grey wand that seems to swallow nearby magic. When zapped, it may cancel a creature's magical powers."
-message_classic = "The target's magic fades."
-message_long = "The target's magic fades as the wand smothers its enchantments."
-message_fail = "The grey light fades without effect."
-weight = 0.2
-stackable = false
 wand_type = "cancellation"
 value = 130
-is_wand = true
 priority = 14
 probability = 5
 
 [items.wand_cold]
-name = "Wand of cold"
-description = "A pale wand cold enough to mist the air around it. When zapped, it releases a bolt of freezing magic."
-message_classic = "A bolt of cold shoots from the wand."
-message_long = "A bolt of cold shoots from the wand, frosting the air as it passes."
-message_fail = "The wand sputters, but no bolt appears."
-weight = 0.2
-stackable = false
 wand_type = "cold"
 value = 200
-is_wand = true
 priority = 5
 probability = 3
 
 [items.wand_drain_life]
-name = "Wand of drain life"
-description = "A dark wand that feels unpleasantly warm to the touch. When zapped, it draws away life force from you and nearby creatures."
-message_classic = "You feel life force being drawn away."
-message_long = "You feel life force being drawn away as the wand releases a hungry pulse of dark magic."
-message_fail = "You are too weak to use it."
-weight = 0.2
-stackable = false
 wand_type = "drain_life"
 value = 210
-is_wand = true
 priority = 10
 probability = 9
 
 [items.wand_fire]
-name = "Wand of fire"
-description = "A warm wand scorched black around the tip. When zapped, it releases a bolt of fire."
-message_classic = "A bolt of fire shoots from the wand."
-message_long = "A bolt of fire shoots from the wand, leaving a trail of heat in the air."
-message_fail = "The bolt fizzles before it reaches its target."
-weight = 0.2
-stackable = false
 wand_type = "fire"
 value = 200
-is_wand = true
 priority = 4
 probability = 3
 
 [items.wand_light]
-name = "Wand of light"
-description = "A slender wand that glows faintly at the tip. When zapped, it illuminates the surrounding area."
-message_classic = "The room is lit by a shimmering blue light."
-message_long = "A shimmering blue light spreads outward as you zap the wand."
-message_fail = "The corridor glows and then fades."
-weight = 0.2
-stackable = false
 wand_type = "light"
 value = 120
-is_wand = true
 priority = 1
 probability = 12
 
 [items.wand_lightning]
-name = "Wand of lightning"
-description = "A crackling wand marked with jagged silver lines. When zapped, it releases a bolt of lightning."
-message_classic = "A bolt of lightning shoots from the wand."
-message_long = "A bolt of lightning shoots from the wand, filling the air with a sharp crackle."
-message_fail = "The bolt fizzles before it reaches its target."
-weight = 0.2
-stackable = false
 wand_type = "lightning"
 value = 200
-is_wand = true
 priority = 3
 probability = 3
 
 [items.wand_magic_missile]
-name = "Wand of magic missile"
-description = "A precise wand etched with straight, narrow lines. When zapped, it fires a missile of pure magical force."
-message_classic = "A magic missile shoots from the wand."
-message_long = "A magic missile shoots from the wand, streaking toward its target."
-message_fail = "The missile vanishes with a puff of smoke."
-weight = 0.2
-stackable = false
 wand_type = "magic_missile"
 value = 170
-is_wand = true
 priority = 7
 probability = 10
 
 [items.wand_polymorph]
-name = "Wand of polymorph"
-description = "A strange wand whose shape seems slightly different each time you look at it. When zapped, it may transform a creature into another form."
-message_classic = "The target twists and changes."
-message_long = "The target twists and changes as the wand's unstable magic takes hold."
-message_fail = "The target shudders, but keeps its form."
-weight = 0.2
-stackable = false
 wand_type = "polymorph"
 value = 210
-is_wand = true
 priority = 6
 probability = 15
 
 [items.wand_slow_monster]
-name = "Wand of slow monster"
-description = "A sluggish wand that feels heavy when aimed. When zapped, it may slow a monster's movements."
-message_classic = "The monster begins moving slower."
-message_long = "The monster begins moving slower as the wand's magic weighs it down."
-message_fail = "The magic clings for a moment, then slips away."
-weight = 0.2
-stackable = false
 wand_type = "slow_monster"
 value = 220
-is_wand = true
 priority = 9
 probability = 11
 
 [items.wand_striking]
-name = "Wand of striking"
-description = "A heavy wand that hums with blunt magical force. When zapped, it lashes out with an invisible blow."
-message_classic = "The wand strikes with invisible force."
-message_long = "The wand strikes with invisible force, battering anything in its path."
-message_fail = "The invisible blow passes harmlessly through the air."
-weight = 0.2
-stackable = false
 wand_type = "striking"
 value = 115
-is_wand = true
 priority = 2
 probability = 9
 
 [items.wand_teleport_away]
-name = "Wand of teleport away"
-description = "A wand covered in broken, wandering lines. When zapped, it may teleport a creature away."
-message_classic = "The target vanishes."
-message_long = "The target vanishes as the wand tears open a brief path through space."
-message_fail = "Space twists briefly, but nothing moves."
-weight = 0.2
-stackable = false
 wand_type = "teleport_away"
 value = 140
-is_wand = true
 priority = 12
 probability = 5
 
 # Cursed Wands
 
 [items.wand_haste_monster]
-name = "Wand of haste monster"
-description = "A restless wand that vibrates faintly in the hand. When zapped, it may quicken a monster's movements."
-message_classic = "The monster begins moving faster."
-message_long = "The monster begins moving faster as the wand's magic quickens its limbs."
-message_fail = "The magic sparks and dies before taking hold."
-weight = 0.2
-stackable = false
 wand_type = "haste_monster"
 cursed = true
 value = 50
-is_wand = true
 priority = 8
 probability = 9
 
 [items.wand_teleport_to]
-name = "Wand of teleport to"
-description = "A wand whose markings seem to point back toward the wielder. When zapped, it may draw a creature closer."
-message_classic = "The target suddenly appears nearby."
-message_long = "The target suddenly appears nearby as the wand drags it through space."
-message_fail = "Space folds for a moment, then snaps back."
-weight = 0.2
-stackable = false
 wand_type = "teleport_to"
 cursed = true
 value = 60
-is_wand = true
 priority = 13
 probability = 5

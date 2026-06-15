@@ -1,9 +1,11 @@
+# Default settings for all Weapons.
+
+[default.weapons]
+is_weapon = true
+
 # Ammunition
 
 [items.arrow]
-name = "Arrow"
-description = "A light missile with a sharpened head, used as ammunition for bows."
-usage = "Ammunition for bows. Adds a small amount of damage when fired, but is not normally used as a hand weapon."
 weapon_category = "ammunition"
 weight = 0.1
 stackable = true
@@ -14,14 +16,10 @@ hit_bonus = 0
 damage_bonus = 2
 speed_penalty = 0
 value = 1
-is_weapon = true
 priority = 4
 probability = 8
 
 [items.bolt]
-name = "Bolt"
-description = "A short, heavy missile designed to be fired from a crossbow."
-usage = "Ammunition for crossbows. Heavier and more damaging than an arrow, but only useful with a crossbow."
 weapon_category = "ammunition"
 weight = 0.2
 stackable = true
@@ -32,14 +30,10 @@ hit_bonus = 0
 damage_bonus = 3
 speed_penalty = 0
 value = 1
-is_weapon = true
 priority = 11
 probability = 8
 
 [items.rock]
-name = "Rock"
-description = "A rough stone that can be thrown in desperation or used as a crude weapon."
-usage = "A crude thrown weapon and sling stone. Easy to find and usable as ammunition for a sling, but inaccurate and weak by itself."
 weapon_category = "ammunition"
 weight = 1.0
 slot = "hand"
@@ -52,16 +46,12 @@ damage_bonus = 1
 speed_penalty = 0
 can_throw = true
 value = 0
-is_weapon = true
 priority = 6
 probability = 8
 
 # Blunt melee weapons
 
 [items.mace]
-name = "Mace"
-description = "A heavy-headed blunt weapon, simple to use and effective against armour and bone."
-usage = "A blunt melee weapon. Less accurate than a blade, but good for delivering strong crushing blows, especially against hard or armoured targets."
 weapon_category = "blunt"
 weight = 3.0
 slot = "hand"
@@ -71,16 +61,12 @@ hit_bonus = 1
 damage_bonus = 4
 speed_penalty = 1
 value = 8
-is_weapon = true
 priority = 1
 probability = 9
 
 # Bladed melee weapons
 
 [items.dagger]
-name = "Dagger"
-description = "A short, quick blade that is easy to carry and useful at close quarters."
-usage = "A bladed melee weapon. Accurate and fast, but with limited reach and lower damage than larger weapons."
 weapon_category = "bladed"
 weight = 1.0
 slot = "hand"
@@ -90,14 +76,10 @@ hit_bonus = 3
 damage_bonus = 2
 speed_penalty = 0
 value = 2
-is_weapon = true
 priority = 5
 probability = 9
 
 [items.long_sword]
-name = "Long sword"
-description = "A well-balanced blade with good reach, useful for both cutting and thrusting attacks."
-usage = "A bladed melee weapon. A reliable all-rounder with good accuracy, damage, and handling."
 weapon_category = "bladed"
 weight = 4.0
 slot = "hand"
@@ -107,14 +89,10 @@ hit_bonus = 2
 damage_bonus = 5
 speed_penalty = 1
 value = 15
-is_weapon = true
 priority = 2
 probability = 10
 
 [items.two_handed_sword]
-name = "Two handed sword"
-description = "A large, powerful sword that requires both hands, striking with great force but less speed."
-usage = "A large bladed melee weapon. Delivers very high damage, but is slower to swing and requires both hands."
 weapon_category = "bladed"
 weight = 6.0
 slot = "hand"
@@ -125,16 +103,12 @@ hit_bonus = 1
 damage_bonus = 8
 speed_penalty = 3
 value = 30
-is_weapon = true
 priority = 7
 probability = 6
 
 # Hafted melee weapons
 
 [items.spear]
-name = "Spear"
-description = "A long hafted weapon with a sharp point, useful for keeping enemies at a distance."
-usage = "A hafted melee weapon. Offers good reach, decent accuracy, and solid damage without being too heavy."
 weapon_category = "hafted"
 weight = 3.0
 slot = "hand"
@@ -144,16 +118,12 @@ hit_bonus = 2
 damage_bonus = 4
 speed_penalty = 1
 value = 2
-is_weapon = true
 priority = 12
 probability = 8
 
 # Ranged weapons
 
 [items.bow]
-name = "Bow"
-description = "A flexible ranged weapon that fires arrows, allowing attacks from a distance."
-usage = "A missile weapon. Allows ranged attacks using arrows, with moderate accuracy, damage, and speed."
 weapon_category = "missile"
 weight = 2.0
 slot = "hand"
@@ -163,14 +133,10 @@ damage_bonus = 2
 speed_penalty = 1
 requires_ammunition = "arrow"
 value = 75
-is_weapon = true
 priority = 3
 probability = 10
 
 [items.crossbow]
-name = "Crossbow"
-description = "A mechanical bow that fires bolts with force and accuracy, though it is slower to handle."
-usage = "A missile weapon. Accurate and powerful at range when loaded with bolts, but slower to fire than a bow."
 weapon_category = "missile"
 weight = 5.0
 slot = "hand"
@@ -180,14 +146,10 @@ damage_bonus = 4
 speed_penalty = 3
 requires_ammunition = "bolt"
 value = 15
-is_weapon = true
 priority = 10
 probability = 8
 
 [items.sling]
-name = "Sling"
-description = "A simple ranged weapon that hurls stones or bullets with surprising force."
-usage = "A missile weapon. Light and simple, using rocks as ammunition, but less damaging than bows or crossbows."
 weapon_category = "missile"
 weight = 0.5
 slot = "hand"
@@ -197,16 +159,12 @@ damage_bonus = 1
 speed_penalty = 1
 requires_ammunition = "rock"
 value = 1
-is_weapon = true
 priority = 8
 probability = 8
 
 # Thrown weapons
 
 [items.dart]
-name = "Dart"
-description = "A small thrown missile, light enough to carry in numbers and quick to cast at an enemy."
-usage = "A thrown weapon. Accurate, fast, and stackable, but each dart does only light damage."
 weapon_category = "thrown"
 weight = 0.2
 slot = "hand"
@@ -218,6 +176,5 @@ hit_bonus = 2
 damage_bonus = 1
 speed_penalty = 0
 value = 1
-is_weapon = true
 priority = 9
 probability = 8

@@ -1,0 +1,33 @@
+# Armour
+
+[items.banded_mail]
+name = "Banded mail"
+description = "Heavy armour made from broad metal bands, offering strong protection at the cost of comfort and mobility."
+
+[items.chain_mail]
+name = "Chain mail"
+description = "A flexible coat of interlocked metal rings that protects well against blades while remaining wearable in battle."
+
+[items.leather_armour]
+name = "Leather armour"
+description = "A suit of boiled and layered leather that offers light protection while allowing easy movement."
+
+[items.plate_mail]
+name = "Plate mail"
+description = "A full harness of shaped metal plates, providing excellent protection against most weapons."
+
+[items.ring_mail]
+name = "Ring mail"
+description = "Leather armour reinforced with metal rings, giving better protection against cuts and glancing blows."
+
+[items.scale_mail]
+name = "Scale mail"
+description = "Overlapping metal scales sewn onto a backing, turning aside weapons like the hide of some iron beast."
+
+[items.splint_mail]
+name = "Splint mail"
+description = "Armour reinforced with narrow metal strips, stiff and heavy but strong against crushing blows."
+
+[items.studded_leather]
+name = "Studded leather"
+description = "A leather cuirass set with metal studs, adding extra protection without the full weight of mail."

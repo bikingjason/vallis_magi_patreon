@@ -1,0 +1,89 @@
+# Mundane Rings
+
+[items.silver_ring]
+name = "Silver Ring"
+description = "A plain silver ring. It is well made, but shows no obvious sign of magic."
+message_on = "The ring slips onto your finger."
+message_off = ""
+
+# Magical Rings
+
+[items.ring_of_accuracy]
+name = "Ring of Accuracy"
+description = "A finely balanced ring that steadies the wearer’s aim and helps guide attacks toward their mark."
+message_on = "Your aim feels steadier."
+message_off = "Your aim feels less certain."
+
+[items.ring_of_damage]
+name = "Ring of Damage"
+description = "A forceful ring that lends extra strength to the wearer’s blows."
+message_on = "Your weapon hand feels more forceful."
+message_off = "Your weapon hand feels less forceful."
+
+[items.ring_of_protection]
+name = "Ring of Protection"
+description = "A protective ring that surrounds the wearer with a subtle ward, helping to turn aside blows."
+message_on = "You feel a little safer."
+message_off = "You feel a little more exposed."
+
+[items.ring_of_regeneration]
+name = "Ring of Regeneration"
+description = "A warm ring that quickens the body’s natural healing, helping wounds close more rapidly."
+message_on = "You feel your wounds begin to knit more quickly."
+message_off = "Your body settles back to its normal rhythm."
+
+[items.ring_of_search]
+name = "Ring of Search"
+description = "A perceptive ring that sharpens the wearer’s senses, making hidden things easier to notice."
+message_on = "Your senses feel unusually sharp."
+message_off = "Your senses dull slightly."
+
+[items.ring_of_see_invisible]
+name = "Ring of See Invisible"
+description = "A strange ring that clears the wearer’s sight, revealing things that would otherwise remain unseen."
+message_on = "Your eyes tingle."
+message_off = "Your eyes stop tingling."
+
+[items.ring_of_slow_digestion]
+name = "Ring of Slow Digestion"
+description = "A calming ring that slows the wearer’s hunger and reduces the need for food."
+message_on = "Your stomach feels strangely calm."
+message_off = "Your appetite begins to return."
+
+[items.ring_of_stealth]
+name = "Ring of Stealth"
+description = "A dull ring that muffles movement and helps the wearer pass unnoticed."
+message_on = "Your footsteps seem quieter."
+message_off = "Your footsteps sound louder again."
+
+[items.ring_of_strength]
+name = "Ring of Strength"
+description = "A heavy ring that fills the wearer with physical power."
+message_on = "You feel stronger."
+message_off = "You feel weaker."
+
+[items.ring_of_sustain_strength]
+name = "Ring of Sustain Strength"
+description = "A fortifying ring that helps preserve the wearer’s strength against weakening magic, poison, and other draining effects."
+message_on = "You feel fortified."
+message_off = "You feel less fortified."
+
+# Cursed Rings
+
+[items.ring_of_aggravate_monsters]
+name = "Ring of Aggravate Monsters"
+description = "A cursed ring that emits an irritating magical presence, drawing the attention of nearby monsters."
+message_on = "You hear a high-pitched humming noise."
+message_off = ""
+
+[items.ring_of_hunger]
+name = "Ring of Hunger"
+description = "A cursed ring that gnaws at the wearer’s appetite and makes hunger come more quickly."
+message_on = "You suddenly feel hungry."
+message_off = "Your hunger eases."
+
+[items.ring_of_teleport]
+name = "Ring of Teleport"
+description = "A cursed ring that loosens the wearer’s place in the world, making sudden displacement more likely."
+message_on = "You feel oddly unstable."
+message_off = "You feel more firmly anchored."

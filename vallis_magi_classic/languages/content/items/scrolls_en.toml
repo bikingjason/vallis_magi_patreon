@@ -1,0 +1,96 @@
+# Mundane Scrolls
+
+[items.scroll_blank]
+name = "Blank scroll"
+description = "A useless scroll whose magic has faded, leaving only empty parchment behind."
+message_classic = "This scroll seems to be blank."
+
+# Magic Scrolls
+
+[items.scroll_confuse_monster]
+name = "Scroll of Confuse Monster"
+description = "A mystical scroll whose words twist the mind. When read, it enchants the reader's weapon so the next monster struck may become confused."
+message_classic = "Your hands begin to glow red."
+message_long = "Your hands begin to glow red as you read the scroll."
+
+[items.scroll_enchant_armour]
+name = "Scroll of Enchant Armour"
+description = "A protective scroll written in steady, formal script. When read, it may improve the enchantment of worn armour."
+message_classic = "Your armour glows faintly for a moment."
+message_long = "Your armour glows faintly for a moment as you read the scroll."
+
+[items.scroll_enchant_weapon]
+name = "Scroll of Enchant Weapon"
+description = "A sharp, forceful script runs across this scroll. When read, it may improve the enchantment of the wielded weapon."
+message_classic = "Your {weapon_name} glows blue for a moment."
+
+[items.scroll_genocide]
+name = "Scroll of Genocide"
+description = "A dreadful scroll of final judgement. When read, it may erase an entire kind of monster from the dungeon."
+message_classic = "You have been granted the boon of genocide."
+message_long = "You have been granted the boon of genocide. Choose one kind of monster, and it will be erased from the dungeon."
+
+[items.scroll_gold_detection]
+name = "Scroll of Gold Detection"
+description = "A scroll flecked with tiny golden marks. When read, it reveals the location of nearby gold."
+message_classic = "You begin to feel greedy and you sense gold."
+message_long = "You begin to feel greedy and you sense gold."
+message_fail = "You begin to feel a pull downward... there is no gold here."
+
+[items.scroll_hold_monster]
+name = "Scroll of Hold Monster"
+description = "A scroll marked with binding runes. When read, it may freeze nearby monsters in place for a short time."
+message_long = "The monsters around you freeze as the binding runes flare from the scroll."
+
+[items.scroll_identify]
+name = "Scroll of Identify"
+description = "A clear, precise scroll that reveals hidden truths. When read, it identifies an unknown item."
+message_classic = "This scroll is an identify scroll."
+message_long = "This scroll is an identify scroll, it reveals the nature of an unknown item."
+
+[items.scroll_light]
+name = "Scroll of Light"
+description = "A bright, silvery scroll that glows faintly in darkness. When read, it illuminates the surrounding area."
+message_classic = "The room is lit by a shimmering blue light."
+message_long = "The room is lit by a shimmering blue light as you read the scroll."
+message_fail = "The corridor glows and then fades."
+
+[items.scroll_magic_mapping]
+name = "Scroll of Magic Mapping"
+description = "A parchment covered with shifting lines and symbols. When read, it reveals the layout of the surrounding dungeon."
+message_classic = "Oh, now this scroll has a map on it."
+message_long = "Oh, now this scroll has a map on it. The lines and symbols shift and change to reveal the layout of the surrounding dungeon."
+
+[items.scroll_remove_curse]
+name = "Scroll of Remove Curse"
+description = "A calm, cleansing scroll written in pale ink. When read, it may lift curses from the reader's equipment."
+message_long = "You feel as if someone is watching over you as the curse is lifted."
+
+[items.scroll_scare_monster]
+name = "Scroll of Scare Monster"
+description = "A threatening scroll covered in terrible glyphs. When placed on the ground, it may frighten monsters away."
+message_classic = "You hear maniacal laughter in the distance."
+
+[items.scroll_teleportation]
+name = "Scroll of Teleportation"
+description = "The writing on this scroll refuses to stay still. When read, it teleports the reader to another place."
+message_long = "You suddenly feel disoriented as the dungeon shifts around you."
+
+# Cursed Scrolls
+
+[items.scroll_aggravate_monsters]
+name = "Scroll of Aggravate Monsters"
+description = "A noisy, discordant scroll whose words seem to shout. When read, it wakes and angers monsters throughout the dungeon."
+message_classic = "You hear a high-pitched humming noise."
+
+[items.scroll_create_monster]
+name = "Scroll of Create Monster"
+description = "A dangerous scroll inked with summoning signs. When read, it calls a monster into being nearby."
+message_classic = "You hear a faint cry of anguish in the distance."
+message_long = "You hear a faint cry of anguish in the distance as you read the scroll."
+
+[items.scroll_sleep]
+name = "Scroll of Sleep"
+description = "A soft, drowsy script fills this scroll. When read, it may cause the reader to fall asleep."
+message_classic = "You fall asleep."
+message_long = "You fall asleep as you read the scroll."

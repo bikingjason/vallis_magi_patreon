@@ -1,15 +1,5 @@
-# Default settings for all Food.
-
-[default.food]
-max_stack = 20
-stackable = true
-is_food = true
-
 # Food
 
 [items.food]
 name = "Food ration"
 description = "A preserved ration of simple travelling food, useful for keeping hunger at bay during a long journey."
-weight = 0.5
-priority = 1
-probability = 100

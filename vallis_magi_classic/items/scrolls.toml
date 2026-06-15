@@ -1,227 +1,112 @@
+# Default settings for all Scrolls.
+
+[default.scrolls]
+weight = 0.1
+max_stack = 20
+stackable = true
+is_scroll = true
+
 # Mundane Scrolls
 
 [items.scroll_blank]
-name = "Blank scroll"
-description = "A useless scroll whose magic has faded, leaving only empty parchment behind."
-message_classic = "This scroll seems to be blank."
-weight = 0.1
-stackable = true
-max_stack = 20
 scroll_type = "blank"
 value = 50
-is_scroll = true
 priority = 15
 probability = 1
 
 # Magic Scrolls
 
 [items.scroll_confuse_monster]
-name = "Scroll of Confuse Monster"
-description = "A mystical scroll whose words twist the mind. When read, it enchants the reader's weapon so the next monster struck may become confused."
-message_classic = "Your hands begin to glow red."
-message_long = "Your hands begin to glow red as you read the scroll."
-weight = 0.1
-stackable = true
-max_stack = 20
 scroll_type = "confuse_monster"
 value = 170
-is_scroll = true
 priority = 1
 probability = 8
 
 [items.scroll_enchant_armour]
-name = "Scroll of Enchant Armour"
-description = "A protective scroll written in steady, formal script. When read, it may improve the enchantment of worn armour."
-message_classic = "Your armour glows faintly for a moment."
-message_long = "Your armour glows faintly for a moment as you read the scroll."
-weight = 0.1
-stackable = true
-max_stack = 20
 scroll_type = "enchant_armour"
 value = 130
-is_scroll = true
 priority = 6
 probability = 8
 
 [items.scroll_enchant_weapon]
-name = "Scroll of Enchant Weapon"
-description = "A sharp, forceful script runs across this scroll. When read, it may improve the enchantment of the wielded weapon."
-message_classic = "Your {weapon_name} glows blue for a moment."
-weight = 0.1
-stackable = true
-max_stack = 20
 scroll_type = "enchant_weapon"
 value = 150
-is_scroll = true
 priority = 11
 probability = 10
 
 [items.scroll_genocide]
-name = "Scroll of Genocide"
-description = "A dreadful scroll of final judgement. When read, it may erase an entire kind of monster from the dungeon."
-message_classic = "You have been granted the boon of genocide."
-message_long = "You have been granted the boon of genocide. Choose one kind of monster, and it will be erased from the dungeon."
-weight = 0.1
-stackable = true
-max_stack = 20
 scroll_type = "genocide"
 value = 200
-is_scroll = true
 priority = 16
 probability = 1
 
 [items.scroll_gold_detection]
-name = "Scroll of Gold Detection"
-description = "A scroll flecked with tiny golden marks. When read, it reveals the location of nearby gold."
-message_classic = "You begin to feel greedy and you sense gold."
-message_long = "You begin to feel greedy and you sense gold."
-message_fail = "You begin to feel a pull downward... there is no gold here."
-weight = 0.1
-stackable = true
-max_stack = 20
 scroll_type = "gold_detection"
 value = 110
-is_scroll = true
 priority = 9
 probability = 4
 
 [items.scroll_hold_monster]
-name = "Scroll of Hold Monster"
-description = "A scroll marked with binding runes. When read, it may freeze nearby monsters in place for a short time."
-message_long = "The monsters around you freeze as the binding runes flare from the scroll."
-weight = 0.1
-stackable = true
-max_stack = 20
 scroll_type = "hold_monster"
 value = 200
-is_scroll = true
 priority = 4
 probability = 2
 
 [items.scroll_identify]
-name = "Scroll of Identify"
-description = "A clear, precise scroll that reveals hidden truths. When read, it identifies an unknown item."
-message_classic = "This scroll is an identify scroll."
-message_long = "This scroll is an identify scroll, it reveals the nature of an unknown item."
-weight = 0.1
-stackable = true
-max_stack = 20
 scroll_type = "identify"
 value = 100
-is_scroll = true
 priority = 7
 probability = 21
 
 [items.scroll_light]
-name = "Scroll of Light"
-description = "A bright, silvery scroll that glows faintly in darkness. When read, it illuminates the surrounding area."
-message_classic = "The room is lit by a shimmering blue light."
-message_long = "The room is lit by a shimmering blue light as you read the scroll."
-message_fail = "The corridor glows and then fades."
-weight = 0.1
-stackable = true
-max_stack = 20
 scroll_type = "light"
 value = 100
-is_scroll = true
 priority = 3
 probability = 10
 
 [items.scroll_magic_mapping]
-name = "Scroll of Magic Mapping"
-description = "A parchment covered with shifting lines and symbols. When read, it reveals the layout of the surrounding dungeon."
-message_classic = "Oh, now this scroll has a map on it."
-message_long = "Oh, now this scroll has a map on it. The lines and symbols shift and change to reveal the layout of the surrounding dungeon."
-weight = 0.1
-stackable = true
-max_stack = 20
 scroll_type = "magic_mapping"
 value = 180
-is_scroll = true
 priority = 2
 probability = 5
 
 [items.scroll_remove_curse]
-name = "Scroll of Remove Curse"
-description = "A calm, cleansing scroll written in pale ink. When read, it may lift curses from the reader's equipment."
-message_long = "You feel as if someone is watching over you as the curse is lifted."
-weight = 0.1
-stackable = true
-max_stack = 20
 scroll_type = "remove_curse"
 value = 105
-is_scroll = true
 priority = 13
 probability = 8
 
 [items.scroll_scare_monster]
-name = "Scroll of Scare Monster"
-description = "A threatening scroll covered in terrible glyphs. When placed on the ground, it may frighten monsters away."
-message_classic = "You hear maniacal laughter in the distance."
-weight = 0.1
-stackable = true
-max_stack = 20
 scroll_type = "scare_monster"
 value = 180
-is_scroll = true
 priority = 8
 probability = 4
 
 [items.scroll_teleportation]
-name = "Scroll of Teleportation"
-description = "The writing on this scroll refuses to stay still. When read, it teleports the reader to another place."
-message_long = "You suddenly feel disoriented as the dungeon shifts around you."
-weight = 0.1
-stackable = true
-max_stack = 20
 scroll_type = "teleportation"
 value = 175
-is_scroll = true
 priority = 10
 probability = 7
 
 # Cursed Scrolls
 
 [items.scroll_aggravate_monsters]
-name = "Scroll of Aggravate Monsters"
-description = "A noisy, discordant scroll whose words seem to shout. When read, it wakes and angers monsters throughout the dungeon."
-message_classic = "You hear a high pitched humming noise."
-weight = 0.1
-stackable = true
-max_stack = 20
 scroll_type = "aggravate_monsters"
 value = 60
-is_scroll = true
 priority = 14
 probability = 1
 cursed = true
 
 [items.scroll_create_monster]
-name = "Scroll of Create Monster"
-description = "A dangerous scroll inked with summoning signs. When read, it calls a monster into being nearby."
-message_classic = "You hear a faint cry of anguish in the distance."
-message_long = "You hear a faint cry of anguish in the distance as you read the scroll."
-weight = 0.1
-stackable = true
-max_stack = 20
 scroll_type = "create_monster"
 value = 75
-is_scroll = true
 priority = 12
 probability = 5
 cursed = true
 
 [items.scroll_sleep]
-name = "Scroll of Sleep"
-description = "A soft, drowsy script fills this scroll. When read, it may cause the reader to fall asleep."
-message_classic = "You fall asleep."
-message_long = "You fall asleep as you read the scroll."
-weight = 0.1
-stackable = true
-max_stack = 20
 scroll_type = "sleep"
 value = 50
-is_scroll = true
 priority = 5
 probability = 5
 cursed = true
