@@ -1,6 +1,7 @@
 import ast
 import re
 import tomllib
+from collections.abc import Iterable
 from pathlib import Path
 from typing import Any
 
@@ -232,6 +233,7 @@ def check_translation_values(
     source_strings: set[str],
     locale_path: Path,
     translations: dict[str, str],
+    ignored_strings: Iterable[str],
     verbosity: str,
 ) -> bool:
     ok = True
@@ -240,7 +242,9 @@ def check_translation_values(
     locale_keys = set(translations)
 
     missing = sorted(source_keys - locale_keys)
-    extra = sorted(locale_keys - source_keys)
+
+    ignored = set(ignored_strings or [])
+    extra = sorted(locale_keys - source_keys - ignored)
 
     if missing:
         ok = False
@@ -286,6 +290,7 @@ def check_local_file_has_no_obsolete_keys(
     source_strings: set[str],
     languages_dir: Path,
     locale_name: str,
+    ignored_strings: Iterable[str],
 ) -> bool:
     """
     Checks only the keys physically present in the requested locale file.
@@ -293,11 +298,16 @@ def check_local_file_has_no_obsolete_keys(
     This is useful because a child locale such as us.toml may contain only
     overrides, but any override it does contain should still refer to a real
     source string.
+
+    ignored_strings allows specific local-only strings to be ignored when
+    checking for obsolete keys.
     """
     locale_path = normalise_locale_path(languages_dir, locale_name)
     local_keys = load_local_file_keys(languages_dir, locale_name)
 
-    extra = sorted(local_keys - source_strings)
+    ignored = set(ignored_strings or [])
+
+    extra = sorted(local_keys - source_strings - ignored)
 
     if not extra:
         return True
@@ -318,12 +328,26 @@ def check_locale(
 
     ok = True
 
+    action_strings = [
+        "wear",
+        "eat",
+        "drop",
+        "call",
+        "quaff",
+        "put on",
+        "read",
+        "zap with",
+        "wield",
+        "throw",
+    ]
+
     # Check that this specific file does not contain obsolete local overrides.
     ok = (
         check_local_file_has_no_obsolete_keys(
             source_strings=source_strings,
             languages_dir=languages_dir,
             locale_name=locale_name,
+            ignored_strings=action_strings,
         )
         and ok
     )
@@ -343,6 +367,7 @@ def check_locale(
                 source_strings=source_strings,
                 locale_path=locale_path,
                 translations=translations,
+                ignored_strings=action_strings,
                 verbosity=verbosity,
             )
             and ok

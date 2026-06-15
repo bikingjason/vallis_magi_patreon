@@ -193,7 +193,8 @@ class InventoryService:
             return None, redraw
 
         while True:
-            prompt = _("Which object do you want to {purpose}? (* for list): ", purpose=purpose)
+            purpose_str = _(purpose)
+            prompt = _("Which object do you want to {purpose}? (* for list): ", purpose=purpose_str)
             self.display.message(prompt)
 
             ch = self.display.getch()
