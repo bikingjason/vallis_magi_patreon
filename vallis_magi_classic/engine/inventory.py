@@ -1,15 +1,27 @@
 from ..config.config import AppConfig
-from ..config.items import AllItems, ItemDefinition, ItemInstance, ItemInstanceId
+from ..config.item_store import ItemStore
+from ..config.items import ItemDefinition, ItemManager, ItemTag
 from ..protocols.display_protocol import DisplayProtocol
+from ..state.item_types import ItemInstance, ItemInstanceId, ItemKnowledge
 from ..state.player import Player
 from ..tools.localisation import _
 
 
 class InventoryService:
-    def __init__(self, config: AppConfig, all_items: AllItems, display: DisplayProtocol, player: Player) -> None:
+    def __init__(
+        self,
+        config: AppConfig,
+        item_manager: ItemManager,
+        item_store: ItemStore,
+        item_knowledge: ItemKnowledge,
+        display: DisplayProtocol,
+        player: Player,
+    ) -> None:
         self.config: AppConfig = config
         self.display: DisplayProtocol = display
-        self.all_items: AllItems = all_items
+        self.item_manager = item_manager
+        self.item_store = item_store
+        self.item_knowledge = item_knowledge
         self.player: Player = player
 
     def item_matches_type(
@@ -23,28 +35,34 @@ class InventoryService:
 
         match item_type:
             case "armour":
-                return item_def.is_armour
+                return ItemTag.ARMOUR in item_def.tags
 
             case "food":
-                return item_def.is_food
+                return ItemTag.FOOD in item_def.tags
 
             case "potion":
-                return item_def.is_potion
+                return ItemTag.POTION in item_def.tags
 
             case "ring":
-                return item_def.is_ring
+                return ItemTag.RING in item_def.tags
 
             case "scroll":
-                return item_def.is_scroll
+                return ItemTag.SCROLL in item_def.tags
 
             case "wand":
-                return item_def.is_wand
+                return ItemTag.WAND in item_def.tags
 
             case "weapon":
-                return item_def.is_weapon
+                return ItemTag.WEAPON in item_def.tags
 
             case "callable":
-                return item_def.is_scroll or item_def.is_potion or item_def.is_ring or item_def.is_wand
+                callable_tags = {
+                    ItemTag.SCROLL,
+                    ItemTag.POTION,
+                    ItemTag.RING,
+                    ItemTag.WAND,
+                }
+                return bool(item_def.tags & callable_tags)
 
             case _:
                 raise ValueError(f"Unknown item type: {item_type!r}")
@@ -61,21 +79,24 @@ class InventoryService:
         You can expand this later for identified/cursed/charges/etc.
         """
 
-        if item_def.is_identified:
+        if item.identified:
             name = item_def.name
         else:
-            name = self.all_items.called_names.get(item.definition_id, "")
-            if 0 == len(name):
-                if item_def.is_potion:
-                    name = _("Unknown Potion")
-                elif item_def.is_ring:
-                    name = _("Unknown Ring")
-                elif item_def.is_scroll:
-                    name = _("Unknown Scroll")
-                elif item_def.is_wand:
-                    name = _("Unknown Wand")
-                else:
-                    raise RuntimeError(f"Unknown item {item_def.name} in inventory_name.")
+            # TODO Need to implement called items, probably in item_knowledge.
+
+            # name = self.all_items.called_names.get(item.definition_id, "")
+            # if 0 == len(name):
+            # TODO Put the bool tests into a class somewhere
+            if ItemTag.POTION in item_def.tags:
+                name = _("Unknown Potion")
+            elif ItemTag.RING in item_def.tags:
+                name = _("Unknown Ring")
+            elif ItemTag.SCROLL in item_def.tags:
+                name = _("Unknown Scroll")
+            elif ItemTag.WAND in item_def.tags:
+                name = _("Unknown Wand")
+            else:
+                raise RuntimeError(f"Unknown item {item_def.name} in inventory_name.")
 
         if item.quantity > 1:
             return f"{item.quantity}x {name}"
@@ -135,8 +156,8 @@ class InventoryService:
         lines: list[str] = []
 
         for index, item_id in enumerate(item_ids):
-            item = self.all_items.items[item_id]
-            item_def = self.all_items.item_defs[item.definition_id]
+            item = self.item_store.items[item_id]
+            item_def = self.item_manager.item_defs[item.definition_id]
 
             if item_type is not None and not self.item_matches_type(item_def, item_type):
                 continue
@@ -236,7 +257,7 @@ class InventoryService:
         if item_id not in item_ids:
             return
 
-        item = self.all_items.items[item_id]
+        item = self.item_store.items[item_id]
 
         if 1 >= item.quantity:
             item_ids.remove(item_id)

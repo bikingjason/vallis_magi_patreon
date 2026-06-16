@@ -25,10 +25,10 @@ class AppConfig:
 
 
 class ConfigManager:
-    def __init__(self, working_dir: Path, config_dir: str, config_file_name: str) -> None:
+    def __init__(self, working_dir: Path, config_file_name: str) -> None:
         super().__init__()
         self.working_dir = working_dir
-        self.file_path = Path(working_dir / config_dir / config_file_name)
+        self.file_path = Path(working_dir / config_file_name)
 
         if self.file_path.suffix.lower() != ".toml":
             self.file_path = self.file_path.with_suffix(".toml")

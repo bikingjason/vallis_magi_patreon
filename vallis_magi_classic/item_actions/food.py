@@ -1,7 +1,8 @@
 from random import randint
 
-from ..config.items import ItemInstanceId
+from ..config.items import ItemTag
 from ..state.game_context import GameContext
+from ..state.item_types import ItemInstanceId
 from ..tools.localisation import _
 
 HUNGERTIME = 1300
@@ -22,10 +23,10 @@ class FoodActions:
         if item_id is None:
             return redraw
 
-        item = self.context.all_items.items[item_id]
-        item_def = self.context.all_items.item_defs[item.definition_id]
+        item = self.context.item_store.items[item_id]
+        item_def = self.context.item_manager.item_defs[item.definition_id]
 
-        if not item_def.is_food:
+        if ItemTag.FOOD not in item_def.tags:
             self.context.display.message(_("Ugh, you would get ill if you ate that."))
             return redraw
 

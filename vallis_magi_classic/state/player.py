@@ -1,6 +1,8 @@
 from dataclasses import dataclass, field
 
-from ..config.items import AllItems, ItemDefId, ItemInstanceId
+from ..config.item_store import ItemStore
+from ..config.items import ItemDefId
+from ..state.item_types import ItemInstanceId, ItemKnowledge
 from .game_types import Position
 
 
@@ -37,33 +39,28 @@ class Player:
         self.gold = 5
 
     @staticmethod
-    def create_new_player(name: str, all_items: AllItems) -> Player:
-
-        food = all_items.new_item(ItemDefId("food"), 2)
-        ring_mail = all_items.new_item(ItemDefId("ring_mail"))
-        long_sword = all_items.new_item(ItemDefId("long_sword"))
+    def create_new_player(
+        name: str,
+        item_store: ItemStore,
+        item_knowledge: ItemKnowledge,
+    ) -> Player:
+        food = item_store.new_item(ItemDefId("food"), 2)
+        ring_mail = item_store.new_item(ItemDefId("ring_mail"))
+        long_sword = item_store.new_item(ItemDefId("long_sword"))
 
         # Test items
-        potion_of_quench_thirst = all_items.new_item(ItemDefId("potion_of_quench_thirst"))
-        ring_of_slow_digestion = all_items.new_item(ItemDefId("ring_of_slow_digestion"))
-        scroll_genocide = all_items.new_item(ItemDefId("scroll_genocide"))
-        wand_cold = all_items.new_item(ItemDefId("wand_cold"))
-        scale_mail = all_items.new_item(ItemDefId("scale_mail"))
-        bow = all_items.new_item(ItemDefId("bow"))
+        potion_of_quench_thirst = item_store.new_item(ItemDefId("potion_of_quench_thirst"))
+        ring_of_slow_digestion = item_store.new_item(ItemDefId("ring_of_slow_digestion"))
+        scroll_genocide = item_store.new_item(ItemDefId("scroll_genocide"))
+        wand_cold = item_store.new_item(ItemDefId("wand_cold"))
+        scale_mail = item_store.new_item(ItemDefId("scale_mail"))
+        bow = item_store.new_item(ItemDefId("bow"))
 
-        # All the itmes that the Player has at the start are identified.
-        potion_item = all_items.items[potion_of_quench_thirst]
-        potion_def = all_items.item_defs[potion_item.definition_id]
-        potion_def.is_identified = True
-        ring_item = all_items.items[ring_of_slow_digestion]
-        ring_def = all_items.item_defs[ring_item.definition_id]
-        ring_def.is_identified = True
-        scroll_item = all_items.items[scroll_genocide]
-        scroll_def = all_items.item_defs[scroll_item.definition_id]
-        scroll_def.is_identified = True
-        wand_item = all_items.items[wand_cold]
-        wand_def = all_items.item_defs[wand_item.definition_id]
-        wand_def.is_identified = True
+        # All the items that the player starts with are identified.
+        item_knowledge.identify(ItemDefId("potion_of_quench_thirst"))
+        item_knowledge.identify(ItemDefId("ring_of_slow_digestion"))
+        item_knowledge.identify(ItemDefId("scroll_genocide"))
+        item_knowledge.identify(ItemDefId("wand_cold"))
 
         player = Player(name)
 
@@ -74,6 +71,7 @@ class Player:
         player.inventory.backpack.append(wand_cold)
         player.inventory.backpack.append(scale_mail)
         player.inventory.backpack.append(bow)
+
         player.equipment.body = ring_mail
         player.equipment.right_hand = long_sword
 

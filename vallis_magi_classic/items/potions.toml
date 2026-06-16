@@ -1,84 +1,102 @@
 # Default settings for all Potions.
 
 [default.potions]
+tags = ["potion"]
 weight = 0.3
-is_potion = true
+random_table = "potions"
+
 
 # Mundane Potions
 
 [items.potion_of_quench_thirst]
+inherits = ["potions"]
 value = 50
 priority = 14
 probability = 1
 
+
 # Magical Potions
 
 [items.potion_of_extra_healing]
+inherits = ["potions"]
 value = 180
 priority = 10
 probability = 5
 
 [items.potion_of_haste_self]
+inherits = ["potions"]
 value = 200
 priority = 11
 probability = 4
 
 [items.potion_of_healing]
+inherits = ["potions"]
 value = 130
 priority = 6
 probability = 15
 
 [items.potion_of_magic_detection]
+inherits = ["potions"]
 value = 105
 priority = 8
 probability = 6
 
 [items.potion_of_monster_detection]
+inherits = ["potions"]
 value = 120
 priority = 7
 probability = 6
 
 [items.potion_of_raise_level]
+inherits = ["potions"]
 value = 220
 priority = 9
 probability = 2
 
 [items.potion_of_restore_strength]
+inherits = ["potions"]
 value = 120
 priority = 12
 probability = 14
 
 [items.potion_of_see_invisible]
+inherits = ["potions"]
 value = 170
 priority = 5
 probability = 2
 
 [items.potion_of_strength]
+inherits = ["potions"]
 value = 150
 priority = 4
 probability = 15
 
+
 # Cursed Magical Potions
 
 [items.potion_of_blindness]
+inherits = ["potions"]
 value = 50
 priority = 13
 probability = 4
 cursed = true
 
 [items.potion_of_confusion]
+inherits = ["potions"]
 value = 50
 priority = 1
 probability = 8
 cursed = true
 
 [items.potion_of_paralysis]
+inherits = ["potions"]
 value = 50
 priority = 2
 probability = 10
 cursed = true
 
 [items.potion_of_poison]
+inherits = ["potions"]
 value = 50
 priority = 3
 probability = 8

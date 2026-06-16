@@ -15,10 +15,10 @@ class HighScore:
 
 
 class HighScoresManager:
-    def __init__(self, working_dir: Path, high_scores_dir: str, high_scores_file_name: str, max_scores: int) -> None:
+    def __init__(self, working_dir: Path, high_scores_file_name: str, max_scores: int) -> None:
         super().__init__()
         self.working_dir = working_dir
-        self.file_path = Path(working_dir / high_scores_dir / high_scores_file_name)
+        self.file_path = Path(working_dir / high_scores_file_name)
         self.max_scores = max_scores
         self.high_scores: list[HighScore] = []
 

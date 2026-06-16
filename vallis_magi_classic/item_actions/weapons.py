@@ -1,8 +1,9 @@
 from dataclasses import dataclass
 from random import randrange
 
-from ..config.items import ItemInstanceId
+from ..config.items import ItemTag
 from ..state.game_context import GameContext
+from ..state.item_types import ItemInstanceId
 from ..tools.localisation import _
 
 NO_LAUNCHER = None
@@ -54,10 +55,10 @@ class WeaponActions:
         if item_id is None:
             return redraw
 
-        item = self.context.all_items.items[item_id]
-        item_def = self.context.all_items.item_defs[item.definition_id]
+        item = self.context.item_store.items[item_id]
+        item_def = self.context.item_manager.item_defs[item.definition_id]
 
-        if item_def.is_armour:
+        if ItemTag.ARMOUR in item_def.tags:
             self.context.display.message(_("You can't wield armour."))
             return redraw
 
@@ -142,8 +143,8 @@ class WeaponActions:
         #         return
 
         if print_message:
-            item = self.context.all_items.items[item_id]
-            item_def = self.context.all_items.item_defs[item.definition_id]
+            item = self.context.item_store.items[item_id]
+            item_def = self.context.item_manager.item_defs[item.definition_id]
             self.context.display.message(_("Your {name} vanishes as it hits the ground.", anme=item_def.name))
 
         # TODO Implement weapon discard
@@ -156,8 +157,8 @@ class WeaponActions:
         stack count for the classic Rogue weapons, provided the item instance has
         matching mutable fields.
         """
-        item = self.context.all_items.items[item_id]
-        item_def = self.context.all_items.item_defs[item.definition_id]
+        item = self.context.item_store.items[item_id]
+        item_def = self.context.item_manager.item_defs[item.definition_id]
 
         stats = WEAPON_INITIAL_STATS.get(str(item.definition_id))
         if stats is None:

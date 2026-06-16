@@ -1,87 +1,112 @@
 # Default settings for all Armour.
 
 [default.armour]
+tags = ["armour"]
 slot = "body"
-is_armour = true
+random_table = "armour"
 
 # Armour
 
 [items.banded_mail]
+inherits = ["armour"]
 weight = 22.0
+value = 90
 priority = 7
+probability = 10
+
+[items.banded_mail.armour]
 armour_bonus = 7
 armour_class = 4
 movement_penalty = 3
 stealth_penalty = 4
-value = 90
-probability = 10
 
 [items.chain_mail]
+inherits = ["armour"]
 weight = 18.0
+value = 75
 priority = 5
+probability = 12
+
+[items.chain_mail.armour]
 armour_bonus = 5
 armour_class = 5
 movement_penalty = 2
 stealth_penalty = 3
-value = 75
-probability = 12
 
 [items.leather_armour]
+inherits = ["armour"]
 weight = 8.0
+value = 5
 priority = 1
+probability = 20
+
+[items.leather_armour.armour]
 armour_bonus = 1
 armour_class = 8
 movement_penalty = 0
 stealth_penalty = 0
-value = 5
-probability = 20
 
 [items.plate_mail]
+inherits = ["armour"]
 weight = 25.0
+value = 400
 priority = 8
+probability = 5
+
+[items.plate_mail.armour]
 armour_bonus = 8
 armour_class = 3
 movement_penalty = 4
 stealth_penalty = 5
-value = 400
-probability = 5
 
 [items.ring_mail]
+inherits = ["armour"]
 weight = 12.0
+value = 30
 priority = 2
+probability = 15
+
+[items.ring_mail.armour]
 armour_bonus = 2
 armour_class = 7
 movement_penalty = 1
 stealth_penalty = 1
-value = 30
-probability = 15
 
 [items.scale_mail]
+inherits = ["armour"]
 weight = 14.0
+value = 3
 priority = 4
+probability = 13
+
+[items.scale_mail.armour]
 armour_bonus = 4
 armour_class = 6
 movement_penalty = 2
 stealth_penalty = 2
-value = 3
-probability = 13
 
 [items.splint_mail]
+inherits = ["armour"]
 weight = 20.0
+value = 80
 priority = 6
+probability = 10
+
+[items.splint_mail.armour]
 armour_bonus = 6
 armour_class = 4
 movement_penalty = 3
 stealth_penalty = 3
-value = 80
-probability = 10
 
 [items.studded_leather]
+inherits = ["armour"]
 weight = 12.0
+value = 15
 priority = 3
+probability = 15
+
+[items.studded_leather.armour]
 armour_bonus = 3
 armour_class = 7
 movement_penalty = 1
 stealth_penalty = 1
-value = 15
-probability = 15

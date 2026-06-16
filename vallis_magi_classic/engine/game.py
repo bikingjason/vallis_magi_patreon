@@ -2,7 +2,8 @@ from collections.abc import Callable
 from dataclasses import dataclass
 
 from ..config.config import AppConfig
-from ..config.items import AllItems, ItemInstanceId
+from ..config.item_store import ItemStore
+from ..config.items import ItemManager
 from ..item_actions.armour import ArmourActions
 from ..item_actions.food import FoodActions
 from ..item_actions.inventory import InventoryActions
@@ -15,6 +16,7 @@ from ..protocols.display_protocol import DisplayProtocol
 from ..protocols.game_protocol import GameProtocol
 from ..state.game_context import GameContext
 from ..state.game_types import CTRL_C, CTRL_R, ESCAPE, Direction
+from ..state.item_types import ItemInstanceId, ItemKnowledge
 from ..state.player import Player
 from ..tools.localisation import _
 from .inventory import InventoryService
@@ -62,11 +64,21 @@ class PendingDirectionalCommand:
 
 
 class Game(GameProtocol):
-    def __init__(self, config: AppConfig, all_items: AllItems, display: DisplayProtocol, player: Player) -> None:
-        self.config: AppConfig = config
-        self.all_items: AllItems = all_items
-        self.display: DisplayProtocol = display
-        self.player: Player = player
+    def __init__(
+        self,
+        config: AppConfig,
+        item_manager: ItemManager,
+        item_store: ItemStore,
+        item_knowledge: ItemKnowledge,
+        display: DisplayProtocol,
+        player: Player,
+    ) -> None:
+        self.config = config
+        self.item_manager = item_manager
+        self.item_store = item_store
+        self.item_knowledge = item_knowledge
+        self.display = display
+        self.player = player
 
         self.pending_directional_command: PendingDirectionalCommand | None = None
         self.last_message: str = ""
@@ -80,14 +92,18 @@ class Game(GameProtocol):
         self.inventory = InventoryService(
             config=self.config,
             display=self.display,
-            all_items=self.all_items,
+            item_manager=item_manager,
+            item_store=item_store,
+            item_knowledge=item_knowledge,
             player=self.player,
         )
 
         self.context = GameContext(
             config=self.config,
             display=self.display,
-            all_items=self.all_items,
+            item_manager=item_manager,
+            item_store=item_store,
+            item_knowledge=item_knowledge,
             inventory=self.inventory,
             player=self.player,
             redraw=self.draw_main_screen,
@@ -152,13 +168,16 @@ class Game(GameProtocol):
         if item_id is None:
             return "nothing"
 
-        item = self.all_items.items[item_id]
-        definition = self.all_items.item_defs[item.definition_id]
+        definition = "AAA"  #  self.all_items.item_defs[item.definition_id]
+        return definition
 
-        if item.quantity > 1:
-            return f"{item.quantity} x {definition.name}"
+        # item = self.all_items.items[item_id]
+        # definition = self.all_items.item_defs[item.definition_id]
 
-        return definition.name
+        # if item.quantity > 1:
+        #     return f"{item.quantity} x {definition.name}"
+
+        # return definition.name
 
     def display_player_welcome(self, new_player: bool) -> None:
 

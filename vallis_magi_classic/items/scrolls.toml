@@ -1,96 +1,114 @@
 # Default settings for all Scrolls.
 
 [default.scrolls]
+tags = ["scroll"]
 weight = 0.1
-max_stack = 20
 stackable = true
-is_scroll = true
+max_stack = 20
+random_table = "scrolls"
+
 
 # Mundane Scrolls
 
 [items.scroll_blank]
+inherits = ["scrolls"]
 scroll_type = "blank"
 value = 50
 priority = 15
 probability = 1
 
+
 # Magic Scrolls
 
 [items.scroll_confuse_monster]
+inherits = ["scrolls"]
 scroll_type = "confuse_monster"
 value = 170
 priority = 1
 probability = 8
 
 [items.scroll_enchant_armour]
+inherits = ["scrolls"]
 scroll_type = "enchant_armour"
 value = 130
 priority = 6
 probability = 8
 
 [items.scroll_enchant_weapon]
+inherits = ["scrolls"]
 scroll_type = "enchant_weapon"
 value = 150
 priority = 11
 probability = 10
 
 [items.scroll_genocide]
+inherits = ["scrolls"]
 scroll_type = "genocide"
 value = 200
 priority = 16
 probability = 1
 
 [items.scroll_gold_detection]
+inherits = ["scrolls"]
 scroll_type = "gold_detection"
 value = 110
 priority = 9
 probability = 4
 
 [items.scroll_hold_monster]
+inherits = ["scrolls"]
 scroll_type = "hold_monster"
 value = 200
 priority = 4
 probability = 2
 
 [items.scroll_identify]
+inherits = ["scrolls"]
 scroll_type = "identify"
 value = 100
 priority = 7
 probability = 21
 
 [items.scroll_light]
+inherits = ["scrolls"]
 scroll_type = "light"
 value = 100
 priority = 3
 probability = 10
 
 [items.scroll_magic_mapping]
+inherits = ["scrolls"]
 scroll_type = "magic_mapping"
 value = 180
 priority = 2
 probability = 5
 
 [items.scroll_remove_curse]
+inherits = ["scrolls"]
 scroll_type = "remove_curse"
 value = 105
 priority = 13
 probability = 8
 
 [items.scroll_scare_monster]
+inherits = ["scrolls"]
 scroll_type = "scare_monster"
 value = 180
 priority = 8
 probability = 4
 
 [items.scroll_teleportation]
+inherits = ["scrolls"]
 scroll_type = "teleportation"
 value = 175
 priority = 10
 probability = 7
 
+
 # Cursed Scrolls
 
 [items.scroll_aggravate_monsters]
+inherits = ["scrolls"]
 scroll_type = "aggravate_monsters"
 value = 60
 priority = 14
@@ -98,6 +116,7 @@ probability = 1
 cursed = true
 
 [items.scroll_create_monster]
+inherits = ["scrolls"]
 scroll_type = "create_monster"
 value = 75
 priority = 12
@@ -105,6 +124,7 @@ probability = 5
 cursed = true
 
 [items.scroll_sleep]
+inherits = ["scrolls"]
 scroll_type = "sleep"
 value = 50
 priority = 5

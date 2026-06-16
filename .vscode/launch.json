@@ -6,9 +6,8 @@
 			"type": "debugpy",
 			"request": "launch",
 			//
-			// "module": "vallis_magi_classic.main",
-			//
-			"module": "vallis_magi_classic.verify.main",
+			"module": "vallis_magi_classic.main",
+			// "module": "vallis_magi_classic.verify.main",
 			//
 			"cwd": "${workspaceFolder}",
 			"console": "integratedTerminal",
@@ -18,8 +17,8 @@
 				// "--verify",
 				// "--source-root",
 				// "E:\\Projects\\Vallis Magi\\vallis_magi_patreon\\vallis_magi_classic",
-				"--locales",
-				"cn,tw,th,fr,de",
+				// "--locales",
+				// "cn,tw,th,fr,de",
 			]
 		}
 	]

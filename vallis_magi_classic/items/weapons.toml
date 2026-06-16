@@ -1,180 +1,224 @@
 # Default settings for all Weapons.
 
 [default.weapons]
-is_weapon = true
+tags = ["weapon"]
+random_table = "weapons"
+
 
 # Ammunition
 
 [items.arrow]
-weapon_category = "ammunition"
+inherits = ["weapons"]
 weight = 0.1
 stackable = true
 max_stack = 20
+value = 1
+priority = 4
+probability = 8
+
+[items.arrow.weapon]
+category = "ammunition"
 damage = "1d6"
 thrown_damage = "1d1"
 hit_bonus = 0
 damage_bonus = 2
 speed_penalty = 0
-value = 1
-priority = 4
-probability = 8
+
 
 [items.bolt]
-weapon_category = "ammunition"
+inherits = ["weapons"]
 weight = 0.2
 stackable = true
 max_stack = 20
+value = 1
+priority = 11
+probability = 8
+
+[items.bolt.weapon]
+category = "ammunition"
 damage = "1d10"
 thrown_damage = "1d2"
 hit_bonus = 0
 damage_bonus = 3
 speed_penalty = 0
-value = 1
-priority = 11
-probability = 8
 
 [items.rock]
-weapon_category = "ammunition"
+inherits = ["weapons"]
 weight = 1.0
 slot = "hand"
 stackable = true
 max_stack = 20
+value = 0
+priority = 6
+probability = 8
+
+[items.rock.weapon]
+category = "ammunition"
 damage = "1d4"
 thrown_damage = "1d2"
 hit_bonus = 0
 damage_bonus = 1
 speed_penalty = 0
 can_throw = true
-value = 0
-priority = 6
-probability = 8
+
 
 # Blunt melee weapons
 
 [items.mace]
-weapon_category = "blunt"
+inherits = ["weapons"]
 weight = 3.0
 slot = "hand"
+value = 8
+priority = 1
+probability = 9
+
+[items.mace.weapon]
+category = "blunt"
 damage = "2d4"
 thrown_damage = "1d3"
 hit_bonus = 1
 damage_bonus = 4
 speed_penalty = 1
-value = 8
-priority = 1
-probability = 9
+
 
 # Bladed melee weapons
 
 [items.dagger]
-weapon_category = "bladed"
+inherits = ["weapons"]
 weight = 1.0
 slot = "hand"
+value = 2
+priority = 5
+probability = 9
+
+[items.dagger.weapon]
+category = "bladed"
 damage = "1d6"
 thrown_damage = "1d4"
 hit_bonus = 3
 damage_bonus = 2
 speed_penalty = 0
-value = 2
-priority = 5
-probability = 9
 
 [items.long_sword]
-weapon_category = "bladed"
+inherits = ["weapons"]
 weight = 4.0
 slot = "hand"
+value = 15
+priority = 2
+probability = 10
+
+[items.long_sword.weapon]
+category = "bladed"
 damage = "1d10"
 thrown_damage = "1d2"
 hit_bonus = 2
 damage_bonus = 5
 speed_penalty = 1
-value = 15
-priority = 2
-probability = 10
 
 [items.two_handed_sword]
-weapon_category = "bladed"
+inherits = ["weapons"]
 weight = 6.0
 slot = "hand"
+value = 30
+priority = 7
+probability = 6
+
+[items.two_handed_sword.weapon]
+category = "bladed"
 hands = 2
 damage = "3d6"
 thrown_damage = "1d2"
 hit_bonus = 1
 damage_bonus = 8
 speed_penalty = 3
-value = 30
-priority = 7
-probability = 6
+
 
 # Hafted melee weapons
 
 [items.spear]
-weapon_category = "hafted"
+inherits = ["weapons"]
 weight = 3.0
 slot = "hand"
+value = 2
+priority = 12
+probability = 8
+
+[items.spear.weapon]
+category = "hafted"
 damage = "1d8"
 thrown_damage = "1d6"
 hit_bonus = 2
 damage_bonus = 4
 speed_penalty = 1
-value = 2
-priority = 12
-probability = 8
+
 
 # Ranged weapons
 
 [items.bow]
-weapon_category = "missile"
+inherits = ["weapons"]
 weight = 2.0
 slot = "hand"
+value = 75
+priority = 3
+probability = 10
+
+[items.bow.weapon]
+category = "missile"
 thrown_damage = "1d1"
 hit_bonus = 2
 damage_bonus = 2
 speed_penalty = 1
 requires_ammunition = "arrow"
-value = 75
-priority = 3
-probability = 10
 
 [items.crossbow]
-weapon_category = "missile"
+inherits = ["weapons"]
 weight = 5.0
 slot = "hand"
+value = 15
+priority = 10
+probability = 8
+
+[items.crossbow.weapon]
+category = "missile"
 thrown_damage = "1d2"
 hit_bonus = 3
 damage_bonus = 4
 speed_penalty = 3
 requires_ammunition = "bolt"
-value = 15
-priority = 10
-probability = 8
 
 [items.sling]
-weapon_category = "missile"
+inherits = ["weapons"]
 weight = 0.5
 slot = "hand"
+value = 1
+priority = 8
+probability = 8
+
+[items.sling.weapon]
+category = "missile"
 thrown_damage = "0"
 hit_bonus = 1
 damage_bonus = 1
 speed_penalty = 1
 requires_ammunition = "rock"
-value = 1
-priority = 8
-probability = 8
+
 
 # Thrown weapons
 
 [items.dart]
-weapon_category = "thrown"
+inherits = ["weapons"]
 weight = 0.2
 slot = "hand"
 stackable = true
 max_stack = 20
+value = 1
+priority = 9
+probability = 8
+
+[items.dart.weapon]
+category = "thrown"
 damage = "1d3"
 thrown_damage = "1d1"
 hit_bonus = 2
 damage_bonus = 1
 speed_penalty = 0
-value = 1
-priority = 9
-probability = 8

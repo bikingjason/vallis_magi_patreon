@@ -1,5 +1,6 @@
-from ..config.items import ItemDefId, ItemDefinition, ItemInstanceId
+from ..config.items import ItemDefId, ItemDefinition
 from ..state.game_context import GameContext
+from ..state.item_types import ItemInstanceId
 from ..tools.localisation import _
 
 
@@ -25,8 +26,8 @@ class InventoryActions:
         if not self.dropcheck(item_id):
             return redraw
 
-        item = self.context.all_items.items[item_id]
-        item_def = self.context.all_items.item_defs[item.definition_id]
+        item = self.context.item_store.items[item_id]
+        item_def = self.context.item_manager.item_defs[item.definition_id]
 
         if item.quantity >= 2 and not item_def.is_weapon:
             dropped_item_id = self.split_one_from_stack(item_id)
@@ -56,8 +57,8 @@ class InventoryActions:
         if item_id is None:
             return redraw
 
-        item = self.context.all_items.items[item_id]
-        item_def = self.context.all_items.item_defs[item.definition_id]
+        item = self.context.item_store.items[item_id]
+        item_def = self.context.item_manager.item_defs[item.definition_id]
 
         if not self.can_call_item(item_def):
             self.context.display.message(_("You can't call that anything."))
@@ -167,8 +168,8 @@ class InventoryActions:
         )
 
     def is_cursed(self, item_id: ItemInstanceId) -> bool:
-        item = self.context.all_items.items[item_id]
-        item_def = self.context.all_items.item_defs[item.definition_id]
+        item = self.context.item_store.items[item_id]
+        item_def = self.context.item_manager.item_defs[item.definition_id]
 
         return bool(
             getattr(item, "is_cursed", False)
@@ -216,8 +217,8 @@ class InventoryActions:
         # if hasattr(self.context.inventory, "inventory_name"):
         #     return self.context.inventory.inventory_name(item_id, drop=drop)
 
-        item = self.context.all_items.items[item_id]
-        item_def = self.context.all_items.item_defs[item.definition_id]
+        item = self.context.item_store.items[item_id]
+        item_def = self.context.item_manager.item_defs[item.definition_id]
 
         name = self.get_called_name(item.definition_id)
         # TODO Need to check if it is identified, if not then the randomly generated name is used.

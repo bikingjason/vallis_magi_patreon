@@ -1,7 +1,8 @@
 from collections.abc import Callable
 
-from ..config.items import ItemDefId, ItemInstanceId
+from ..config.items import ItemDefId
 from ..state.game_context import GameContext
+from ..state.item_types import ItemInstanceId
 from ..tools.localisation import _
 
 
@@ -38,8 +39,8 @@ class WandActions:
         if item_id is None:
             return self.redraw
 
-        item = ctx.all_items.items[item_id]
-        item_def = ctx.all_items.item_defs[item.definition_id]
+        item = self.context.item_store.items[item_id]
+        item_def = self.context.item_manager.item_defs[item.definition_id]
 
         if not getattr(item_def, "is_wand", False):
             ctx.display.message(_("You can't zap with that!"))
@@ -70,13 +71,13 @@ class WandActions:
         ``charges``. If that field does not exist yet, wands are treated as
         usable so this file can be added before charge tracking is implemented.
         """
-        item = self.context.all_items.items[item_id]
+        item = self.context.item_store.items[item_id]
         charges = getattr(item, "charges", None)
         return charges is None or charges > 0
 
     def _spend_charge(self, item_id: ItemInstanceId) -> None:
         """Spend one charge if the item instance currently tracks charges."""
-        item = self.context.all_items.items[item_id]
+        item = self.context.item_store.items[item_id]
         charges = getattr(item, "charges", None)
         if charges is not None:
             item.charges = max(0, charges - 1)

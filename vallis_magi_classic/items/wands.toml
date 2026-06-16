@@ -1,97 +1,115 @@
 # Default settings for all Wands.
 
 [default.wands]
+tags = ["wand"]
 weight = 0.2
-is_wand = true
+random_table = "wands"
+
 
 # Mundane Wands
 
 [items.wand_nothing]
+inherits = ["wands"]
 wand_type = "nothing"
 value = 70
 priority = 11
 probability = 1
 
+
 # Magical Wands
 
 [items.wand_cancellation]
+inherits = ["wands"]
 wand_type = "cancellation"
 value = 130
 priority = 14
 probability = 5
 
 [items.wand_cold]
+inherits = ["wands"]
 wand_type = "cold"
 value = 200
 priority = 5
 probability = 3
 
 [items.wand_drain_life]
+inherits = ["wands"]
 wand_type = "drain_life"
 value = 210
 priority = 10
 probability = 9
 
 [items.wand_fire]
+inherits = ["wands"]
 wand_type = "fire"
 value = 200
 priority = 4
 probability = 3
 
 [items.wand_light]
+inherits = ["wands"]
 wand_type = "light"
 value = 120
 priority = 1
 probability = 12
 
 [items.wand_lightning]
+inherits = ["wands"]
 wand_type = "lightning"
 value = 200
 priority = 3
 probability = 3
 
 [items.wand_magic_missile]
+inherits = ["wands"]
 wand_type = "magic_missile"
 value = 170
 priority = 7
 probability = 10
 
 [items.wand_polymorph]
+inherits = ["wands"]
 wand_type = "polymorph"
 value = 210
 priority = 6
 probability = 15
 
 [items.wand_slow_monster]
+inherits = ["wands"]
 wand_type = "slow_monster"
 value = 220
 priority = 9
 probability = 11
 
 [items.wand_striking]
+inherits = ["wands"]
 wand_type = "striking"
 value = 115
 priority = 2
 probability = 9
 
 [items.wand_teleport_away]
+inherits = ["wands"]
 wand_type = "teleport_away"
 value = 140
 priority = 12
 probability = 5
 
+
 # Cursed Wands
 
 [items.wand_haste_monster]
+inherits = ["wands"]
 wand_type = "haste_monster"
-cursed = true
 value = 50
 priority = 8
 probability = 9
+cursed = true
 
 [items.wand_teleport_to]
+inherits = ["wands"]
 wand_type = "teleport_to"
-cursed = true
 value = 60
 priority = 13
 probability = 5
+cursed = true

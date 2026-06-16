@@ -1,8 +1,9 @@
 from collections.abc import Callable
 
-from ..config.items import ItemDefId, ItemInstanceId
+from ..config.items import ItemDefId, ItemTag
 from ..state.game_context import GameContext
 from ..state.game_types import ESCAPE
+from ..state.item_types import ItemInstanceId
 from ..tools.localisation import _
 
 LEFT_HAND = "left"
@@ -62,10 +63,10 @@ class RingActions:
         if item_id is None:
             return self.redraw
 
-        item = ctx.all_items.items[item_id]
-        item_def = ctx.all_items.item_defs[item.definition_id]
+        item = self.context.item_store.items[item_id]
+        item_def = self.context.item_manager.item_defs[item.definition_id]
 
-        if not item_def.is_ring:
+        if ItemTag.RING not in item_def.tags:
             ctx.display.message(_("It would be difficult to wrap that around a finger."), wait=self.redraw)
             return self.redraw
 
@@ -115,8 +116,8 @@ class RingActions:
             ctx.display.message(_("Not wearing such a ring."), wait=self.redraw)
             return False
 
-        item = ctx.all_items.items[item_id]
-        item_def = ctx.all_items.item_defs[item.definition_id]
+        item = self.context.item_store.items[item_id]
+        item_def = self.context.item_manager.item_defs[item.definition_id]
 
         if item.cursed:
             ctx.display.message(_("You can't. It appears to be cursed."), wait=self.redraw)

@@ -1,7 +1,8 @@
 from collections.abc import Callable
 
-from ..config.items import ItemDefId, ItemInstanceId
+from ..config.items import ItemDefId, ItemTag
 from ..state.game_context import GameContext
+from ..state.item_types import ItemInstanceId
 from ..tools.localisation import _
 
 
@@ -37,10 +38,10 @@ class ScrollActions:
         if item_id is None:
             return self.redraw
 
-        item = ctx.all_items.items[item_id]
-        item_def = ctx.all_items.item_defs[item.definition_id]
+        item = self.context.item_store.items[item_id]
+        item_def = self.context.item_manager.item_defs[item.definition_id]
 
-        if not item_def.is_scroll:
+        if ItemTag.SCROLL not in item_def.tags:
             ctx.display.message(_("There is nothing on it to read."))
             return self.redraw
 
@@ -77,7 +78,7 @@ class ScrollActions:
             self.context.display.message(_("You feel a strange sense of loss."), wait=self.redraw)
             return False
 
-        armour = self.context.all_items.items[player.equipment.body]
+        armour = self.context.item_store.items[player.equipment.body]
         armour.cursed = False
 
         self.context.display.message(_("Your armour glows faintly for a moment."), wait=self.redraw)
@@ -90,10 +91,10 @@ class ScrollActions:
             self.context.display.message(_("You feel a strange sense of loss."), wait=self.redraw)
             return False
 
-        weapon = self.context.all_items.items[player.equipment.right_hand]
+        weapon = self.context.item_store.items[player.equipment.right_hand]
         weapon.cursed = False
 
-        weapon_name = self.context.all_items.item_defs[weapon.definition_id].name
+        weapon_name = self.context.item_manager.item_defs[weapon.definition_id].name
         self.context.display.message(_("Your {weapon_name} glows blue for a moment.", weapon_name=weapon_name), wait=self.redraw)
         return False
 
@@ -141,7 +142,7 @@ class ScrollActions:
             if equipped_item_id is None:
                 continue
 
-            item = self.context.all_items.items[equipped_item_id]
+            item = self.context.item_store.items[equipped_item_id]
             item.cursed = False
 
         self.context.display.message(_("You feel as if somebody is watching over you."), wait=self.redraw)

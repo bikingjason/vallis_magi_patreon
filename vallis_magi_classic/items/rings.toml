@@ -1,85 +1,103 @@
 # Default settings for all Rings.
 
 [default.rings]
+tags = ["ring"]
 weight = 0.1
 slot = "finger"
-is_ring = true
+random_table = "rings"
+
 
 # Mundane Rings
 
 [items.silver_ring]
+inherits = ["rings"]
 value = 100
 priority = 7
 probability = 1
 
+
 # Magical Rings
 
 [items.ring_of_accuracy]
+inherits = ["rings"]
 extra_food = -3
 value = 220
 priority = 9
 probability = 8
 
 [items.ring_of_damage]
+inherits = ["rings"]
 value = 220
 priority = 10
 probability = 8
 
 [items.ring_of_protection]
+inherits = ["rings"]
 value = 200
 priority = 1
 probability = 9
 
 [items.ring_of_regeneration]
+inherits = ["rings"]
 value = 260
 priority = 11
 probability = 4
 
 [items.ring_of_search]
+inherits = ["rings"]
 value = 200
 priority = 5
 probability = 10
 
 [items.ring_of_see_invisible]
+inherits = ["rings"]
 value = 175
 priority = 6
 probability = 10
 
 [items.ring_of_slow_digestion]
+inherits = ["rings"]
 value = 240
 priority = 12
 probability = 8
 
 [items.ring_of_stealth]
+inherits = ["rings"]
 value = 100
 priority = 14
 probability = 6
 
 [items.ring_of_strength]
+inherits = ["rings"]
 value = 200
 priority = 3
 probability = 9
 
 [items.ring_of_sustain_strength]
+inherits = ["rings"]
 value = 180
 priority = 4
 probability = 5
 
+
 # Cursed Rings
 
 [items.ring_of_aggravate_monsters]
+inherits = ["rings"]
 value = 100
 priority = 8
 probability = 9
 cursed = true
 
 [items.ring_of_hunger]
+inherits = ["rings"]
 value = 100
 priority = 2
 probability = 6
 cursed = true
 
 [items.ring_of_teleport]
+inherits = ["rings"]
 value = 100
 priority = 13
 probability = 7
