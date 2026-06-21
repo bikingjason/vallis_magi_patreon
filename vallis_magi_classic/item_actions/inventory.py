@@ -1,6 +1,6 @@
-from ..config.items import ItemDefId, ItemDefinition
+from ..config.items import ItemDefinition, ItemTag
 from ..state.game_context import GameContext
-from ..state.item_types import ItemInstanceId
+from ..state.item_types import ItemDefId, ItemInstanceId
 from ..tools.localisation import _
 
 
@@ -29,7 +29,7 @@ class InventoryActions:
         item = self.context.item_store.items[item_id]
         item_def = self.context.item_manager.item_defs[item.definition_id]
 
-        if item.quantity >= 2 and not item_def.is_weapon:
+        if item.quantity >= 2 and (ItemTag.WEAPON not in item_def.tags):
             dropped_item_id = self.split_one_from_stack(item_id)
         else:
             dropped_item_id = item_id
@@ -198,13 +198,19 @@ class InventoryActions:
         """
         Only unidentified magical item types can be given names.
         """
-        return item_def.is_scroll or item_def.is_potion or item_def.is_ring or item_def.is_wand
+        callable_tags = {
+            ItemTag.SCROLL,
+            ItemTag.POTION,
+            ItemTag.RING,
+            ItemTag.WAND,
+        }
+        return bool(item_def.tags & callable_tags)
 
     def get_called_name(self, definition_id: ItemDefId) -> str:
-        return self.context.all_items.called_names.get(definition_id, "")
+        return self.context.item_knowledge.called_names.get(definition_id, "")
 
     def set_called_name(self, definition_id: ItemDefId, called_name: str) -> None:
-        self.context.all_items.called_names[definition_id] = called_name
+        self.context.item_knowledge.called_names[definition_id] = called_name
 
     def read_line(self, prompt: str) -> str:
         return self.context.display.prompt(prompt)

@@ -19,7 +19,7 @@ from ..state.game_types import CTRL_C, CTRL_R, ESCAPE, Direction
 from ..state.item_types import ItemInstanceId, ItemKnowledge
 from ..state.player import Player
 from ..tools.localisation import _
-from .inventory import InventoryService
+from .inventory_services import InventoryService
 
 DIRECTIONS: dict[str, Direction] = {
     "h": (-1, 0),

@@ -83,20 +83,19 @@ class InventoryService:
             name = item_def.name
         else:
             # TODO Need to implement called items, probably in item_knowledge.
-
-            # name = self.all_items.called_names.get(item.definition_id, "")
-            # if 0 == len(name):
-            # TODO Put the bool tests into a class somewhere
-            if ItemTag.POTION in item_def.tags:
-                name = _("Unknown Potion")
-            elif ItemTag.RING in item_def.tags:
-                name = _("Unknown Ring")
-            elif ItemTag.SCROLL in item_def.tags:
-                name = _("Unknown Scroll")
-            elif ItemTag.WAND in item_def.tags:
-                name = _("Unknown Wand")
-            else:
-                raise RuntimeError(f"Unknown item {item_def.name} in inventory_name.")
+            # Should call the inventory get_called_name() method.
+            name = self.item_knowledge.called_names.get(item.definition_id, "")
+            if 0 == len(name):
+                if ItemTag.POTION in item_def.tags:
+                    name = _("Unknown Potion")
+                elif ItemTag.RING in item_def.tags:
+                    name = _("Unknown Ring")
+                elif ItemTag.SCROLL in item_def.tags:
+                    name = _("Unknown Scroll")
+                elif ItemTag.WAND in item_def.tags:
+                    name = _("Unknown Wand")
+                else:
+                    raise RuntimeError(f"Unknown item {item_def.name} in inventory_name.")
 
         if item.quantity > 1:
             return f"{item.quantity}x {name}"

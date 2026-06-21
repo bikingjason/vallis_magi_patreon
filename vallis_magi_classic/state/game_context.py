@@ -6,7 +6,7 @@ from dataclasses import dataclass
 from ..config.config import AppConfig
 from ..config.item_store import ItemStore
 from ..config.items import ItemManager
-from ..engine.inventory import InventoryService
+from ..engine.inventory_services import InventoryService
 from ..protocols.display_protocol import DisplayProtocol
 from ..state.item_types import ItemKnowledge
 from ..state.player import Player
