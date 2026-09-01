@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "vallis_magi_classic/README.md",
+                "file": "vallis_magi_classic/tools/README.md",
                 "mode": "source",
                 "source": false
               },
@@ -41,7 +41,9 @@
               "type": "file-explorer",
               "state": {
                 "sortOrder": "alphabetical",
-                "autoReveal": false
+                "autoReveal": false,
+                "showSearch": false,
+                "searchQuery": ""
               },
               "icon": "lucide-folder-closed",
               "title": "Files"
@@ -182,6 +184,11 @@
   },
   "active": "0f479b4538f959ab",
   "lastOpenFiles": [
+    "THIRD_PARTY_NOTICES.md",
+    "README.md",
+    "NOTICE.md",
+    "vallis_magi_classic/README.md",
+    "vallis_magi_classic/tools/README.md",
     "vallis_magi_classic/__pycache__/game_types.cpython-314.pyc",
     "vallis_magi_classic/game_types.py",
     "keys.log",
@@ -192,9 +199,6 @@
     "vallis_magi_classic/protocols/game_protocol.py",
     "vallis_magi_classic/protocols/display_protocol.py",
     "vallis_magi_classic/protocols",
-    "vallis_magi_classic/display_curses.py",
-    "README.md",
-    "vallis_magi_classic/README.md",
     "rogue_lite/README.md",
     "proc_gen/README.md",
     "markdown/monsters2md/monster/Zruty/zruty.md",
@@ -215,8 +219,6 @@
     "markdown/monsters2md/monster/Yeti/carnivorous ape.md",
     "markdown/monsters2md/monster/Yeti/ape.md",
     "markdown/monsters2md/monster/Xorn/xorn.md",
-    "markdown/monsters2md/monster/Xan/xan.md",
-    "markdown/monsters2md/monster/Xan/grid bug.md",
-    "markdown/monsters2md/monster/Vortex/ice vortex.md"
+    "markdown/monsters2md/monster/Xan/xan.md"
   ]
 }
